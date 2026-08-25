@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Log in — Career Cafe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: { inter: ['Inter', 'sans-serif'] },
+        colors: {
+          brand: { 50:'#EFF4FF',100:'#DCE6FF',200:'#BFD0FF',300:'#93AEFF',400:'#6087FB',500:'#3B62F6',600:'#2549E0',700:'#1B37B5',800:'#152C88',900:'#10265E' },
+          navy: { 900:'#0F1420',800:'#1E2533',700:'#333B4A',600:'#4E586B',500:'#6B7689',400:'#9AA5BB',300:'#CBD3E1',200:'#E2E7F0',100:'#EEF1F7',50:'#F5F7FB',25:'#FBFCFE' },
+        },
+      }},
+    }
+  </script>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .otp-input { width:48px; height:56px; text-align:center; font-size:20px; font-weight:600; color:#0F1420; background:#FFFFFF; border:1px solid #E2E7F0; border-radius:8px; outline:none; transition:border-color 0.2s; }
+    .otp-input:focus { border-color:#3B62F6; box-shadow:0 0 0 3px rgba(59,98,246,0.1); }
+  </style>
+</head>
+<body class="font-inter antialiased" style="color:#333B4A;background:#FFFFFF">
+  <div class="flex min-h-screen">
+    <!-- Left Panel — Branding -->
+    <div class="hidden md:flex flex-col justify-between p-10 lg:p-14" style="width:440px;background:#0F1420;flex-shrink:0">
+      <a href="index.html" style="font-size:17px;line-height:24px;font-weight:600;color:#FFFFFF">Career Cafe</a>
+      <div>
+        <div class="flex items-center gap-3 mb-6">
+          <div style="width:44px;height:44px;border-radius:10px;background:#1B37B5;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:#93AEFF">AK</div>
+          <div>
+            <p style="font-size:14px;line-height:20px;font-weight:500;color:#FFFFFF">Aditya Kulkarni</p>
+            <p style="font-size:12px;line-height:18px;color:#93AEFF">BCA 2025 · Frontend Developer</p>
+          </div>
+        </div>
+        <p style="font-size:17px;line-height:28px;color:#BFD0FF;font-style:italic">"The roadmap gave my last semester a shape. I stopped collecting random courses and finished one track properly."</p>
+      </div>
+      <div>
+        <p style="font-size:13px;line-height:20px;color:#6B7689">Only openings that accept freshers</p>
+        <p style="font-size:13px;line-height:20px;color:#6B7689">Resources tied to each specific role</p>
+        <p style="font-size:13px;line-height:20px;color:#6B7689">Sixty-second shots on what the job is like</p>
+        <p style="font-size:13px;line-height:20px;color:#6B7689">Free, with no premium tier</p>
+      </div>
+    </div>
+
+    <!-- Right Panel — Form -->
+    <div class="flex-1 flex flex-col justify-center px-6 py-12 md:px-12 lg:px-20">
+      <div class="max-w-[400px] mx-auto w-full">
+        <!-- Back to home -->
+        <a href="index.html" class="inline-flex items-center gap-1.5 mb-8" style="font-size:13px;line-height:20px;color:#6B7689">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+          Back
+        </a>
+
+        <!-- Step 1: Phone Number -->
+        <div id="loginStep1">
+          <h1 style="font-size:24px;line-height:32px;font-weight:600;color:#0F1420;margin-bottom:4px">Log in to Career Cafe</h1>
+          <p style="font-size:13px;line-height:20px;color:#6B7689;margin-bottom:24px">Welcome back. Your saved roles are waiting.</p>
+
+          <label class="block mb-1.5" style="font-size:14px;line-height:20px;font-weight:500;color:#333B4A">Mobile number</label>
+          <div class="flex gap-2 mb-3">
+            <div class="flex items-center justify-center" style="width:64px;padding:10px;font-size:15px;color:#333B4A;background:#F5F7FB;border:1px solid #E2E7F0;border-radius:8px">+91</div>
+            <input id="phoneInput" type="tel" placeholder="98765 43210" class="flex-1" style="padding:10px 12px;font-size:15px;color:#333B4A;background:transparent;border:1px solid #E2E7F0;border-radius:8px;outline:none" />
+          </div>
+          <p id="phoneError" class="hidden mb-3" style="font-size:12px;line-height:18px;color:#E5484D">That number looks too short. Indian mobile numbers have ten digits.</p>
+          <p style="font-size:12px;line-height:18px;color:#9AA5BB;margin-bottom:20px">We use a one-time code instead of a password so there is nothing to forget and nothing to leak.</p>
+
+          <button onclick="showOTP()" class="w-full" style="padding:10px 16px;font-size:14px;line-height:20px;font-weight:500;color:#FFFFFF;background:#3B62F6;border:none;border-radius:8px;cursor:pointer">Send code</button>
+
+          <div class="flex items-center gap-3 my-5"><hr class="flex-1" style="border-color:#E2E7F0"/><span style="font-size:12px;line-height:18px;color:#9AA5BB">or</span><hr class="flex-1" style="border-color:#E2E7F0"/></div>
+
+          <button class="w-full flex items-center justify-center gap-2" style="padding:10px 16px;font-size:14px;line-height:20px;font-weight:500;color:#333B4A;background:#FFFFFF;border:1px solid #E2E7F0;border-radius:8px;cursor:pointer">
+            <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+            Continue with Google
+          </button>
+
+          <p class="text-center mt-6" style="font-size:13px;line-height:20px;color:#6B7689">New here? <a href="signup.html" style="color:#3B62F6;font-weight:500">Create a free account</a></p>
+        </div>
+
+        <!-- Step 2: OTP Verification -->
+        <div id="loginStep2" class="hidden">
+          <button onclick="showPhoneStep()" class="inline-flex items-center gap-1.5 mb-6" style="font-size:13px;line-height:20px;color:#6B7689;border:none;background:none;cursor:pointer;padding:0">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            Change number
+          </button>
+          <h1 style="font-size:24px;line-height:32px;font-weight:600;color:#0F1420;margin-bottom:4px">Enter the code we sent</h1>
+          <p style="font-size:13px;line-height:20px;color:#6B7689;margin-bottom:24px">Almost in. One code and you are set.</p>
+          <p style="font-size:13px;line-height:20px;color:#6B7689;margin-bottom:16px">Sent to <strong style="color:#0F1420">+91 98765 43210</strong></p>
+
+          <div class="flex gap-2 mb-4">
+            <input type="text" maxlength="1" class="otp-input" oninput="otpAutoFocus(this, 0)" onkeydown="otpKeyDown(event, 0)" />
+            <input type="text" maxlength="1" class="otp-input" oninput="otpAutoFocus(this, 1)" onkeydown="otpKeyDown(event, 1)" />
+            <input type="text" maxlength="1" class="otp-input" oninput="otpAutoFocus(this, 2)" onkeydown="otpKeyDown(event, 2)" />
+            <input type="text" maxlength="1" class="otp-input" oninput="otpAutoFocus(this, 3)" onkeydown="otpKeyDown(event, 3)" />
+            <input type="text" maxlength="1" class="otp-input" oninput="otpAutoFocus(this, 4)" onkeydown="otpKeyDown(event, 4)" />
+            <input type="text" maxlength="1" class="otp-input" oninput="otpAutoFocus(this, 5)" onkeydown="otpKeyDown(event, 5)" />
+          </div>
+
+          <p id="otpError" class="hidden mb-3" style="font-size:12px;line-height:18px;color:#E5484D">That code is not right. You have 2 attempts left.</p>
+
+          <button onclick="loginVerify()" class="w-full" style="padding:10px 16px;font-size:14px;line-height:20px;font-weight:500;color:#FFFFFF;background:#3B62F6;border:none;border-radius:8px;cursor:pointer">Verify and continue</button>
+
+          <p class="text-center mt-4" style="font-size:12px;line-height:18px;color:#9AA5BB">Resend code in <span id="resendTimer" style="color:#3B62F6;cursor:pointer">0:28</span></p>
+
+          <div class="flex items-center gap-3 my-5"><hr class="flex-1" style="border-color:#E2E7F0"/><span style="font-size:12px;line-height:18px;color:#9AA5BB">or</span><hr class="flex-1" style="border-color:#E2E7F0"/></div>
+
+          <button class="w-full flex items-center justify-center gap-2" style="padding:10px 16px;font-size:14px;line-height:20px;font-weight:500;color:#333B4A;background:#FFFFFF;border:1px solid #E2E7F0;border-radius:8px;cursor:pointer">
+            <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+            Continue with Google
+          </button>
+
+          <p class="text-center mt-6" style="font-size:13px;line-height:20px;color:#6B7689">Not sure which you used? <span style="color:#3B62F6;font-weight:500;cursor:pointer">Try Google first</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showPhoneStep() {
+      document.getElementById('loginStep1').classList.remove('hidden');
+      document.getElementById('loginStep2').classList.add('hidden');
+    }
+    function showOTP() {
+      const phone = document.getElementById('phoneInput').value.replace(/\s/g, '');
+      if (phone.length < 10) {
+        document.getElementById('phoneError').classList.remove('hidden');
+        return;
+      }
+      document.getElementById('phoneError').classList.add('hidden');
+      document.getElementById('loginStep1').classList.add('hidden');
+      document.getElementById('loginStep2').classList.remove('hidden');
+      document.querySelector('.otp-input').focus();
+      startResendTimer();
+    }
+    function loginVerify() {
+      const inputs = document.querySelectorAll('.otp-input');
+      let code = '';
+      inputs.forEach(i => code += i.value);
+      if (code.length < 6) {
+        document.getElementById('otpError').classList.remove('hidden');
+        return;
+      }
+      document.getElementById('otpError').classList.add('hidden');
+      window.location.href = 'home.html';
+    }
+    function otpAutoFocus(el, idx) {
+      if (el.value.length === 1) {
+        const inputs = document.querySelectorAll('.otp-input');
+        if (idx < inputs.length - 1) inputs[idx + 1].focus();
+      }
+    }
+    function otpKeyDown(e, idx) {
+      const inputs = document.querySelectorAll('.otp-input');
+      if (e.key === 'Backspace' && !inputs[idx].value && idx > 0) {
+        inputs[idx - 1].focus();
+      }
+    }
+    function startResendTimer() {
+      let seconds = 28;
+      const el = document.getElementById('resendTimer');
+      const interval = setInterval(() => {
+        seconds--;
+        if (seconds <= 0) { clearInterval(interval); el.textContent = 'Resend code'; el.style.color = '#3B62F6'; return; }
+        el.textContent = '0:' + (seconds < 10 ? '0' : '') + seconds;
+      }, 1000);
+    }
+  </script>
+  <script src="personalize.js"></script>
+</body>
+</html>

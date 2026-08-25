@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Career Cafe — Real openings, honest resources, no noise.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { inter: ['Inter', 'sans-serif'] },
+          colors: {
+            /* EXACT Figma Brand palette */
+            brand: {
+              50: '#EFF4FF', 100: '#DCE6FF', 200: '#BFD0FF', 300: '#93AEFF',
+              400: '#6087FB', 500: '#3B62F6', 600: '#2549E0', 700: '#1B37B5',
+              800: '#152C88', 900: '#10265E',
+            },
+            /* EXACT Figma Neutral palette */
+            navy: {
+              900: '#0F1420', 800: '#1E2533', 700: '#333B4A',
+              600: '#4E586B', 500: '#6B7689', 400: '#9AA5BB',
+              300: '#CBD3E1', 200: '#E2E7F0', 100: '#EEF1F7',
+              50: '#F5F7FB', 25: '#FBFCFE',
+            },
+            /* EXACT Figma Semantic palettes */
+            success: { 50: '#E8F8EE', 500: '#12A150', 700: '#0B7038' },
+            warning: { 50: '#FFF6E5', 500: '#D98800', 700: '#9A6100' },
+            danger:  { 50: '#FEECEB', 500: '#E5484D', 700: '#B4272B' },
+          },
+          /* EXACT Figma corner radius scale */
+          borderRadius: {
+            'xs': '3px', 'sm': '4px', 'md': '8px',
+            'lg': '12px', 'xl': '16px', '2xl': '24px', '3xl': '32px',
+          },
+          /* EXACT Figma elevation shadows */
+          boxShadow: {
+            'elevation-1': '0 1px 2px rgba(15, 20, 32, 0.05)',
+            'elevation-2': '0 2px 8px rgba(15, 20, 32, 0.08)',
+            'elevation-3': '0 4px 16px rgba(15, 20, 32, 0.10)',
+            'elevation-4': '0 8px 32px rgba(15, 20, 32, 0.12)',
+          },
+        },
+      },
+    }
+  </script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="font-inter antialiased" style="color:#333B4A;background:#FFFFFF">
+
+  <!-- ==================== NAVBAR ==================== -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="index.html" class="font-semibold tracking-tight" style="font-size:17px;line-height:24px;color:#0F1420">Career Cafe</a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="jobs.html" class="nav-link">Jobs</a>
+        <a href="resources.html" class="nav-link">Resources</a>
+        <a href="videos.html" class="nav-link">Videos</a>
+        <a href="shots.html" class="nav-link">Shots</a>
+        <a href="roadmap.html" class="nav-link">Roadmaps</a>
+      </div>
+      <div class="hidden md:flex items-center gap-4">
+        <a href="login.html" class="nav-link">Log in</a>
+        <a href="signup.html" class="btn-primary text-label">Create free account</a>
+      </div>
+      <button id="mobileMenuBtn" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Menu">
+        <span class="block w-5 h-0.5" style="background:#333B4A"></span>
+        <span class="block w-5 h-0.5" style="background:#333B4A"></span>
+        <span class="block w-3.5 h-0.5" style="background:#333B4A"></span>
+      </button>
+    </div>
+    <div id="mobileMenu" class="px-6 space-y-3" style="background:#FFFFFF">
+      <a href="#jobs" class="block text-label" style="color:#333B4A">Jobs</a>
+      <a href="resources.html" class="block text-label" style="color:#333B4A">Resources</a>
+      <a href="#videos" class="block text-label" style="color:#333B4A">Videos</a>
+      <a href="#shots" class="block text-label" style="color:#333B4A">Shots</a>
+      <a href="roadmap.html" class="block text-label" style="color:#333B4A">Roadmaps</a>
+      <hr style="border-color:#EEF1F7" />
+      <a href="login.html" class="block text-label" style="color:#333B4A">Log in</a>
+      <a href="signup.html" class="block text-center btn-primary">Create free account</a>
+    </div>
+  </nav>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="hero-aurora pt-32 pb-20 px-6" style="background:#FBFCFE">
+    <div class="max-w-[1200px] mx-auto text-center">
+      <div class="flex justify-center mb-5">
+        <span class="inline-flex items-center gap-2" style="padding:6px 14px;border-radius:9999px;background:#EFF4FF;border:1px solid #DCE6FF;font-size:12px;font-weight:600;letter-spacing:.02em;color:#2549E0">
+          <span style="width:6px;height:6px;border-radius:50%;background:#12A150;box-shadow:0 0 0 3px rgba(18,161,80,.16)"></span>
+          For students and fresh graduates
+        </span>
+      </div>
+      <h1 class="mb-6 max-w-3xl mx-auto" style="font-size:clamp(34px,8.5vw,56px);line-height:1.08;font-weight:600;letter-spacing:-0.02em;color:#0F1420">Find the job you <span class="text-gradient">deserve</span></h1>
+      <p class="max-w-[560px] mx-auto mb-10" style="font-size:clamp(15px,4.2vw,17px);line-height:1.6;font-weight:400;color:#6B7689">Curated openings from companies that hire graduates. Honest resources and sixty-second explainers — all free.</p>
+
+      <!-- Search Bar -->
+      <div class="max-w-[640px] mx-auto mb-6">
+        <div class="search-bar">
+          <svg class="w-5 h-5 ml-4 shrink-0" style="color:#9AA5BB" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          <input type="text" placeholder="Search roles, companies, skills" />
+          <button class="btn-primary m-1.5" style="padding:8px 16px">Search</button>
+        </div>
+      </div>
+
+      <!-- Quick Tags -->
+      <div class="flex flex-wrap justify-center gap-2 mb-14">
+        <span class="tag tag-default cursor-pointer">Software Engineer</span>
+        <span class="tag tag-default cursor-pointer">Frontend Developer</span>
+        <span class="tag tag-default cursor-pointer">Data Analyst</span>
+        <span class="tag tag-default cursor-pointer">Product Support</span>
+        <span class="tag tag-default cursor-pointer">QA Engineer</span>
+      </div>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-8 max-w-[800px] mx-auto">
+        <div class="text-center">
+          <div class="font-semibold" data-count="4280" style="font-size:30px;line-height:38px;color:#0F1420">0</div>
+          <p class="type-overline mt-1" style="color:#9AA5BB">openings</p>
+        </div>
+        <div class="text-center">
+          <div class="font-semibold" data-count="1900" style="font-size:30px;line-height:38px;color:#0F1420">0</div>
+          <p class="type-overline mt-1" style="color:#9AA5BB">resources</p>
+        </div>
+        <div class="text-center">
+          <div class="font-semibold" data-count="620" style="font-size:30px;line-height:38px;color:#0F1420">0</div>
+          <p class="type-overline mt-1" style="color:#9AA5BB">shots</p>
+        </div>
+        <div class="text-center">
+          <div class="font-semibold" data-count="24" style="font-size:30px;line-height:38px;color:#0F1420">0</div>
+          <p class="type-overline mt-1" style="color:#9AA5BB">roadmaps</p>
+        </div>
+        <div class="text-center col-span-2 md:col-span-1">
+          <div class="font-semibold" style="font-size:30px;line-height:38px;color:#3B62F6">Free</div>
+          <p class="type-overline mt-1" style="color:#9AA5BB">always</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== WHAT WE WILL NEVER DO ==================== -->
+  <section class="py-20 px-6" style="background:#0F1420">
+    <div class="max-w-[1200px] mx-auto">
+      <p class="type-overline mb-3" style="color:#93AEFF">Our promise</p>
+      <h2 class="mb-3" style="font-size:36px;line-height:44px;font-weight:600;color:#FFFFFF">What we will never do</h2>
+      <p class="max-w-[480px] mb-14" style="font-size:17px;line-height:28px;color:#93AEFF">We filter out everything you cannot realistically get</p>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="card-dark p-6">
+          <div class="w-10 h-10 flex items-center justify-center mb-4" style="background:rgba(59,98,246,0.10);border-radius:8px">
+            <svg class="w-5 h-5" style="color:#6087FB" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          </div>
+          <h3 class="mb-2" style="font-size:17px;line-height:24px;font-weight:500;color:#FFFFFF">No paid placements</h3>
+          <p style="font-size:13px;line-height:20px;color:#93AEFF">A company cannot buy a higher position in your results. Ever.</p>
+        </div>
+        <div class="card-dark p-6">
+          <div class="w-10 h-10 flex items-center justify-center mb-4" style="background:rgba(18,161,80,0.10);border-radius:8px">
+            <svg class="w-5 h-5" style="color:#12A150" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <h3 class="mb-2" style="font-size:17px;line-height:24px;font-weight:500;color:#FFFFFF">No selling your data</h3>
+          <p style="font-size:13px;line-height:20px;color:#93AEFF">Your profile stays with us. Recruiters do not get a contact list.</p>
+        </div>
+        <div class="card-dark p-6">
+          <div class="w-10 h-10 flex items-center justify-center mb-4" style="background:rgba(217,136,0,0.10);border-radius:8px">
+            <svg class="w-5 h-5" style="color:#D98800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="mb-2" style="font-size:17px;line-height:24px;font-weight:500;color:#FFFFFF">No fake urgency</h3>
+          <p style="font-size:13px;line-height:20px;color:#93AEFF">No countdown timers, no "37 people viewing", no invented scarcity.</p>
+        </div>
+        <div class="card-dark p-6">
+          <div class="w-10 h-10 flex items-center justify-center mb-4" style="background:rgba(229,72,77,0.10);border-radius:8px">
+            <svg class="w-5 h-5" style="color:#E5484D" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/></svg>
+          </div>
+          <h3 class="mb-2" style="font-size:17px;line-height:24px;font-weight:500;color:#FFFFFF">No paywall</h3>
+          <p style="font-size:13px;line-height:20px;color:#93AEFF">Every part of Career Cafe is free for students and graduates.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== HOW IT WORKS ==================== -->
+  <section class="py-20 px-6" style="background:#FFFFFF">
+    <div class="max-w-[1200px] mx-auto">
+      <p class="type-overline mb-3" style="color:#3B62F6">About us</p>
+      <h2 class="mb-3" style="font-size:36px;line-height:44px;font-weight:600;color:#0F1420">How it works</h2>
+      <p class="max-w-[480px] mb-14" style="font-size:17px;line-height:28px;color:#6B7689">Four steps, about ten minutes</p>
+
+      <div class="grid md:grid-cols-4 gap-10">
+        <div>
+          <div class="font-semibold mb-4 text-gradient" style="font-size:40px;line-height:44px">01</div>
+          <h3 class="mb-3" style="font-size:20px;line-height:28px;font-weight:600;color:#0F1420">Tell us your year and the roles you are curious about</h3>
+          <p style="font-size:15px;line-height:24px;color:#6B7689">We ask five short questions — course, graduation year, roles, location and work preference. No resume upload required to start.</p>
+        </div>
+        <div>
+          <div class="font-semibold mb-4 text-gradient" style="font-size:40px;line-height:44px">02</div>
+          <h3 class="mb-3" style="font-size:20px;line-height:28px;font-weight:600;color:#0F1420">Browse openings you can actually get</h3>
+          <p style="font-size:15px;line-height:24px;color:#6B7689">We pull verified openings from established companies and mark the ones that genuinely accept freshers.</p>
+        </div>
+        <div>
+          <div class="font-semibold mb-4 text-gradient" style="font-size:40px;line-height:44px">03</div>
+          <h3 class="mb-3" style="font-size:20px;line-height:28px;font-weight:600;color:#0F1420">Understand the role before you spend an evening on it</h3>
+          <p style="font-size:15px;line-height:24px;color:#6B7689">Open a one-minute shot to hear what the work involves, then read the resources attached to that exact role.</p>
+        </div>
+        <div>
+          <div class="font-semibold mb-4 text-gradient" style="font-size:40px;line-height:44px">04</div>
+          <h3 class="mb-3" style="font-size:20px;line-height:28px;font-weight:600;color:#0F1420">Apply on the company's own site</h3>
+          <p style="font-size:15px;line-height:24px;color:#6B7689">We hand you off to the employer's application page. Save the listing here to keep track.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== JOB LISTINGS ==================== -->
+  <section id="jobs" class="py-20 px-6" style="background:#FBFCFE">
+    <div class="max-w-[1200px] mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-8">
+        <div>
+          <p class="type-overline mb-3" style="color:#3B62F6">What you get</p>
+          <h2 class="mb-2" style="font-size:30px;line-height:38px;font-weight:600;color:#0F1420">Every graduate opening, in one place</h2>
+          <p style="font-size:15px;line-height:24px;color:#6B7689">Only openings asking for 0–2 years of experience. Refreshed at 8 am today.</p>
+        </div>
+        <a href="#" class="mt-4 md:mt-0 text-label flex items-center gap-1" style="color:#3B62F6">
+          Browse all openings
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- Filter Pills -->
+      <div class="flex flex-wrap gap-2 mb-8">
+        <button class="filter-pill active" data-filter="all">All roles</button>
+        <button class="filter-pill" data-filter="software">Software</button>
+        <button class="filter-pill" data-filter="data">Data</button>
+        <button class="filter-pill" data-filter="design">Design</button>
+        <button class="filter-pill" data-filter="support">Support</button>
+        <button class="filter-pill" data-filter="marketing">Marketing</button>
+        <button class="filter-pill" data-filter="finance">Finance</button>
+      </div>
+
+      <!-- Job Cards -->
+      <div id="jobListings" class="space-y-3">
+        <div class="job-card" data-category="software">
+          <div class="flex items-start gap-4">
+            <div class="company-avatar" style="background:#EFF4FF;color:#2549E0">IN</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <h3 style="font-size:17px;line-height:24px;font-weight:500;color:#0F1420">Associate Software Engineer</h3>
+                  <p style="font-size:15px;line-height:24px;color:#6B7689;margin-top:2px">Infosys · Bengaluru, India</p>
+                </div>
+                <button class="bookmark-btn shrink-0" aria-label="Save job">
+                  <svg class="w-5 h-5" style="color:#9AA5BB" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
+                </button>
+              </div>
+              <div class="flex flex-wrap gap-1.5 mt-3">
+                <span class="tag tag-default">Full-time</span>
+                <span class="tag tag-default">0–2 yrs</span>
+                <span class="tag tag-default">Hybrid</span>
+                <span class="tag tag-success">₹6–9 LPA</span>
+              </div>
+              <p style="font-size:12px;line-height:18px;color:#9AA5BB;margin-top:12px">Posted 4 hours ago</p>
+            </div>
+            <a href="job.html" class="hidden md:inline-flex btn-ghost shrink-0" style="padding:8px 14px">View role</a>
+          </div>
+        </div>
+
+        <div class="job-card" data-category="data">
+          <div class="flex items-start gap-4">
+            <div class="company-avatar" style="background:#EEF1F7;color:#4E586B">DE</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <h3 style="font-size:17px;line-height:24px;font-weight:500;color:#0F1420">Graduate Data Analyst</h3>
+                  <p style="font-size:15px;line-height:24px;color:#6B7689;margin-top:2px">Deloitte · Hyderabad, India</p>
+                </div>
+                <button class="bookmark-btn shrink-0" aria-label="Save job">
+                  <svg class="w-5 h-5" style="color:#9AA5BB" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
+                </button>
+              </div>
+              <div class="flex flex-wrap gap-1.5 mt-3">
+                <span class="tag tag-default">Full-time</span>
+                <span class="tag tag-default">0–1 yrs</span>
+                <span class="tag tag-default">Hybrid</span>
+                <span class="tag tag-success">₹7–10 LPA</span>
+              </div>
+              <p style="font-size:12px;line-height:18px;color:#9AA5BB;margin-top:12px">Posted yesterday</p>
+            </div>
+            <a href="job.html" class="hidden md:inline-flex btn-ghost shrink-0" style="padding:8px 14px">View role</a>
+          </div>
+        </div>
+
+        <div class="job-card" data-category="support">
+          <div class="flex items-start gap-4">
+            <div class="company-avatar" style="background:#EEF1F7;color:#4E586B">ZO</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <h3 style="font-size:17px;line-height:24px;font-weight:500;color:#0F1420">Product Support Associate</h3>
+                  <p style="font-size:15px;line-height:24px;color:#6B7689;margin-top:2px">Zoho · Chennai, India</p>
+                </div>
+                <button class="bookmark-btn shrink-0" aria-label="Save job">
+                  <svg class="w-5 h-5" style="color:#9AA5BB" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
+                </button>
+              </div>
+              <div class="flex flex-wrap gap-1.5 mt-3">
+                <span class="tag tag-default">Full-time</span>
+                <span class="tag tag-default">Freshers</span>
+                <span class="tag tag-default">On-site</span>
+                <span class="tag tag-success">₹4.5–6 LPA</span>
+              </div>
+              <p style="font-size:12px;line-height:18px;color:#9AA5BB;margin-top:12px">Posted 2 days ago</p>
+            </div>
+            <a href="job.html" class="hidden md:inline-flex btn-ghost shrink-0" style="padding:8px 14px">View role</a>
+          </div>
+        </div>
+
+        <div class="job-card" data-category="software">
+          <div class="flex items-start gap-4">
+            <div class="company-avatar" style="background:#EEF1F7;color:#4E586B">FW</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <h3 style="font-size:17px;line-height:24px;font-weight:500;color:#0F1420">Frontend Developer (Fresher)</h3>
+                  <p style="font-size:15px;line-height:24px;color:#6B7689;margin-top:2px">Freshworks · Chennai, India</p>
+                </div>
+                <button class="bookmark-btn shrink-0" aria-label="Save job">
+                  <svg class="w-5 h-5" style="color:#9AA5BB" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
+                </button>
+              </div>
+              <div class="flex flex-wrap gap-1.5 mt-3">
+                <span class="tag tag-default">Full-time</span>
+                <span class="tag tag-default">Freshers</span>
+                <span class="tag tag-default">On-site</span>
+                <span class="tag tag-success">₹8–11 LPA</span>
+              </div>
+              <p style="font-size:12px;line-height:18px;color:#9AA5BB;margin-top:12px">Posted 9 hours ago</p>
+            </div>
+            <a href="job.html" class="hidden md:inline-flex btn-ghost shrink-0" style="padding:8px 14px">View role</a>
+          </div>
+        </div>
+
+        <div class="job-card" data-category="software">
+          <div class="flex items-start gap-4">
+            <div class="company-avatar" style="background:#EEF1F7;color:#4E586B">TC</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <h3 style="font-size:17px;line-height:24px;font-weight:500;color:#0F1420">Graduate Analyst</h3>
+                  <p style="font-size:15px;line-height:24px;color:#6B7689;margin-top:2px">TCS · Pune, India</p>
+                </div>
+                <button class="bookmark-btn shrink-0" aria-label="Save job">
+                  <svg class="w-5 h-5" style="color:#9AA5BB" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
+                </button>
+              </div>
+              <div class="flex flex-wrap gap-1.5 mt-3">
+                <span class="tag tag-default">Full-time</span>
+                <span class="tag tag-default">0–2 yrs</span>
+                <span class="tag tag-default">On-site</span>
+                <span class="tag tag-success">₹6–8 LPA</span>
+              </div>
+              <p style="font-size:12px;line-height:18px;color:#9AA5BB;margin-top:12px">Posted 3 days ago</p>
+            </div>
+            <a href="job.html" class="hidden md:inline-flex btn-ghost shrink-0" style="padding:8px 14px">View role</a>
+          </div>
+        </div>
+
+        <div class="job-card" data-category="software">
+          <div class="flex items-start gap-4">
+            <div class="company-avatar" style="background:#EEF1F7;color:#4E586B">WI</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <h3 style="font-size:17px;line-height:24px;font-weight:500;color:#0F1420">Junior QA Engineer</h3>
+                  <p style="font-size:15px;line-height:24px;color:#6B7689;margin-top:2px">Wipro · Pune, India</p>
+                </div>
+                <button class="bookmark-btn shrink-0" aria-label="Save job">
+                  <svg class="w-5 h-5" style="color:#9AA5BB" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
+                </button>
+              </div>
+              <div class="flex flex-wrap gap-1.5 mt-3">
+                <span class="tag tag-default">Full-time</span>
+                <span class="tag tag-default">0–2 yrs</span>
+                <span class="tag tag-default">Hybrid</span>
+                <span class="tag tag-success">₹5–7 LPA</span>
+              </div>
+              <p style="font-size:12px;line-height:18px;color:#9AA5BB;margin-top:12px">Posted 2 days ago</p>
+            </div>
+            <a href="job.html" class="hidden md:inline-flex btn-ghost shrink-0" style="padding:8px 14px">View role</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-8">
+        <button class="btn-secondary">Load more openings</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SHOTS ==================== -->
+  <section id="shots" class="py-20 px-6" style="background:#FFFFFF">
+    <div class="max-w-[1200px] mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-8">
+        <div>
+          <p class="type-overline mb-3" style="color:#3B62F6">Shots</p>
+          <h2 class="mb-2" style="font-size:30px;line-height:38px;font-weight:600;color:#0F1420">One minute to know if a job fits</h2>
+          <p style="font-size:15px;line-height:24px;color:#6B7689">Sixty-second explainers on what a role really involves, recorded plainly.</p>
+        </div>
+        <a href="#" class="mt-4 md:mt-0 text-label flex items-center gap-1" style="color:#3B62F6">
+          Open Shots
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="rounded-xl overflow-hidden" style="background:#FFFFFF;border:1px solid #EEF1F7;border-radius:12px">
+          <div class="video-thumb">
+            <div class="play-btn">
+              <svg class="w-5 h-5 ml-0.5" style="color:#333B4A" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <span class="duration">0:58</span>
+          </div>
+          <div class="p-4">
+            <p class="type-overline mb-1" style="color:#3B62F6">Data Analyst</p>
+            <h3 style="font-size:14px;line-height:20px;font-weight:500;color:#0F1420">What a data analyst actually does all day</h3>
+          </div>
+        </div>
+
+        <div class="rounded-xl overflow-hidden" style="background:#FFFFFF;border:1px solid #EEF1F7;border-radius:12px">
+          <div class="video-thumb">
+            <div class="play-btn">
+              <svg class="w-5 h-5 ml-0.5" style="color:#333B4A" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <span class="duration">0:58</span>
+          </div>
+          <div class="p-4">
+            <p class="type-overline mb-1" style="color:#3B62F6">QA Engineer</p>
+            <h3 style="font-size:14px;line-height:20px;font-weight:500;color:#0F1420">A day of testing, in one minute</h3>
+          </div>
+        </div>
+
+        <div class="rounded-xl overflow-hidden" style="background:#FFFFFF;border:1px solid #EEF1F7;border-radius:12px">
+          <div class="video-thumb">
+            <div class="play-btn">
+              <svg class="w-5 h-5 ml-0.5" style="color:#333B4A" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <span class="duration">0:58</span>
+          </div>
+          <div class="p-4">
+            <p class="type-overline mb-1" style="color:#3B62F6">Support Engineer</p>
+            <h3 style="font-size:14px;line-height:20px;font-weight:500;color:#0F1420">The job nobody explains to you</h3>
+          </div>
+        </div>
+
+        <div class="rounded-xl overflow-hidden" style="background:#FFFFFF;border:1px solid #EEF1F7;border-radius:12px">
+          <div class="video-thumb">
+            <div class="play-btn">
+              <svg class="w-5 h-5 ml-0.5" style="color:#333B4A" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <span class="duration">0:58</span>
+          </div>
+          <div class="p-4">
+            <p class="type-overline mb-1" style="color:#3B62F6">Business Analyst</p>
+            <h3 style="font-size:14px;line-height:20px;font-weight:500;color:#0F1420">Meetings, models and metrics</h3>
+          </div>
+        </div>
+
+        <div class="rounded-xl overflow-hidden" style="background:#FFFFFF;border:1px solid #EEF1F7;border-radius:12px">
+          <div class="video-thumb">
+            <div class="play-btn">
+              <svg class="w-5 h-5 ml-0.5" style="color:#333B4A" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <span class="duration">0:58</span>
+          </div>
+          <div class="p-4">
+            <p class="type-overline mb-1" style="color:#3B62F6">UX Designer</p>
+            <h3 style="font-size:14px;line-height:20px;font-weight:500;color:#0F1420">From brief to handoff, quickly</h3>
+          </div>
+        </div>
+
+        <div class="rounded-xl overflow-hidden" style="background:#FFFFFF;border:1px solid #EEF1F7;border-radius:12px">
+          <div class="video-thumb">
+            <div class="play-btn">
+              <svg class="w-5 h-5 ml-0.5" style="color:#333B4A" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <span class="duration">0:58</span>
+          </div>
+          <div class="p-4">
+            <p class="type-overline mb-1" style="color:#3B62F6">Frontend</p>
+            <h3 style="font-size:14px;line-height:20px;font-weight:500;color:#0F1420">A week in a frontend team</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ROADMAPS ==================== -->
+  <section id="roadmaps" class="py-20 px-6" style="background:#FBFCFE">
+    <div class="max-w-[1200px] mx-auto">
+      <p class="type-overline mb-3" style="color:#3B62F6">Roadmaps</p>
+      <h2 class="mb-2" style="font-size:30px;line-height:38px;font-weight:600;color:#0F1420">Know what to learn, and in what order</h2>
+      <p class="mb-10" style="font-size:15px;line-height:24px;color:#6B7689">Eight to twelve stages per track, with the resources for each stage attached.</p>
+
+      <div class="grid md:grid-cols-3 gap-5">
+        <div class="card p-6">
+          <h3 class="mb-1" style="font-size:20px;line-height:28px;font-weight:600;color:#0F1420">Frontend Developer</h3>
+          <p class="mb-5" style="font-size:13px;line-height:20px;color:#6B7689">HTML to your first frontend offer, in eight stages.</p>
+          <div class="progress-bar mb-3"><div class="progress-bar-fill" style="width:37.5%"></div></div>
+          <div class="flex items-center justify-between">
+            <span style="font-size:12px;line-height:18px;color:#6B7689">3 of 8 stages done</span>
+            <a href="roadmap.html" class="text-label" style="color:#3B62F6">Continue</a>
+          </div>
+        </div>
+
+        <div class="card p-6">
+          <h3 class="mb-1" style="font-size:20px;line-height:28px;font-weight:600;color:#0F1420">Data Analyst</h3>
+          <p class="mb-5" style="font-size:13px;line-height:20px;color:#6B7689">SQL, spreadsheets and storytelling with data.</p>
+          <div class="progress-bar mb-3"><div class="progress-bar-fill" style="width:14.3%"></div></div>
+          <div class="flex items-center justify-between">
+            <span style="font-size:12px;line-height:18px;color:#6B7689">1 of 7 stages done</span>
+            <a href="roadmap.html" class="text-label" style="color:#3B62F6">Continue</a>
+          </div>
+        </div>
+
+        <div class="card p-6">
+          <h3 class="mb-1" style="font-size:20px;line-height:28px;font-weight:600;color:#0F1420">Product Support</h3>
+          <p class="mb-5" style="font-size:13px;line-height:20px;color:#6B7689">People skills, tooling and escalation paths.</p>
+          <div class="progress-bar mb-3"><div class="progress-bar-fill" style="width:0%"></div></div>
+          <div class="flex items-center justify-between">
+            <span style="font-size:12px;line-height:18px;color:#6B7689">Not started · 7 stages</span>
+            <a href="roadmap.html" class="text-label" style="color:#3B62F6">Start</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== RESOURCES ==================== -->
+  <section id="resources" class="py-20 px-6" style="background:#FFFFFF">
+    <div class="max-w-[1200px] mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-8">
+        <div>
+          <p class="type-overline mb-3" style="color:#3B62F6">Resources</p>
+          <h2 class="mb-2" style="font-size:30px;line-height:38px;font-weight:600;color:#0F1420">Everything a first job search needs, in one quiet place</h2>
+          <p style="font-size:15px;line-height:24px;color:#6B7689">1,900 guides, templates and question banks — organised by role and by the stage you are at.</p>
+        </div>
+        <a href="resources.html" class="mt-4 md:mt-0 text-label flex items-center gap-1" style="color:#3B62F6">
+          View all resources
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <a href="resources.html" class="res-card">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="tag tag-brand">Resume</span>
+            <span style="font-size:12px;line-height:18px;color:#9AA5BB">6 min read</span>
+          </div>
+          <h3 style="font-size:17px;line-height:24px;font-weight:500;color:#0F1420;margin-bottom:8px">How to write a one-page resume with no experience</h3>
+          <p style="font-size:13px;line-height:20px;color:#6B7689">A step-by-step walkthrough with a template you can copy, plus the six lines recruiters actually read.</p>
+        </a>
+
+        <a href="resources.html" class="res-card">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="tag tag-brand">Interview</span>
+            <span style="font-size:12px;line-height:18px;color:#9AA5BB">11 min read</span>
+          </div>
+          <h3 style="font-size:17px;line-height:24px;font-weight:500;color:#0F1420;margin-bottom:8px">Twelve JavaScript questions that keep coming up</h3>
+          <p style="font-size:13px;line-height:20px;color:#6B7689">Written answers at the depth a fresher interview actually goes to.</p>
+        </a>
+
+        <a href="resources.html" class="res-card">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="tag tag-brand">Portfolio</span>
+            <span style="font-size:12px;line-height:18px;color:#9AA5BB">8 min read</span>
+          </div>
+          <h3 style="font-size:17px;line-height:24px;font-weight:500;color:#0F1420;margin-bottom:8px">Three frontend projects worth showing</h3>
+          <p style="font-size:13px;line-height:20px;color:#6B7689">Small enough to finish, real enough to talk about for ten minutes.</p>
+        </a>
+
+        <a href="resources.html" class="res-card">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="tag tag-brand">Template</span>
+            <span style="font-size:12px;line-height:18px;color:#9AA5BB">Free</span>
+          </div>
+          <h3 style="font-size:17px;line-height:24px;font-weight:500;color:#0F1420;margin-bottom:8px">One-page resume, plain and readable</h3>
+          <p style="font-size:13px;line-height:20px;color:#6B7689">Google Docs and Word versions, no photo, no rating bars, ATS-safe.</p>
+        </a>
+
+        <a href="resources.html" class="res-card">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="tag tag-brand">Interview</span>
+            <span style="font-size:12px;line-height:18px;color:#9AA5BB">14 min read</span>
+          </div>
+          <h3 style="font-size:17px;line-height:24px;font-weight:500;color:#0F1420;margin-bottom:8px">The aptitude test, question by question</h3>
+          <p style="font-size:13px;line-height:20px;color:#6B7689">Every question type in the common tests, with the fast method for each.</p>
+        </a>
+
+        <a href="resources.html" class="res-card">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="tag tag-brand">Template</span>
+            <span style="font-size:12px;line-height:18px;color:#9AA5BB">4 min read</span>
+          </div>
+          <h3 style="font-size:17px;line-height:24px;font-weight:500;color:#0F1420;margin-bottom:8px">Cover letter for a role with no experience</h3>
+          <p style="font-size:13px;line-height:20px;color:#6B7689">Three paragraphs. Fill in the brackets and delete the rest.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== VIDEO LIBRARY ==================== -->
+  <section id="videos" class="py-20 px-6" style="background:#FBFCFE">
+    <div class="max-w-[1200px] mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-8">
+        <div>
+          <p class="type-overline mb-3" style="color:#3B62F6">Video Library</p>
+          <h2 class="mb-2" style="font-size:30px;line-height:38px;font-weight:600;color:#0F1420">Longer walkthroughs, when you want the detail</h2>
+          <p style="font-size:15px;line-height:24px;color:#6B7689">Everything is on our YouTube channel too.</p>
+        </div>
+        <a href="#" class="mt-4 md:mt-0 text-label flex items-center gap-1" style="color:#3B62F6">
+          Browse all videos
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="rounded-xl overflow-hidden" style="background:#FFFFFF;border:1px solid #EEF1F7;border-radius:12px">
+          <div class="video-thumb">
+            <div class="play-btn">
+              <svg class="w-5 h-5 ml-0.5" style="color:#333B4A" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <span class="duration">12:04</span>
+          </div>
+          <div class="p-4">
+            <h3 style="font-size:14px;line-height:20px;font-weight:500;color:#0F1420">Write a resume with no work experience</h3>
+            <p style="font-size:12px;line-height:18px;color:#9AA5BB;margin-top:4px">Career Cafe · 92K views</p>
+          </div>
+        </div>
+
+        <div class="rounded-xl overflow-hidden" style="background:#FFFFFF;border:1px solid #EEF1F7;border-radius:12px">
+          <div class="video-thumb">
+            <div class="play-btn">
+              <svg class="w-5 h-5 ml-0.5" style="color:#333B4A" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <span class="duration">12:04</span>
+          </div>
+          <div class="p-4">
+            <h3 style="font-size:14px;line-height:20px;font-weight:500;color:#0F1420">Answer "tell me about yourself"</h3>
+            <p style="font-size:12px;line-height:18px;color:#9AA5BB;margin-top:4px">Career Cafe · 61K views</p>
+          </div>
+        </div>
+
+        <div class="rounded-xl overflow-hidden" style="background:#FFFFFF;border:1px solid #EEF1F7;border-radius:12px">
+          <div class="video-thumb">
+            <div class="play-btn">
+              <svg class="w-5 h-5 ml-0.5" style="color:#333B4A" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <span class="duration">12:04</span>
+          </div>
+          <div class="p-4">
+            <h3 style="font-size:14px;line-height:20px;font-weight:500;color:#0F1420">Reading a job description properly</h3>
+            <p style="font-size:12px;line-height:18px;color:#9AA5BB;margin-top:4px">Career Cafe · 48K views</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TESTIMONIALS ==================== -->
+  <section class="py-20 px-6" style="background:#EFF4FF">
+    <div class="max-w-[1200px] mx-auto">
+      <p class="type-overline mb-3" style="color:#3B62F6">From students</p>
+      <h2 class="mb-12" style="font-size:36px;line-height:44px;font-weight:600;color:#0F1420">People who were exactly where you are</h2>
+
+      <div class="grid md:grid-cols-3 gap-5">
+        <div class="testimonial">
+          <p style="font-size:15px;line-height:24px;color:#4E586B;margin-bottom:24px">"I found my first internship here in three weeks. The one-minute shots told me what the job was actually like before I applied."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 flex items-center justify-center rounded-full" style="background:#DCE6FF;font-size:14px;font-weight:500;color:#2549E0">PS</div>
+            <div>
+              <p style="font-size:14px;line-height:20px;font-weight:500;color:#0F1420">Priya Sharma</p>
+              <p style="font-size:12px;line-height:18px;color:#9AA5BB">B.Tech 2026 · Now at Zoho</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial">
+          <p style="font-size:15px;line-height:24px;color:#4E586B;margin-bottom:24px">"The roadmap gave my last semester a shape. I stopped collecting random courses and finished one track properly."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 flex items-center justify-center rounded-full" style="background:#EEF1F7;font-size:14px;font-weight:500;color:#4E586B">AK</div>
+            <div>
+              <p style="font-size:14px;line-height:20px;font-weight:500;color:#0F1420">Aditya Kulkarni</p>
+              <p style="font-size:12px;line-height:18px;color:#9AA5BB">BCA 2025 · Frontend Developer</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial">
+          <p style="font-size:15px;line-height:24px;color:#4E586B;margin-bottom:24px">"No premium wall, no recruiters messaging me. It just showed me openings I was actually eligible for."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 flex items-center justify-center rounded-full" style="background:#EEF1F7;font-size:14px;font-weight:500;color:#4E586B">RM</div>
+            <div>
+              <p style="font-size:14px;line-height:20px;font-weight:500;color:#0F1420">Riya Menon</p>
+              <p style="font-size:12px;line-height:18px;color:#9AA5BB">M.Sc 2026 · Data Analyst</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CTA ==================== -->
+  <section class="py-20 px-6" style="background:#0F1420">
+    <div class="max-w-[600px] mx-auto text-center">
+      <h2 class="mb-4" style="font-size:36px;line-height:44px;font-weight:600;color:#FFFFFF">Start where you are.</h2>
+      <p class="mb-8" style="font-size:17px;line-height:28px;color:#93AEFF">Create a free account and we will keep the openings, resources and shots for your role in one place. Takes about two minutes.</p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+        <a href="signup.html" class="btn-primary">Create free account</a>
+        <a href="jobs.html" class="btn-secondary" style="color:#CBD3E1;border-color:#CBD3E1">Browse without an account</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FAQ ==================== -->
+  <section class="py-20 px-6" style="background:#FFFFFF">
+    <div class="max-w-[680px] mx-auto">
+      <p class="type-overline mb-3" style="color:#3B62F6">Questions</p>
+      <h2 class="mb-10" style="font-size:30px;line-height:38px;font-weight:600;color:#0F1420">Straight answers</h2>
+
+      <div class="space-y-3" id="faqList">
+        <div class="faq-item">
+          <button class="faq-toggle" aria-expanded="false">
+            <span style="font-size:14px;line-height:20px;font-weight:500;color:#0F1420">Is Career Cafe free to use?</span>
+            <svg class="w-5 h-5 shrink-0" style="color:#9AA5BB" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer px-5 pb-5">
+            <p style="font-size:13px;line-height:20px;color:#6B7689">Yes. Every opening, resource, video and roadmap is free. We do not charge students, and we do not run sponsored listings.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-toggle" aria-expanded="false">
+            <span style="font-size:14px;line-height:20px;font-weight:500;color:#0F1420">Do you accept payment to feature companies?</span>
+            <svg class="w-5 h-5 shrink-0" style="color:#9AA5BB" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer px-5 pb-5">
+            <p style="font-size:13px;line-height:20px;color:#6B7689">No. Openings are ranked by relevance to your profile and how recently they were posted — never by payment.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-toggle" aria-expanded="false">
+            <span style="font-size:14px;line-height:20px;font-weight:500;color:#0F1420">Do I apply through Career Cafe?</span>
+            <svg class="w-5 h-5 shrink-0" style="color:#9AA5BB" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer px-5 pb-5">
+            <p style="font-size:13px;line-height:20px;color:#6B7689">No. We take you to the company's own application page, so your details go straight to the employer.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-toggle" aria-expanded="false">
+            <span style="font-size:14px;line-height:20px;font-weight:500;color:#0F1420">Do you sell my data to recruiters?</span>
+            <svg class="w-5 h-5 shrink-0" style="color:#9AA5BB" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer px-5 pb-5">
+            <p style="font-size:13px;line-height:20px;color:#6B7689">No. Your profile stays with us. We do not sell, rent or share contact lists, and recruiters cannot message you through the product.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-toggle" aria-expanded="false">
+            <span style="font-size:14px;line-height:20px;font-weight:500;color:#0F1420">How do you decide which openings to show?</span>
+            <svg class="w-5 h-5 shrink-0" style="color:#9AA5BB" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer px-5 pb-5">
+            <p style="font-size:13px;line-height:20px;color:#6B7689">Relevance to your stated role and year, then how recently it was posted. Payment plays no part — companies cannot buy placement.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="max-w-[1200px] mx-auto">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <div>
+          <a href="index.html" class="font-semibold" style="font-size:17px;line-height:24px;color:#0F1420">Career Cafe</a>
+          <p style="font-size:13px;line-height:20px;color:#6B7689;margin-top:12px">Real openings, honest resources and short explainers for students and fresh graduates. Free, always.</p>
+        </div>
+        <div>
+          <p class="type-overline mb-4" style="color:#9AA5BB">Explore</p>
+          <ul class="space-y-2.5">
+            <li><a href="jobs.html" style="font-size:13px;line-height:20px;color:#4E586B">Job openings</a></li>
+            <li><a href="resources.html" style="font-size:13px;line-height:20px;color:#4E586B">Resources</a></li>
+            <li><a href="videos.html" style="font-size:13px;line-height:20px;color:#4E586B">Videos</a></li>
+            <li><a href="shots.html" style="font-size:13px;line-height:20px;color:#4E586B">Shots</a></li>
+            <li><a href="roadmap.html" style="font-size:13px;line-height:20px;color:#4E586B">Roadmaps</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="type-overline mb-4" style="color:#9AA5BB">Company</p>
+          <ul class="space-y-2.5">
+            <li><a href="home.html" style="font-size:13px;line-height:20px;color:#4E586B">About us</a></li>
+            <li><a href="home.html" style="font-size:13px;line-height:20px;color:#4E586B">How it works</a></li>
+            <li><a href="contact.html" style="font-size:13px;line-height:20px;color:#4E586B">Contact</a></li>
+            <li><a href="feedback.html" style="font-size:13px;line-height:20px;color:#4E586B">Feedback</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="type-overline mb-4" style="color:#9AA5BB">Legal</p>
+          <ul class="space-y-2.5">
+            <li><a href="privacy.html" style="font-size:13px;line-height:20px;color:#4E586B">Privacy policy</a></li>
+            <li><a href="terms.html" style="font-size:13px;line-height:20px;color:#4E586B">Terms of use</a></li>
+            <li><a href="privacy.html" style="font-size:13px;line-height:20px;color:#4E586B">Cookie policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4" style="border-top:1px solid #E2E7F0">
+        <p style="font-size:12px;line-height:18px;color:#9AA5BB">© 2026 Career Cafe</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script src="personalize.js"></script>
+</body>
+</html>

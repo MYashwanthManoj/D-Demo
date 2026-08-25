@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frontend Developer Roadmap — Career Cafe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: { inter: ['Inter', 'sans-serif'] },
+        colors: {
+          brand: { 50:'#EFF4FF',100:'#DCE6FF',200:'#BFD0FF',300:'#93AEFF',400:'#6087FB',500:'#3B62F6',600:'#2549E0',700:'#1B37B5',800:'#152C88',900:'#10265E' },
+          navy: { 900:'#0F1420',800:'#1E2533',700:'#333B4A',600:'#4E586B',500:'#6B7689',400:'#9AA5BB',300:'#CBD3E1',200:'#E2E7F0',100:'#EEF1F7',50:'#F5F7FB',25:'#FBFCFE' },
+        },
+      }},
+    }
+  </script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="font-inter antialiased" style="color:#333B4A;background:#FBFCFE">
+  <!-- SIDEBAR -->
+  <aside id="sidebar" class="fixed top-0 left-0 h-full z-40 flex flex-col" style="width:240px;background:#FFFFFF;border-right:1px solid #EEF1F7;transition:transform 0.25s ease">
+    <div class="px-5 h-16 flex items-center" style="border-bottom:1px solid #EEF1F7"><a href="index.html" style="font-size:17px;line-height:24px;font-weight:600;color:#0F1420">Career Cafe</a></div>
+    <nav class="flex-1 py-4 px-3 space-y-1 overflow-y-auto">
+      <a href="home.html" class="sidebar-link"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1h-2z"/></svg>Home</a>
+      <a href="jobs.html" class="sidebar-link"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>Job openings</a>
+      <a href="resources.html" class="sidebar-link"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>Resources</a>
+      <a href="videos.html" class="sidebar-link"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Videos</a>
+      <a href="shots.html" class="sidebar-link"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>Shots</a>
+      <a href="roadmap.html" class="sidebar-link active"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>Roadmaps</a>
+      <div style="border-top:1px solid #EEF1F7;margin:12px 0"></div>
+      <a href="saved.html" class="sidebar-link"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>Saved<span class="ml-auto" style="font-size:11px;line-height:16px;background:#EFF4FF;color:#3B62F6;padding:2px 6px;border-radius:4px;font-weight:500">6</span></a>
+      <a href="feedback.html" class="sidebar-link"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"/></svg>Give feedback</a>
+      <a href="settings.html" class="sidebar-link"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>Settings</a>
+    </nav>
+    <div class="px-3 py-4" style="border-top:1px solid #EEF1F7"><div class="flex items-center gap-3 px-2"><div id="sidebarAvatar" style="width:36px;height:36px;border-radius:10px;background:#DCE6FF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:#2549E0">PS</div><div class="min-w-0"><p id="sidebarName" style="font-size:13px;line-height:18px;font-weight:500;color:#0F1420">Priya Sharma</p><p id="sidebarSubtitle" style="font-size:11px;line-height:16px;color:#9AA5BB">B.Tech CSE · 2026</p></div></div></div>
+  </aside>
+  <div id="sidebarOverlay" class="fixed inset-0 z-30 hidden" style="background:rgba(15,20,32,0.40)" onclick="closeSidebar()"></div>
+
+  <div class="md:ml-[240px] min-h-screen">
+    <header class="sticky top-0 z-20 h-16 flex items-center gap-4 px-6" style="background:rgba(251,252,254,0.85);backdrop-filter:blur(16px);border-bottom:1px solid #EEF1F7">
+      <button class="md:hidden p-2 -ml-2" onclick="toggleSidebar()" aria-label="Menu"><svg class="w-5 h-5" style="color:#333B4A" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+      <div class="flex-1 max-w-[480px]"><div class="search-bar" style="padding:0"><svg class="w-4 h-4 ml-3 shrink-0" style="color:#9AA5BB" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg><input type="text" placeholder="Search roles, companies, skills" style="padding:10px 12px;font-size:13px" /></div></div>
+      <div class="ml-auto"><div style="width:36px;height:36px;border-radius:10px;background:#DCE6FF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:#2549E0;cursor:pointer">PS</div></div>
+    </header>
+
+    <main class="p-6 max-w-[960px]">
+      <!-- BREADCRUMB -->
+      <nav class="flex items-center gap-1.5 mb-5" style="font-size:11px;line-height:16px;color:#9AA5BB">
+        <a href="home.html" class="hover:text-navy-600 transition-colors">Home</a>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <a href="roadmap.html" class="hover:text-navy-600 transition-colors">Roadmaps</a>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <span style="color:#6B7689">Engineering</span>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <span style="color:#0F1420;font-weight:500">Frontend Developer</span>
+      </nav>
+
+      <!-- HEADER -->
+      <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-5 mb-8">
+        <div>
+          <p style="font-size:11px;line-height:16px;font-weight:500;color:#3B62F6;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px">Engineering</p>
+          <h1 style="font-size:30px;line-height:38px;font-weight:600;color:#0F1420;margin-bottom:8px">Frontend Developer</h1>
+          <p style="font-size:17px;line-height:28px;color:#6B7689">HTML to your first frontend offer, in eight stages.</p>
+        </div>
+        <div class="flex items-center gap-3 shrink-0">
+          <a href="jobs.html" class="btn-primary" style="padding:10px 20px">See 42 openings</a>
+          <button class="btn-secondary">Saved</button>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+        <div style="background:#F5F7FB;border-radius:12px;padding:16px"><p style="font-size:24px;line-height:32px;font-weight:600;color:#0F1420">31</p><p style="font-size:11px;line-height:16px;font-weight:500;color:#9AA5BB;text-transform:uppercase;letter-spacing:0.05em;margin-top:2px">resources read</p></div>
+        <div style="background:#F5F7FB;border-radius:12px;padding:16px"><p style="font-size:24px;line-height:32px;font-weight:600;color:#0F1420">3</p><p style="font-size:11px;line-height:16px;font-weight:500;color:#9AA5BB;text-transform:uppercase;letter-spacing:0.05em;margin-top:2px">stages done</p></div>
+        <div style="background:#F5F7FB;border-radius:12px;padding:16px"><p style="font-size:24px;line-height:32px;font-weight:600;color:#0F1420">14 h</p><p style="font-size:11px;line-height:16px;font-weight:500;color:#9AA5BB;text-transform:uppercase;letter-spacing:0.05em;margin-top:2px">time logged</p></div>
+        <div style="background:#F5F7FB;border-radius:12px;padding:16px"><p style="font-size:24px;line-height:32px;font-weight:600;color:#0F1420">1</p><p style="font-size:11px;line-height:16px;font-weight:500;color:#9AA5BB;text-transform:uppercase;letter-spacing:0.05em;margin-top:2px">project built</p></div>
+      </div>
+
+      <!-- Progress -->
+      <div style="background:#EFF4FF;border:1px solid #DCE6FF;border-radius:12px;padding:20px;margin-bottom:24px">
+        <div class="flex items-center justify-between mb-3">
+          <div><p style="font-size:14px;line-height:20px;font-weight:500;color:#0F1420">3 of 8 stages complete</p><p style="font-size:12px;line-height:18px;color:#6B7689;margin-top:2px">Started 2 June 2026 · Last opened yesterday · 31 resources · 1 project</p></div>
+          <a href="#stage-4" class="btn-primary" style="padding:8px 16px">Continue stage 4</a>
+        </div>
+        <div class="progress-bar"><div class="progress-bar-fill" style="width:37.5%"></div></div>
+        <p style="font-size:12px;line-height:18px;color:#6B7689;margin-top:8px">About four months at six hours a week</p>
+      </div>
+
+      <!-- Meta -->
+      <div class="flex flex-wrap gap-2 mb-8">
+        <span class="tag tag-default">8 stages</span>
+        <span class="tag tag-default">~41 hours total</span>
+        <span class="tag tag-default">31 resources</span>
+        <span class="tag tag-default">4 projects</span>
+      </div>
+
+      <!-- STAGES -->
+      <div class="space-y-3">
+        <!-- Stage 1 — Done -->
+        <div class="roadmap-stage" data-stage="1" style="background:#FFFFFF;border:1px solid #EEF1F7;border-radius:12px;padding:20px">
+          <div class="flex items-start gap-4">
+            <div style="width:40px;height:40px;border-radius:9999px;background:#E8F8EE;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg class="w-5 h-5" style="color:#12A150" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></div>
+            <div class="flex-1 min-w-0">
+              <p style="font-size:12px;line-height:18px;font-weight:500;color:#0B7038;margin-bottom:4px">Done</p>
+              <p style="font-size:17px;line-height:24px;font-weight:500;color:#0F1420;margin-bottom:4px">Get comfortable with HTML and the browser</p>
+              <p style="font-size:13px;line-height:20px;color:#6B7689">Structure, semantics and what the browser does with your markup. No frameworks yet.</p>
+              <div class="flex items-center gap-2 mt-2"><span style="font-size:12px;line-height:18px;color:#9AA5BB">4 resources</span><span style="font-size:12px;line-height:18px;color:#9AA5BB">·</span><span style="font-size:12px;line-height:18px;color:#9AA5BB">about 2 weeks</span></div>
+            </div>
+            <svg class="w-5 h-5 shrink-0 stage-chevron transition-transform" style="color:#CBD3E1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </div>
+          <div class="stage-resources hidden mt-4 pt-4 space-y-2.5" style="border-top:1px solid #EEF1F7">
+            <a href="resources.html" class="flex items-center gap-3 p-3 rounded-lg transition-colors" style="background:#F5F7FB"><svg class="w-4 h-4 shrink-0" style="color:#3B62F6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg><div class="min-w-0"><p style="font-size:12px;line-height:18px;font-weight:500;color:#0F1420;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">HTML basics — tags, attributes, nesting</p><p style="font-size:12px;line-height:18px;color:#9AA5BB">5 min read</p></div></a>
+            <a href="resources.html" class="flex items-center gap-3 p-3 rounded-lg transition-colors" style="background:#F5F7FB"><svg class="w-4 h-4 shrink-0" style="color:#3B62F6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg><div class="min-w-0"><p style="font-size:12px;line-height:18px;font-weight:500;color:#0F1420;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">The browser rendering pipeline</p><p style="font-size:12px;line-height:18px;color:#9AA5BB">6 min read</p></div></a>
+          </div>
+        </div>
+
+        <!-- Stage 2 — Done -->
+        <div class="roadmap-stage" data-stage="2" style="background:#FFFFFF;border:1px solid #EEF1F7;border-radius:12px;padding:20px">
+          <div class="flex items-start gap-4">
+            <div style="width:40px;height:40px;border-radius:9999px;background:#E8F8EE;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg class="w-5 h-5" style="color:#12A150" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></div>
+            <div class="flex-1 min-w-0">
+              <p style="font-size:12px;line-height:18px;font-weight:500;color:#0B7038;margin-bottom:4px">Done</p>
+              <p style="font-size:17px;line-height:24px;font-weight:500;color:#0F1420;margin-bottom:4px">CSS layout without guessing</p>
+              <p style="font-size:13px;line-height:20px;color:#6B7689">Flexbox and grid until you can build a page without trial and error.</p>
+              <div class="flex items-center gap-2 mt-2"><span style="font-size:12px;line-height:18px;color:#9AA5BB">5 resources</span><span style="font-size:12px;line-height:18px;color:#9AA5BB">·</span><span style="font-size:12px;line-height:18px;color:#9AA5BB">about 3 weeks</span></div>
+            </div>
+            <svg class="w-5 h-5 shrink-0 stage-chevron transition-transform" style="color:#CBD3E1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </div>
+          <div class="stage-resources hidden mt-4 pt-4 space-y-2.5" style="border-top:1px solid #EEF1F7">
+            <a href="resources.html" class="flex items-center gap-3 p-3 rounded-lg transition-colors" style="background:#F5F7FB"><svg class="w-4 h-4 shrink-0" style="color:#3B62F6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg><div class="min-w-0"><p style="font-size:12px;line-height:18px;font-weight:500;color:#0F1420;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Flexbox — the only layout model you need first</p><p style="font-size:12px;line-height:18px;color:#9AA5BB">8 min read</p></div></a>
+          </div>
+        </div>
+
+        <!-- Stage 3 — Done -->
+        <div class="roadmap-stage" data-stage="3" style="background:#FFFFFF;border:1px solid #EEF1F7;border-radius:12px;padding:20px">
+          <div class="flex items-start gap-4">
+            <div style="width:40px;height:40px;border-radius:9999px;background:#E8F8EE;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg class="w-5 h-5" style="color:#12A150" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></div>
+            <div class="flex-1 min-w-0">
+              <p style="font-size:12px;line-height:18px;font-weight:500;color:#0B7038;margin-bottom:4px">Done</p>
+              <p style="font-size:17px;line-height:24px;font-weight:500;color:#0F1420;margin-bottom:4px">JavaScript on its own</p>
+              <p style="font-size:13px;line-height:20px;color:#6B7689">The language before the library — types, functions, the DOM and fetch.</p>
+              <div class="flex items-center gap-2 mt-2"><span style="font-size:12px;line-height:18px;color:#9AA5BB">6 resources</span><span style="font-size:12px;line-height:18px;color:#9AA5BB">·</span><span style="font-size:12px;line-height:18px;color:#9AA5BB">about 4 weeks</span></div>
+            </div>
+            <svg class="w-5 h-5 shrink-0 stage-chevron transition-transform" style="color:#CBD3E1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </div>
+          <div class="stage-resources hidden mt-4 pt-4 space-y-2.5" style="border-top:1px solid #EEF1F7">
+            <a href="resources.html" class="flex items-center gap-3 p-3 rounded-lg transition-colors" style="background:#F5F7FB"><svg class="w-4 h-4 shrink-0" style="color:#3B62F6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg><div class="min-w-0"><p style="font-size:12px;line-height:18px;font-weight:500;color:#0F1420;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">JavaScript fundamentals — types, functions, scope</p><p style="font-size:12px;line-height:18px;color:#9AA5BB">12 min read</p></div></a>
+          </div>
+        </div>
+
+        <!-- Stage 4 — Current -->
+        <div id="stage-4" class="roadmap-stage current" data-stage="4" style="background:#FFFFFF;border:2px solid #3B62F6;border-radius:12px;padding:20px">
+          <div class="flex items-start gap-4">
+            <div style="width:40px;height:40px;border-radius:9999px;background:#EFF4FF;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:#2549E0;flex-shrink:0">4</div>
+            <div class="flex-1 min-w-0">
+              <span style="display:inline-block;padding:2px 8px;font-size:11px;line-height:16px;font-weight:500;background:#EFF4FF;color:#3B62F6;border-radius:4px;margin-bottom:4px">You are here</span>
+              <p style="font-size:17px;line-height:24px;font-weight:500;color:#0F1420;margin-bottom:4px">Build and deploy a small project</p>
+              <p style="font-size:13px;line-height:20px;color:#6B7689">One page, one API call, deployed on a free host with a link you can put on your resume.</p>
+              <div class="flex items-center gap-2 mt-2"><span style="font-size:12px;line-height:18px;color:#9AA5BB">4 resources</span><span style="font-size:12px;line-height:18px;color:#9AA5BB">·</span><span style="font-size:12px;line-height:18px;color:#9AA5BB">about 2 weeks</span><span style="font-size:12px;line-height:18px;color:#9AA5BB">·</span><span style="font-size:12px;line-height:18px;color:#9AA5BB">1 project</span></div>
+            </div>
+            <svg class="w-5 h-5 shrink-0 stage-chevron rotate-180 transition-transform" style="color:#3B62F6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </div>
+          <div class="stage-resources mt-4 pt-4 space-y-2.5" style="border-top:1px solid #DCE6FF">
+            <div style="background:#FFFFFF;border:1px solid #EEF1F7;border-radius:8px;padding:16px">
+              <p style="font-size:17px;line-height:24px;font-weight:500;color:#0F1420;margin-bottom:8px">What you should be able to do after this stage</p>
+              <ul class="space-y-1.5">
+                <li class="flex items-start gap-2"><svg class="w-4 h-4 mt-0.5 shrink-0" style="color:#3B62F6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span style="font-size:13px;line-height:20px;color:#6B7689">Fetch data from a public API and render it</span></li>
+                <li class="flex items-start gap-2"><svg class="w-4 h-4 mt-0.5 shrink-0" style="color:#3B62F6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span style="font-size:13px;line-height:20px;color:#6B7689">Handle a loading state and an error state</span></li>
+                <li class="flex items-start gap-2"><svg class="w-4 h-4 mt-0.5 shrink-0" style="color:#3B62F6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span style="font-size:13px;line-height:20px;color:#6B7689">Deploy to a free host and share a working link</span></li>
+              </ul>
+            </div>
+            <a href="resources.html" class="flex items-center gap-3 p-3 rounded-lg transition-colors" style="background:#FFFFFF;border:1px solid #EEF1F7"><svg class="w-4 h-4 shrink-0" style="color:#3B62F6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg><div class="min-w-0"><p style="font-size:12px;line-height:18px;font-weight:500;color:#0F1420;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Deploying a static site for free</p><p style="font-size:12px;line-height:18px;color:#9AA5BB">6 min read</p></div></a>
+            <div class="flex items-center gap-3 mt-3">
+              <button class="btn-secondary" style="padding:8px 16px">Skip this stage</button>
+              <button class="btn-primary" style="padding:8px 16px">Mark stage complete</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stage 5 -->
+        <div class="roadmap-stage" data-stage="5" style="background:#FFFFFF;border:1px solid #EEF1F7;border-radius:12px;padding:20px">
+          <div class="flex items-start gap-4">
+            <div style="width:40px;height:40px;border-radius:9999px;background:#F5F7FB;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:#4E586B;flex-shrink:0">5</div>
+            <div class="flex-1 min-w-0">
+              <p style="font-size:12px;line-height:18px;color:#9AA5BB;margin-bottom:4px">Not started · 5 resources</p>
+              <p style="font-size:17px;line-height:24px;font-weight:500;color:#0F1420;margin-bottom:4px">Pick up React properly</p>
+              <p style="font-size:13px;line-height:20px;color:#6B7689">Components, state and the two hooks you will actually use every day.</p>
+              <div class="flex items-center gap-2 mt-2"><span style="font-size:12px;line-height:18px;color:#9AA5BB">5 resources</span><span style="font-size:12px;line-height:18px;color:#9AA5BB">·</span><span style="font-size:12px;line-height:18px;color:#9AA5BB">about 4 weeks</span></div>
+            </div>
+            <svg class="w-5 h-5 shrink-0 stage-chevron transition-transform" style="color:#CBD3E1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </div>
+        </div>
+
+        <!-- Stage 6 -->
+        <div class="roadmap-stage" data-stage="6" style="background:#FFFFFF;border:1px solid #EEF1F7;border-radius:12px;padding:20px">
+          <div class="flex items-start gap-4">
+            <div style="width:40px;height:40px;border-radius:9999px;background:#F5F7FB;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:#4E586B;flex-shrink:0">6</div>
+            <div class="flex-1 min-w-0">
+              <p style="font-size:12px;line-height:18px;color:#9AA5BB;margin-bottom:4px">Not started · 3 resources</p>
+              <p style="font-size:17px;line-height:24px;font-weight:500;color:#0F1420;margin-bottom:4px">Version control and working with others</p>
+              <p style="font-size:13px;line-height:20px;color:#6B7689">Branches, pull requests and reading someone else's code.</p>
+              <div class="flex items-center gap-2 mt-2"><span style="font-size:12px;line-height:18px;color:#9AA5BB">3 resources</span><span style="font-size:12px;line-height:18px;color:#9AA5BB">·</span><span style="font-size:12px;line-height:18px;color:#9AA5BB">about 1 week</span></div>
+            </div>
+            <svg class="w-5 h-5 shrink-0 stage-chevron transition-transform" style="color:#CBD3E1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </div>
+        </div>
+
+        <!-- Stage 7 -->
+        <div class="roadmap-stage" data-stage="7" style="background:#FFFFFF;border:1px solid #EEF1F7;border-radius:12px;padding:20px">
+          <div class="flex items-start gap-4">
+            <div style="width:40px;height:40px;border-radius:9999px;background:#F5F7FB;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:#4E586B;flex-shrink:0">7</div>
+            <div class="flex-1 min-w-0">
+              <p style="font-size:12px;line-height:18px;color:#9AA5BB;margin-bottom:4px">Not started · 3 resources</p>
+              <p style="font-size:17px;line-height:24px;font-weight:500;color:#0F1420;margin-bottom:4px">Prepare your resume and portfolio</p>
+              <p style="font-size:13px;line-height:20px;color:#6B7689">Two projects written up plainly, plus the one-page resume.</p>
+              <div class="flex items-center gap-2 mt-2"><span style="font-size:12px;line-height:18px;color:#9AA5BB">3 resources</span><span style="font-size:12px;line-height:18px;color:#9AA5BB">·</span><span style="font-size:12px;line-height:18px;color:#9AA5BB">about 1 week</span></div>
+            </div>
+            <svg class="w-5 h-5 shrink-0 stage-chevron transition-transform" style="color:#CBD3E1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </div>
+        </div>
+
+        <!-- Stage 8 -->
+        <div class="roadmap-stage" data-stage="8" style="background:#FFFFFF;border:1px solid #EEF1F7;border-radius:12px;padding:20px">
+          <div class="flex items-start gap-4">
+            <div style="width:40px;height:40px;border-radius:9999px;background:#F5F7FB;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:#4E586B;flex-shrink:0">8</div>
+            <div class="flex-1 min-w-0">
+              <p style="font-size:12px;line-height:18px;color:#9AA5BB;margin-bottom:4px">Not started · 5 resources</p>
+              <p style="font-size:17px;line-height:24px;font-weight:500;color:#0F1420;margin-bottom:4px">Interview practice</p>
+              <p style="font-size:13px;line-height:20px;color:#6B7689">The twelve questions, the component round, and talking about your work.</p>
+              <div class="flex items-center gap-2 mt-2"><span style="font-size:12px;line-height:18px;color:#9AA5BB">5 resources</span><span style="font-size:12px;line-height:18px;color:#9AA5BB">·</span><span style="font-size:12px;line-height:18px;color:#9AA5BB">about 2 weeks</span></div>
+            </div>
+            <svg class="w-5 h-5 shrink-0 stage-chevron transition-transform" style="color:#CBD3E1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Sidebar Content (below stages on mobile, as card on desktop) -->
+      <div class="space-y-5 mt-8">
+        <div style="background:#FFFFFF;border:1px solid #EEF1F7;border-radius:12px;padding:20px">
+          <p style="font-size:17px;line-height:24px;font-weight:500;color:#0F1420;margin-bottom:12px">Roles this leads to</p>
+          <div class="space-y-2.5">
+            <a href="job.html" class="flex items-center justify-between p-3 rounded-lg transition-colors" style="background:#F5F7FB"><span style="font-size:13px;line-height:20px;color:#333B4A">Frontend Developer</span><span style="font-size:12px;line-height:18px;font-weight:500;color:#3B62F6">42 openings</span></a>
+            <a href="job.html" class="flex items-center justify-between p-3 rounded-lg transition-colors" style="background:#F5F7FB"><span style="font-size:13px;line-height:20px;color:#333B4A">UI Engineer</span><span style="font-size:12px;line-height:18px;font-weight:500;color:#3B62F6">18 openings</span></a>
+            <a href="job.html" class="flex items-center justify-between p-3 rounded-lg transition-colors" style="background:#F5F7FB"><span style="font-size:13px;line-height:20px;color:#333B4A">Web Developer</span><span style="font-size:12px;line-height:18px;font-weight:500;color:#3B62F6">31 openings</span></a>
+          </div>
+        </div>
+
+        <div style="background:#EFF4FF;border:1px solid #DCE6FF;border-radius:12px;padding:20px">
+          <p style="font-size:17px;line-height:24px;font-weight:500;color:#0F1420;margin-bottom:8px">Your weekly rhythm</p>
+          <p style="font-size:13px;line-height:20px;color:#6B7689">Six hours a week keeps you on track to finish by late October.</p>
+          <p style="font-size:12px;line-height:18px;color:#6B7689;margin-top:8px">You averaged 3.7 hours a week across eleven weeks.</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Stage accordion
+    document.querySelectorAll('.roadmap-stage').forEach(stage => {
+      stage.addEventListener('click', (e) => {
+        if (e.target.closest('a') || e.target.closest('button')) return;
+        const resources = stage.querySelector('.stage-resources');
+        const chevron = stage.querySelector('.stage-chevron');
+        if (resources) resources.classList.toggle('hidden');
+        if (chevron) chevron.classList.toggle('rotate-180');
+      });
+    });
+
+    // Sidebar
+    function toggleSidebar(){document.getElementById('sidebar').style.transform='translateX(0)';document.getElementById('sidebarOverlay').classList.remove('hidden')}
+    function closeSidebar(){document.getElementById('sidebar').style.transform='translateX(-100%)';document.getElementById('sidebarOverlay').classList.add('hidden')}
+    if(window.innerWidth<768)document.getElementById('sidebar').style.transform='translateX(-100%)';
+    window.addEventListener('resize',()=>{if(window.innerWidth>=768){document.getElementById('sidebar').style.transform='translateX(0)';document.getElementById('sidebarOverlay').classList.add('hidden')}else{document.getElementById('sidebar').style.transform='translateX(-100%)'}});
+  </script>
+  <script src="app.js"></script>
+<script src="personalize.js"></script>
+</body>
+</html>

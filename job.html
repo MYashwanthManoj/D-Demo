@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Associate Software Engineer — Infosys | Career Cafe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: { inter: ['Inter', 'sans-serif'] },
+        colors: {
+          brand: { 50:'#EFF4FF',100:'#DCE6FF',200:'#BFD0FF',300:'#93AEFF',400:'#6087FB',500:'#3B62F6',600:'#2549E0',700:'#1B37B5',800:'#152C88',900:'#10265E' },
+          navy: { 900:'#0F1420',800:'#1E2533',700:'#333B4A',600:'#4E586B',500:'#6B7689',400:'#9AA5BB',300:'#CBD3E1',200:'#E2E7F0',100:'#EEF1F7',50:'#F5F7FB',25:'#FBFCFE' },
+        },
+      }},
+    }
+  </script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="font-inter antialiased" style="color:#333B4A;background:#FBFCFE">
+  <!-- SIDEBAR -->
+  <aside id="sidebar" class="fixed top-0 left-0 h-full z-40 flex flex-col" style="width:240px;background:#FFFFFF;border-right:1px solid #EEF1F7;transition:transform 0.25s ease">
+    <div class="px-5 h-16 flex items-center" style="border-bottom:1px solid #EEF1F7"><a href="index.html" style="font-size:17px;line-height:24px;font-weight:600;color:#0F1420">Career Cafe</a></div>
+    <nav class="flex-1 py-4 px-3 space-y-1 overflow-y-auto">
+      <a href="home.html" class="sidebar-link"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1h-2z"/></svg>Home</a>
+      <a href="jobs.html" class="sidebar-link active"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>Job openings</a>
+      <a href="resources.html" class="sidebar-link"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>Resources</a>
+      <a href="videos.html" class="sidebar-link"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Videos</a>
+      <a href="shots.html" class="sidebar-link"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>Shots</a>
+      <a href="roadmap.html" class="sidebar-link"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>Roadmaps</a>
+      <div style="border-top:1px solid #EEF1F7;margin:12px 0"></div>
+      <a href="saved.html" class="sidebar-link"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>Saved<span class="ml-auto" style="font-size:11px;line-height:16px;background:#EFF4FF;color:#3B62F6;padding:2px 6px;border-radius:4px;font-weight:500">6</span></a>
+      <a href="feedback.html" class="sidebar-link"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"/></svg>Give feedback</a>
+      <a href="settings.html" class="sidebar-link"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>Settings</a>
+    </nav>
+    <div class="px-3 py-4" style="border-top:1px solid #EEF1F7"><div class="flex items-center gap-3 px-2"><div id="sidebarAvatar" style="width:36px;height:36px;border-radius:10px;background:#DCE6FF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:#2549E0">PS</div><div class="min-w-0"><p id="sidebarName" style="font-size:13px;line-height:18px;font-weight:500;color:#0F1420">Priya Sharma</p><p id="sidebarSubtitle" style="font-size:11px;line-height:16px;color:#9AA5BB">B.Tech CSE · 2026</p></div></div></div>
+  </aside>
+  <div id="sidebarOverlay" class="fixed inset-0 z-30 hidden" style="background:rgba(15,20,32,0.40)" onclick="closeSidebar()"></div>
+
+  <div class="md:ml-[240px] min-h-screen">
+    <header class="sticky top-0 z-20 h-16 flex items-center gap-4 px-6" style="background:rgba(251,252,254,0.85);backdrop-filter:blur(16px);border-bottom:1px solid #EEF1F7">
+      <button class="md:hidden p-2 -ml-2" onclick="toggleSidebar()" aria-label="Menu"><svg class="w-5 h-5" style="color:#333B4A" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+      <div class="flex-1 max-w-[480px]"><div class="search-bar" style="padding:0"><svg class="w-4 h-4 ml-3 shrink-0" style="color:#9AA5BB" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg><input type="text" placeholder="Search roles, companies, skills" style="padding:10px 12px;font-size:13px" /></div></div>
+      <div class="ml-auto"><div style="width:36px;height:36px;border-radius:10px;background:#DCE6FF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:#2549E0;cursor:pointer">PS</div></div>
+    </header>
+
+    <main class="p-6 max-w-[960px]">
+      <!-- BREADCRUMB -->
+      <nav class="flex items-center gap-1.5 mb-5" style="font-size:11px;line-height:16px;color:#9AA5BB">
+        <a href="home.html" class="hover:text-navy-600 transition-colors">Home</a>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <a href="jobs.html" class="hover:text-navy-600 transition-colors">Jobs</a>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <span style="color:#6B7689">Software</span>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <span style="color:#0F1420;font-weight:500">Associate Software Engineer</span>
+      </nav>
+
+      <!-- JOB HEADER -->
+      <div class="flex items-start gap-4 mb-5">
+        <div style="width:56px;height:56px;border-radius:12px;background:#EFF4FF;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:600;color:#2549E0;flex-shrink:0">IN</div>
+        <div class="flex-1">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <h1 style="font-size:24px;line-height:32px;font-weight:600;color:#0F1420;margin-bottom:4px">Associate Software Engineer</h1>
+              <p style="font-size:15px;line-height:24px;color:#6B7689">Infosys · Bengaluru, India</p>
+            </div>
+            <div class="flex items-center gap-2 shrink-0">
+              <button class="bookmark-btn" aria-label="Save job"><svg class="w-5 h-5" style="color:#6B7689" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg></button>
+              <button class="bookmark-btn" aria-label="Share"><svg class="w-5 h-5" style="color:#6B7689" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg></button>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-1.5 mt-3">
+            <span class="tag tag-default">Full-time</span>
+            <span class="tag tag-default">0–2 yrs</span>
+            <span class="tag tag-default">Hybrid</span>
+            <span class="tag tag-success">₹6–9 LPA</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Apply Banner -->
+      <div style="background:#EFF4FF;border:1px solid #DCE6FF;border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:16px">
+        <div>
+          <p style="font-size:14px;line-height:20px;font-weight:500;color:#0F1420">This is a genuine entry-level position. Infosys hires roughly 400 people a year into this title and does not expect prior industry experience.</p>
+          <p style="font-size:12px;line-height:18px;color:#6B7689;margin-top:4px">Apply by <strong style="color:#333B4A">29 Aug 2026</strong> · Posted 4 hours ago</p>
+        </div>
+        <a href="https://careers.infosys.com" target="_blank" class="btn-primary whitespace-nowrap gap-2 self-start" style="padding:10px 16px">
+          Apply on the Infosys site
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        </a>
+      </div>
+
+      <!-- JOB CONTENT -->
+      <div class="grid lg:grid-cols-3 gap-8 mt-8">
+        <!-- Main Content -->
+        <div class="lg:col-span-2 space-y-8">
+          <!-- Tabs -->
+          <div class="flex gap-0" style="border-bottom:1px solid #EEF1F7">
+            <button class="job-tab active" data-tab="overview" style="padding:12px 16px;font-size:14px;line-height:20px;font-weight:500;border-bottom:2px solid #3B62F6;color:#2549E0">Overview</button>
+            <button class="job-tab" data-tab="skills" style="padding:12px 16px;font-size:14px;line-height:20px;font-weight:500;border-bottom:2px solid transparent;color:#6B7689">Skills</button>
+            <button class="job-tab" data-tab="resources" style="padding:12px 16px;font-size:14px;line-height:20px;font-weight:500;border-bottom:2px solid transparent;color:#6B7689">Resources</button>
+            <button class="job-tab" data-tab="similar" style="padding:12px 16px;font-size:14px;line-height:20px;font-weight:500;border-bottom:2px solid transparent;color:#6B7689">Similar roles</button>
+          </div>
+
+          <!-- Overview Tab -->
+          <div id="tab-overview" class="job-tab-content space-y-8">
+            <div>
+              <h2 style="font-size:24px;line-height:32px;font-weight:600;color:#0F1420;margin-bottom:16px">Quick facts</h2>
+              <div class="grid sm:grid-cols-2 gap-3">
+                <div class="flex items-start gap-3 p-4" style="background:#F5F7FB;border-radius:8px">
+                  <svg class="w-5 h-5 mt-0.5 shrink-0" style="color:#9AA5BB" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                  <div><p style="font-size:11px;line-height:16px;font-weight:500;color:#9AA5BB;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:2px">Apply by</p><p style="font-size:14px;line-height:20px;font-weight:500;color:#0F1420">29 Aug 2026</p></div>
+                </div>
+                <div class="flex items-start gap-3 p-4" style="background:#F5F7FB;border-radius:8px">
+                  <svg class="w-5 h-5 mt-0.5 shrink-0" style="color:#9AA5BB" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                  <div><p style="font-size:11px;line-height:16px;font-weight:500;color:#9AA5BB;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:2px">Work style</p><p style="font-size:14px;line-height:20px;font-weight:500;color:#0F1420">Hybrid, 3 days</p></div>
+                </div>
+                <div class="flex items-start gap-3 p-4" style="background:#F5F7FB;border-radius:8px">
+                  <svg class="w-5 h-5 mt-0.5 shrink-0" style="color:#9AA5BB" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                  <div><p style="font-size:11px;line-height:16px;font-weight:500;color:#9AA5BB;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:2px">Batch</p><p style="font-size:14px;line-height:20px;font-weight:500;color:#0F1420">2025 and 2026</p></div>
+                </div>
+                <div class="flex items-start gap-3 p-4" style="background:#F5F7FB;border-radius:8px">
+                  <svg class="w-5 h-5 mt-0.5 shrink-0" style="color:#9AA5BB" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                  <div><p style="font-size:11px;line-height:16px;font-weight:500;color:#9AA5BB;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:2px">Openings</p><p style="font-size:14px;line-height:20px;font-weight:500;color:#0F1420">400 this year</p></div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h2 style="font-size:24px;line-height:32px;font-weight:600;color:#0F1420;margin-bottom:12px">About the role</h2>
+              <p style="font-size:15px;line-height:24px;color:#6B7689;margin-bottom:16px">You will join a delivery team of eight to twelve engineers building and maintaining services for a banking client. The first three months are structured training: two weeks of classroom, then paired work on real tickets with a mentor reviewing everything you ship.</p>
+              <div class="space-y-2.5">
+                <div class="flex items-start gap-2.5"><svg class="w-4 h-4 mt-1 shrink-0" style="color:#12A150" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><p style="font-size:13px;line-height:20px;color:#6B7689">Write and review Java or Python services alongside a mentor for the first quarter</p></div>
+                <div class="flex items-start gap-2.5"><svg class="w-4 h-4 mt-1 shrink-0" style="color:#12A150" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><p style="font-size:13px;line-height:20px;color:#6B7689">Pick up defects from the backlog and take them through to a tested fix</p></div>
+                <div class="flex items-start gap-2.5"><svg class="w-4 h-4 mt-1 shrink-0" style="color:#12A150" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><p style="font-size:13px;line-height:20px;color:#6B7689">Write unit tests for everything you ship — this is checked at review</p></div>
+                <div class="flex items-start gap-2.5"><svg class="w-4 h-4 mt-1 shrink-0" style="color:#12A150" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><p style="font-size:13px;line-height:20px;color:#6B7689">Join the daily stand-up and a fortnightly client demo</p></div>
+                <div class="flex items-start gap-2.5"><svg class="w-4 h-4 mt-1 shrink-0" style="color:#12A150" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><p style="font-size:13px;line-height:20px;color:#6B7689">Document what you build in Confluence so the next person can pick it up</p></div>
+              </div>
+            </div>
+
+            <div>
+              <h2 style="font-size:24px;line-height:32px;font-weight:600;color:#0F1420;margin-bottom:12px">Salary band</h2>
+              <div style="background:#E8F8EE;border-radius:12px;padding:20px">
+                <div style="font-size:36px;line-height:44px;font-weight:600;color:#0B7038;margin-bottom:4px">₹6–9 LPA</div>
+                <p style="font-size:13px;line-height:20px;color:#0B7038;opacity:0.8">This is what the employer disclosed. We do not estimate or inflate salary bands.</p>
+              </div>
+            </div>
+
+            <div>
+              <h2 style="font-size:24px;line-height:32px;font-weight:600;color:#0F1420;margin-bottom:16px">How the hiring works</h2>
+              <div class="grid sm:grid-cols-4 gap-3">
+                <div style="background:#F5F7FB;border-radius:12px;padding:16px;text-align:center">
+                  <div style="width:32px;height:32px;border-radius:9999px;background:#EFF4FF;color:#2549E0;font-size:14px;line-height:20px;font-weight:500;display:flex;align-items:center;justify-content:center;margin:0 auto 12px">01</div>
+                  <p style="font-size:14px;line-height:20px;font-weight:500;color:#0F1420;margin-bottom:4px">Online test</p>
+                  <p style="font-size:12px;line-height:18px;color:#6B7689">Aptitude and one coding question, 95 minutes</p>
+                </div>
+                <div style="background:#F5F7FB;border-radius:12px;padding:16px;text-align:center">
+                  <div style="width:32px;height:32px;border-radius:9999px;background:#EFF4FF;color:#2549E0;font-size:14px;line-height:20px;font-weight:500;display:flex;align-items:center;justify-content:center;margin:0 auto 12px">02</div>
+                  <p style="font-size:14px;line-height:20px;font-weight:500;color:#0F1420;margin-bottom:4px">Technical round</p>
+                  <p style="font-size:12px;line-height:18px;color:#6B7689">Your project, one language, basic DSA</p>
+                </div>
+                <div style="background:#F5F7FB;border-radius:12px;padding:16px;text-align:center">
+                  <div style="width:32px;height:32px;border-radius:9999px;background:#EFF4FF;color:#2549E0;font-size:14px;line-height:20px;font-weight:500;display:flex;align-items:center;justify-content:center;margin:0 auto 12px">03</div>
+                  <p style="font-size:14px;line-height:20px;font-weight:500;color:#0F1420;margin-bottom:4px">HR round</p>
+                  <p style="font-size:12px;line-height:18px;color:#6B7689">Location, notice, expectations</p>
+                </div>
+                <div style="background:#F5F7FB;border-radius:12px;padding:16px;text-align:center">
+                  <div style="width:32px;height:32px;border-radius:9999px;background:#EFF4FF;color:#2549E0;font-size:14px;line-height:20px;font-weight:500;display:flex;align-items:center;justify-content:center;margin:0 auto 12px">04</div>
+                  <p style="font-size:14px;line-height:20px;font-weight:500;color:#0F1420;margin-bottom:4px">Offer</p>
+                  <p style="font-size:12px;line-height:18px;color:#6B7689">Usually within three weeks</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Skills Tab -->
+          <div id="tab-skills" class="job-tab-content hidden space-y-6">
+            <h2 style="font-size:24px;line-height:32px;font-weight:600;color:#0F1420">What they ask for</h2>
+            <div class="grid sm:grid-cols-2 gap-6">
+              <div>
+                <p style="font-size:11px;line-height:16px;font-weight:500;color:#9AA5BB;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px">Required</p>
+                <ul class="space-y-2">
+                  <li class="flex items-start gap-2"><svg class="w-4 h-4 mt-0.5 shrink-0" style="color:#3B62F6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span style="font-size:13px;line-height:20px;color:#333B4A">B.Tech, B.E. or MCA, 2025 or 2026 batch</span></li>
+                  <li class="flex items-start gap-2"><svg class="w-4 h-4 mt-0.5 shrink-0" style="color:#3B62F6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span style="font-size:13px;line-height:20px;color:#333B4A">60% or above through the degree</span></li>
+                  <li class="flex items-start gap-2"><svg class="w-4 h-4 mt-0.5 shrink-0" style="color:#3B62F6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span style="font-size:13px;line-height:20px;color:#333B4A">One programming language well — Java, Python or C++</span></li>
+                  <li class="flex items-start gap-2"><svg class="w-4 h-4 mt-0.5 shrink-0" style="color:#3B62F6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span style="font-size:13px;line-height:20px;color:#333B4A">Exposure to Git and a ticketing tool</span></li>
+                  <li class="flex items-start gap-2"><svg class="w-4 h-4 mt-0.5 shrink-0" style="color:#3B62F6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span style="font-size:13px;line-height:20px;color:#333B4A">Willing to work from Bengaluru three days a week</span></li>
+                </ul>
+              </div>
+              <div>
+                <p style="font-size:11px;line-height:16px;font-weight:500;color:#9AA5BB;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px">Nice to have</p>
+                <ul class="space-y-2">
+                  <li class="flex items-start gap-2"><svg class="w-4 h-4 mt-0.5 shrink-0" style="color:#CBD3E1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span style="font-size:13px;line-height:20px;color:#333B4A">A project on GitHub you can talk through</span></li>
+                  <li class="flex items-start gap-2"><svg class="w-4 h-4 mt-0.5 shrink-0" style="color:#CBD3E1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span style="font-size:13px;line-height:20px;color:#333B4A">Basic SQL</span></li>
+                  <li class="flex items-start gap-2"><svg class="w-4 h-4 mt-0.5 shrink-0" style="color:#CBD3E1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span style="font-size:13px;line-height:20px;color:#333B4A">An internship of any length</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Resources Tab -->
+          <div id="tab-resources" class="job-tab-content hidden space-y-4">
+            <h2 style="font-size:24px;line-height:32px;font-weight:600;color:#0F1420">Resources for this role</h2>
+            <a href="resources.html" class="flex items-start gap-4 p-4 rounded-xl transition-all" style="background:#FFFFFF;border:1px solid #EEF1F7;border-radius:12px">
+              <div style="width:40px;height:40px;border-radius:8px;background:#EFF4FF;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg class="w-5 h-5" style="color:#3B62F6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
+              <div class="flex-1 min-w-0"><p style="font-size:14px;line-height:20px;font-weight:500;color:#0F1420">A resume for an Infosys fresher role</p><p style="font-size:12px;line-height:18px;color:#9AA5BB;margin-top:4px">6 min read · Resume</p></div>
+            </a>
+            <a href="resources.html" class="flex items-start gap-4 p-4 rounded-xl transition-all" style="background:#FFFFFF;border:1px solid #EEF1F7;border-radius:12px">
+              <div style="width:40px;height:40px;border-radius:8px;background:#EFF4FF;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg class="w-5 h-5" style="color:#3B62F6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
+              <div class="flex-1 min-w-0"><p style="font-size:14px;line-height:20px;font-weight:500;color:#0F1420">The aptitude test, question by question</p><p style="font-size:12px;line-height:18px;color:#9AA5BB;margin-top:4px">14 min read · Interview</p></div>
+            </a>
+            <a href="resources.html" class="flex items-start gap-4 p-4 rounded-xl transition-all" style="background:#FFFFFF;border:1px solid #EEF1F7;border-radius:12px">
+              <div style="width:40px;height:40px;border-radius:8px;background:#EFF4FF;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg class="w-5 h-5" style="color:#3B62F6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+              <div class="flex-1 min-w-0"><p style="font-size:14px;line-height:20px;font-weight:500;color:#0F1420">Mock technical round, start to finish</p><p style="font-size:12px;line-height:18px;color:#9AA5BB;margin-top:4px">22 min watch · Video</p></div>
+            </a>
+          </div>
+
+          <!-- Similar Roles Tab -->
+          <div id="tab-similar" class="job-tab-content hidden space-y-3">
+            <h2 style="font-size:24px;line-height:32px;font-weight:600;color:#0F1420">Similar openings</h2>
+            <a href="job.html" class="flex items-start gap-4 p-5 rounded-xl transition-all" style="background:#FFFFFF;border:1px solid #EEF1F7;border-radius:12px">
+              <div style="width:44px;height:44px;border-radius:10px;background:#F5F7FB;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:#4E586B;flex-shrink:0">WI</div>
+              <div class="flex-1">
+                <p style="font-size:14px;line-height:20px;font-weight:500;color:#0F1420">Software Engineer Trainee</p>
+                <p style="font-size:12px;line-height:18px;color:#9AA5BB;margin-top:2px">Wipro · Bengaluru</p>
+                <div class="flex flex-wrap gap-1.5 mt-2">
+                  <span class="tag tag-default">Full-time</span><span class="tag tag-default">0–2 yrs</span><span class="tag tag-default">Hybrid</span><span class="tag tag-success">₹5–7 LPA</span>
+                </div>
+              </div>
+              <span style="font-size:12px;line-height:18px;color:#9AA5BB;flex-shrink:0">View role →</span>
+            </a>
+            <a href="job.html" class="flex items-start gap-4 p-5 rounded-xl transition-all" style="background:#FFFFFF;border:1px solid #EEF1F7;border-radius:12px">
+              <div style="width:44px;height:44px;border-radius:10px;background:#F5F7FB;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:#4E586B;flex-shrink:0">TC</div>
+              <div class="flex-1">
+                <p style="font-size:14px;line-height:20px;font-weight:500;color:#0F1420">Graduate Engineer</p>
+                <p style="font-size:12px;line-height:18px;color:#9AA5BB;margin-top:2px">TCS · Bengaluru</p>
+                <div class="flex flex-wrap gap-1.5 mt-2">
+                  <span class="tag tag-default">Full-time</span><span class="tag tag-default">0–2 yrs</span><span class="tag tag-default">On-site</span><span class="tag tag-success">₹6–8 LPA</span>
+                </div>
+              </div>
+              <span style="font-size:12px;line-height:18px;color:#9AA5BB;flex-shrink:0">View role →</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Sidebar -->
+        <div class="space-y-5">
+          <div style="background:#F5F7FB;border-radius:12px;padding:20px">
+            <p style="font-size:17px;line-height:24px;font-weight:500;color:#0F1420;margin-bottom:12px">About Infosys</p>
+            <p style="font-size:13px;line-height:20px;color:#6B7689">Infosys is a global leader in next-generation digital services and consulting. They run a well-known graduate programme that hires people straight out of college and trains them in-house.</p>
+            <div class="flex gap-6 mt-4 pt-4" style="border-top:1px solid #E2E7F0">
+              <div><p style="font-size:24px;line-height:32px;font-weight:600;color:#0F1420">12,000</p><p style="font-size:11px;line-height:16px;font-weight:500;color:#9AA5BB;text-transform:uppercase;letter-spacing:0.05em">employees</p></div>
+              <div><p style="font-size:24px;line-height:32px;font-weight:600;color:#0F1420">400</p><p style="font-size:11px;line-height:16px;font-weight:500;color:#9AA5BB;text-transform:uppercase;letter-spacing:0.05em">hires / year</p></div>
+            </div>
+          </div>
+
+          <div style="background:#FFFFFF;border:1px solid #EEF1F7;border-radius:12px;padding:20px">
+            <p style="font-size:17px;line-height:24px;font-weight:500;color:#0F1420;margin-bottom:12px">Prepare for this role</p>
+            <div class="space-y-2.5">
+              <a href="resources.html" class="flex items-center gap-3 p-3 rounded-lg transition-colors" style="background:#F5F7FB">
+                <div style="width:32px;height:32px;border-radius:6px;background:#EFF4FF;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg class="w-4 h-4" style="color:#3B62F6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
+                <div class="min-w-0"><p style="font-size:12px;line-height:18px;font-weight:500;color:#0F1420;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">A resume for an Infosys fresher role</p><p style="font-size:12px;line-height:18px;color:#9AA5BB">6 min read</p></div>
+              </a>
+              <a href="resources.html" class="flex items-center gap-3 p-3 rounded-lg transition-colors" style="background:#F5F7FB">
+                <div style="width:32px;height:32px;border-radius:6px;background:#EFF4FF;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg class="w-4 h-4" style="color:#3B62F6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
+                <div class="min-w-0"><p style="font-size:12px;line-height:18px;font-weight:500;color:#0F1420;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">The aptitude test, question by question</p><p style="font-size:12px;line-height:18px;color:#9AA5BB">14 min read</p></div>
+              </a>
+              <a href="roadmap.html" class="flex items-center gap-3 p-3 rounded-lg transition-colors" style="background:#F5F7FB">
+                <div style="width:32px;height:32px;border-radius:6px;background:#EFF4FF;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg class="w-4 h-4" style="color:#3B62F6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg></div>
+                <div class="min-w-0"><p style="font-size:12px;line-height:18px;font-weight:500;color:#0F1420;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Frontend Developer roadmap</p><p style="font-size:12px;line-height:18px;color:#9AA5BB">8 stages · 31 resources</p></div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Tab switching
+    document.querySelectorAll('.job-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.job-tab').forEach(t => { t.style.borderBottomColor = 'transparent'; t.style.color = '#6B7689'; });
+        document.querySelectorAll('.job-tab-content').forEach(c => c.classList.add('hidden'));
+        tab.style.borderBottomColor = '#3B62F6';
+        tab.style.color = '#2549E0';
+        document.getElementById('tab-' + tab.dataset.tab).classList.remove('hidden');
+      });
+    });
+
+    // Sidebar
+    function toggleSidebar(){document.getElementById('sidebar').style.transform='translateX(0)';document.getElementById('sidebarOverlay').classList.remove('hidden')}
+    function closeSidebar(){document.getElementById('sidebar').style.transform='translateX(-100%)';document.getElementById('sidebarOverlay').classList.add('hidden')}
+    if(window.innerWidth<768)document.getElementById('sidebar').style.transform='translateX(-100%)';
+    window.addEventListener('resize',()=>{if(window.innerWidth>=768){document.getElementById('sidebar').style.transform='translateX(0)';document.getElementById('sidebarOverlay').classList.add('hidden')}else{document.getElementById('sidebar').style.transform='translateX(-100%)'}});
+
+    // Bookmark toggle
+    document.querySelectorAll('.bookmark-btn').forEach(btn => {
+      btn.addEventListener('click', () => { btn.classList.toggle('saved'); });
+    });
+  </script>
+  <script src="app.js"></script>
+<script src="personalize.js"></script>
+</body>
+</html>

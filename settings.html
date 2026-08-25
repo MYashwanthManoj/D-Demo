@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    // Account settings require a session; guests are sent to log in (no fake profile shown).
+    if (!localStorage.getItem('careerCafeUser')) location.replace('login.html');
+  </script>
+  <title>Settings — Career Cafe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: { inter: ['Inter', 'sans-serif'] },
+        colors: {
+          brand: { 50:'#EFF4FF',100:'#DCE6FF',200:'#BFD0FF',300:'#93AEFF',400:'#6087FB',500:'#3B62F6',600:'#2549E0',700:'#1B37B5',800:'#152C88',900:'#10265E' },
+          navy: { 900:'#0F1420',800:'#1E2533',700:'#333B4A',600:'#4E586B',500:'#6B7689',400:'#9AA5BB',300:'#CBD3E1',200:'#E2E7F0',100:'#EEF1F7',50:'#F5F7FB',25:'#FBFCFE' },
+          success: { 50:'#E8F8EE',500:'#12A150',700:'#0B7038' },
+          danger: { 50:'#FEECEB',500:'#E5484D',700:'#B4272B' },
+        },
+      }},
+    }
+  </script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="font-inter antialiased" style="color:#333B4A;background:#FBFCFE">
+  <aside id="sidebar" class="fixed top-0 left-0 h-full z-40 flex flex-col" style="width:240px;background:#FFFFFF;border-right:1px solid #EEF1F7;transition:transform 0.25s ease">
+    <div class="px-5 h-16 flex items-center" style="border-bottom:1px solid #EEF1F7"><a href="index.html" style="font-size:17px;line-height:24px;font-weight:600;color:#0F1420">Career Cafe</a></div>
+    <nav class="flex-1 py-4 px-3 space-y-1 overflow-y-auto">
+      <a href="home.html" class="sidebar-link"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1h-2z"/></svg>Home</a>
+      <a href="jobs.html" class="sidebar-link"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>Job openings</a>
+      <a href="resources.html" class="sidebar-link"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>Resources</a>
+      <a href="videos.html" class="sidebar-link"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Videos</a>
+      <a href="shots.html" class="sidebar-link"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>Shots</a>
+      <a href="roadmap.html" class="sidebar-link"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>Roadmaps</a>
+      <div style="border-top:1px solid #EEF1F7;margin:12px 0"></div>
+      <a href="saved.html" class="sidebar-link"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>Saved<span class="ml-auto" style="font-size:11px;line-height:16px;background:#EFF4FF;color:#3B62F6;padding:2px 6px;border-radius:4px;font-weight:500">6</span></a>
+      <a href="feedback.html" class="sidebar-link"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"/></svg>Give feedback</a>
+      <a href="settings.html" class="sidebar-link active"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>Settings</a>
+    </nav>
+    <div class="px-3 py-4" style="border-top:1px solid #EEF1F7"><div class="flex items-center gap-3 px-2"><div id="sidebarAvatar" style="width:36px;height:36px;border-radius:10px;background:#DCE6FF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:#2549E0">PS</div><div class="min-w-0"><p id="sidebarName" style="font-size:13px;line-height:18px;font-weight:500;color:#0F1420">Priya Sharma</p><p id="sidebarSubtitle" style="font-size:11px;line-height:16px;color:#9AA5BB">B.Tech CSE · 2026</p></div></div></div>
+  </aside>
+  <div id="sidebarOverlay" class="fixed inset-0 z-30 hidden" style="background:rgba(15,20,32,0.40)" onclick="closeSidebar()"></div>
+
+  <div class="md:ml-[240px] min-h-screen">
+    <header class="sticky top-0 z-20 h-16 flex items-center gap-4 px-6" style="background:rgba(251,252,254,0.85);backdrop-filter:blur(16px);border-bottom:1px solid #EEF1F7">
+      <button class="md:hidden p-2 -ml-2" onclick="toggleSidebar()" aria-label="Menu"><svg class="w-5 h-5" style="color:#333B4A" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+      <div class="flex-1 max-w-[480px]"><div class="search-bar" style="padding:0"><svg class="w-4 h-4 ml-3 shrink-0" style="color:#9AA5BB" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg><input type="text" placeholder="Search roles, companies, skills" style="padding:10px 12px;font-size:13px" /></div></div>
+      <div class="ml-auto"><div style="width:36px;height:36px;border-radius:10px;background:#DCE6FF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:#2549E0;cursor:pointer">PS</div></div>
+    </header>
+
+    <main class="p-6 max-w-[720px]">
+      <div class="mb-6">
+        <p style="font-size:11px;line-height:16px;font-weight:500;color:#3B62F6;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px">Settings</p>
+        <h1 style="font-size:30px;line-height:38px;font-weight:600;color:#0F1420">Settings</h1>
+      </div>
+
+      <!-- Settings Tabs -->
+      <div class="flex gap-2 mb-8 overflow-x-auto">
+        <button class="settings-tab active" onclick="showTab('profile')">Profile</button>
+        <button class="settings-tab" onclick="showTab('roles')">Roles and interests</button>
+        <button class="settings-tab" onclick="showTab('notifications')">Notifications</button>
+        <button class="settings-tab" onclick="showTab('account')">Account and privacy</button>
+      </div>
+
+      <!-- Profile Tab -->
+      <div id="tab-profile" class="settings-panel">
+        <div class="card p-6 mb-4">
+          <div class="flex items-center gap-4 mb-6">
+            <div style="width:64px;height:64px;border-radius:14px;background:#DCE6FF;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:600;color:#2549E0">PS</div>
+            <div>
+              <p style="font-size:17px;line-height:24px;font-weight:500;color:#0F1420">Priya Sharma</p>
+              <p style="font-size:13px;line-height:20px;color:#6B7689">priya.sharma@gmail.com</p>
+            </div>
+          </div>
+          <div class="space-y-4">
+            <div>
+              <label style="font-size:14px;line-height:20px;font-weight:500;color:#333B4A;display:block;margin-bottom:6px">Full name</label>
+              <input type="text" value="Priya Sharma" style="width:100%;padding:10px 12px;font-size:15px;color:#333B4A;background:#FFFFFF;border:1px solid #E2E7F0;border-radius:8px;outline:none;font-family:'Inter',sans-serif" />
+            </div>
+            <div>
+              <label style="font-size:14px;line-height:20px;font-weight:500;color:#333B4A;display:block;margin-bottom:6px">Email</label>
+              <input type="email" value="priya.sharma@gmail.com" style="width:100%;padding:10px 12px;font-size:15px;color:#333B4A;background:#FFFFFF;border:1px solid #E2E7F0;border-radius:8px;outline:none;font-family:'Inter',sans-serif" />
+            </div>
+            <div>
+              <label style="font-size:14px;line-height:20px;font-weight:500;color:#333B4A;display:block;margin-bottom:6px">College or university</label>
+              <input type="text" value="Vellore Institute of Technology" style="width:100%;padding:10px 12px;font-size:15px;color:#333B4A;background:#FFFFFF;border:1px solid #E2E7F0;border-radius:8px;outline:none;font-family:'Inter',sans-serif" />
+            </div>
+            <div>
+              <label style="font-size:14px;line-height:20px;font-weight:500;color:#333B4A;display:block;margin-bottom:6px">Graduation year</label>
+              <select style="width:100%;padding:10px 12px;font-size:15px;color:#333B4A;background:#FFFFFF;border:1px solid #E2E7F0;border-radius:8px;font-family:'Inter',sans-serif">
+                <option>2026</option><option>2025</option><option>2027</option>
+              </select>
+            </div>
+            <div class="flex justify-end pt-2">
+              <button class="btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roles Tab -->
+      <div id="tab-roles" class="settings-panel" style="display:none">
+        <div class="card p-6">
+          <h3 style="font-size:17px;line-height:24px;font-weight:500;color:#0F1420;margin-bottom:4px">Your roles</h3>
+          <p style="font-size:13px;line-height:20px;color:#6B7689;margin-bottom:16px">Pick up to five. We build your feed around these.</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="tag tag-brand">Software Engineer</span>
+            <span class="tag tag-brand">Frontend Developer</span>
+            <span class="tag tag-brand">Data Analyst</span>
+          </div>
+          <button class="btn-secondary" style="font-size:13px;padding:6px 12px">Add a role</button>
+        </div>
+      </div>
+
+      <!-- Notifications Tab -->
+      <div id="tab-notifications" class="settings-panel" style="display:none">
+        <div class="card p-6 space-y-4">
+          <div class="flex items-center justify-between">
+            <div><p style="font-size:14px;line-height:20px;font-weight:500;color:#0F1420">Saved role closing</p><p style="font-size:13px;line-height:20px;color:#6B7689">When a saved opening is about to close</p></div>
+            <label class="toggle"><input type="checkbox" checked /><span class="toggle-slider"></span></label>
+          </div>
+          <div style="border-top:1px solid #EEF1F7"></div>
+          <div class="flex items-center justify-between">
+            <div><p style="font-size:14px;line-height:20px;font-weight:500;color:#0F1420">Alert matches</p><p style="font-size:13px;line-height:20px;color:#6B7689">New openings for a saved search</p></div>
+            <label class="toggle"><input type="checkbox" checked /><span class="toggle-slider"></span></label>
+          </div>
+          <div style="border-top:1px solid #EEF1F7"></div>
+          <div class="flex items-center justify-between">
+            <div><p style="font-size:14px;line-height:20px;font-weight:500;color:#0F1420">Roadmap nudges</p><p style="font-size:13px;line-height:20px;color:#6B7689">When a stage sits open for two weeks</p></div>
+            <label class="toggle"><input type="checkbox" checked /><span class="toggle-slider"></span></label>
+          </div>
+          <div style="border-top:1px solid #EEF1F7"></div>
+          <div class="flex items-center justify-between">
+            <div><p style="font-size:14px;line-height:20px;font-weight:500;color:#0F1420">Feedback replies</p><p style="font-size:13px;line-height:20px;color:#6B7689">When the team answers your feedback</p></div>
+            <label class="toggle"><input type="checkbox" /><span class="toggle-slider"></span></label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Account Tab -->
+      <div id="tab-account" class="settings-panel" style="display:none">
+        <div class="card p-6 mb-4">
+          <h3 style="font-size:17px;line-height:24px;font-weight:500;color:#0F1420;margin-bottom:4px">Resume</h3>
+          <p style="font-size:13px;line-height:20px;color:#6B7689;margin-bottom:16px">Your stored resume. You can delete it any time.</p>
+          <div class="flex items-center gap-3 p-3" style="background:#F5F7FB;border-radius:8px">
+            <svg class="w-5 h-5" style="color:#3B62F6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            <div class="flex-1"><p style="font-size:13px;line-height:20px;font-weight:500;color:#0F1420">Priya-Sharma-Resume.pdf</p><p style="font-size:12px;line-height:18px;color:#9AA5BB">284 KB · Uploaded 3 days ago</p></div>
+            <button class="btn-ghost" style="font-size:13px;padding:4px 10px;color:#E5484D">Delete</button>
+          </div>
+        </div>
+        <div class="card p-6" style="border-color:#FEECEB">
+          <h3 style="font-size:17px;line-height:24px;font-weight:500;color:#E5484D;margin-bottom:4px">Close your account</h3>
+          <p style="font-size:13px;line-height:20px;color:#6B7689;margin-bottom:16px">This deletes your profile, 35 saved items, 5 collections and your stored resume within 30 days.</p>
+          <button class="btn-secondary" style="color:#E5484D;border-color:#E5484D">Close account</button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    .settings-tab { padding:8px 16px;font-size:13px;font-weight:500;border-radius:8px;border:1px solid #E2E7F0;background:#FFFFFF;color:#4E586B;cursor:pointer;white-space:nowrap;font-family:'Inter',sans-serif;transition:all 0.15s ease }
+    .settings-tab.active { border-color:#3B62F6;background:#EFF4FF;color:#2549E0 }
+    .settings-tab:hover:not(.active) { border-color:#CBD3E1;background:#F5F7FB }
+    .toggle { position:relative;display:inline-block;width:44px;height:24px }
+    .toggle input { opacity:0;width:0;height:0 }
+    .toggle-slider { position:absolute;inset:0;background:#CBD3E1;border-radius:12px;cursor:pointer;transition:0.2s }
+    .toggle-slider:before { content:"";position:absolute;height:18px;width:18px;left:3px;bottom:3px;background:#FFFFFF;border-radius:50%;transition:0.2s }
+    .toggle input:checked + .toggle-slider { background:#3B62F6 }
+    .toggle input:checked + .toggle-slider:before { transform:translateX(20px) }
+  </style>
+
+  <script>
+    function toggleSidebar(){document.getElementById('sidebar').style.transform='translateX(0)';document.getElementById('sidebarOverlay').classList.remove('hidden')}
+    function closeSidebar(){document.getElementById('sidebar').style.transform='translateX(-100%)';document.getElementById('sidebarOverlay').classList.add('hidden')}
+    if(window.innerWidth<768)document.getElementById('sidebar').style.transform='translateX(-100%)';
+    window.addEventListener('resize',()=>{if(window.innerWidth>=768){document.getElementById('sidebar').style.transform='translateX(0)';document.getElementById('sidebarOverlay').classList.add('hidden')}else{document.getElementById('sidebar').style.transform='translateX(-100%)'}});
+    function showTab(tab) {
+      document.querySelectorAll('.settings-panel').forEach(p=>p.style.display='none');
+      document.querySelectorAll('.settings-tab').forEach(t=>t.classList.remove('active'));
+      document.getElementById('tab-'+tab).style.display='';
+      event.target.classList.add('active');
+    }
+  </script>
+<script src="personalize.js"></script>
+</body>
+</html>

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Set up your profile — Career Cafe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: { inter: ['Inter', 'sans-serif'] },
+        colors: {
+          brand: { 50:'#EFF4FF',100:'#DCE6FF',200:'#BFD0FF',300:'#93AEFF',400:'#6087FB',500:'#3B62F6',600:'#2549E0',700:'#1B37B5',800:'#152C88',900:'#10265E' },
+          navy: { 900:'#0F1420',800:'#1E2533',700:'#333B4A',600:'#4E586B',500:'#6B7689',400:'#9AA5BB',300:'#CBD3E1',200:'#E2E7F0',100:'#EEF1F7',50:'#F5F7FB',25:'#FBFCFE' },
+        },
+      }},
+    }
+  </script>
+  <style>
+    body { font-family:'Inter',sans-serif; color:#333B4A; background:#FBFCFE; }
+    .step { display:none; }
+    .step.active { display:block; }
+    .chip { display:inline-flex; align-items:center; gap:6px; padding:8px 16px; border:1px solid #E2E7F0; border-radius:8px; font-size:14px; line-height:20px; color:#333B4A; background:#FFFFFF; cursor:pointer; transition:all 0.15s; user-select:none; }
+    .chip:hover { border-color:#CBD3E1; }
+    .chip.selected { border-color:#3B62F6; background:#EFF4FF; color:#2549E0; }
+    .progress-fill { height:4px; border-radius:2px; background:#3B62F6; transition:width 0.3s ease; }
+    .fade-in { animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+  </style>
+</head>
+<body>
+  <div class="min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="flex items-center justify-between px-6 h-16" style="background:#FFFFFF;border-bottom:1px solid #EEF1F7">
+      <a href="index.html" style="font-size:17px;line-height:24px;font-weight:600;color:#0F1420">Career Cafe</a>
+      <div class="flex items-center gap-4">
+        <span id="stepLabel" style="font-size:13px;line-height:20px;color:#6B7689">Step 1 of 5</span>
+        <button id="saveExitBtn" style="font-size:13px;line-height:20px;font-weight:500;color:#6B7689;border:none;background:none;cursor:pointer">Save and exit</button>
+      </div>
+    </header>
+
+    <!-- Progress Bar -->
+    <div style="background:#EEF1F7"><div id="progressBar" class="progress-fill" style="width:20%"></div></div>
+
+    <!-- Steps Container -->
+    <div class="flex-1 flex items-center justify-center px-6 py-12">
+      <div class="max-w-[480px] w-full">
+
+        <!-- STEP 1: Degree -->
+        <div class="step active fade-in" data-step="1">
+          <h1 style="font-size:24px;line-height:32px;font-weight:600;color:#0F1420;margin-bottom:4px">What is your name?</h1>
+          <p style="font-size:15px;line-height:24px;color:#6B7689;margin-bottom:24px">This decides which openings we show you first. You can change it later.</p>
+
+          <label class="block mb-1.5" style="font-size:14px;line-height:20px;font-weight:500;color:#333B4A">Full name</label>
+          <input id="nameInput" type="text" placeholder="e.g. Priya Sharma" style="width:100%;padding:10px 12px;font-size:15px;color:#333B4A;background:#FFFFFF;border:1px solid #E2E7F0;border-radius:8px;outline:none;margin-bottom:20px" />
+
+          <label class="block mb-1.5" style="font-size:14px;line-height:20px;font-weight:500;color:#333B4A">Degree</label>
+          <div class="flex flex-wrap gap-2 mb-5">
+            <button class="chip" data-field="degree" data-value="B.Tech / B.E.">B.Tech / B.E.</button>
+            <button class="chip" data-field="degree" data-value="BCA">BCA</button>
+            <button class="chip" data-field="degree" data-value="MCA">MCA</button>
+            <button class="chip" data-field="degree" data-value="M.Sc">M.Sc</button>
+            <button class="chip" data-field="degree" data-value="B.Sc">B.Sc</button>
+            <button class="chip" data-field="degree" data-value="M.Tech">M.Tech</button>
+          </div>
+
+          <label class="block mb-1.5" style="font-size:14px;line-height:20px;font-weight:500;color:#333B4A">Branch or specialisation</label>
+          <input id="branchInput" type="text" placeholder="e.g. Computer Science and Engineering" style="width:100%;padding:10px 12px;font-size:15px;color:#333B4A;background:#FFFFFF;border:1px solid #E2E7F0;border-radius:8px;outline:none;margin-bottom:5px" />
+          <p style="font-size:12px;line-height:18px;color:#9AA5BB;margin-bottom:20px">Start typing and pick from the list — this stays private.</p>
+
+          <label class="block mb-1.5" style="font-size:14px;line-height:20px;font-weight:500;color:#333B4A">College or university</label>
+          <input id="collegeInput" type="text" placeholder="e.g. Vellore Institute of Technology" style="width:100%;padding:10px 12px;font-size:15px;color:#333B4A;background:#FFFFFF;border:1px solid #E2E7F0;border-radius:8px;outline:none" />
+        </div>
+
+        <!-- STEP 2: Year -->
+        <div class="step" data-step="2">
+          <h1 style="font-size:24px;line-height:32px;font-weight:600;color:#0F1420;margin-bottom:4px">When do you graduate?</h1>
+          <p style="font-size:15px;line-height:24px;color:#6B7689;margin-bottom:24px">We use this to match eligibility criteria on listings so you do not waste an evening on a role you cannot apply for.</p>
+
+          <label class="block mb-1.5" style="font-size:14px;line-height:20px;font-weight:500;color:#333B4A">Graduation year</label>
+          <div class="flex flex-wrap gap-2 mb-5">
+            <button class="chip" data-field="year" data-value="2025">2025</button>
+            <button class="chip" data-field="year" data-value="2026">2026</button>
+            <button class="chip" data-field="year" data-value="2027">2027</button>
+            <button class="chip" data-field="year" data-value="2028">2028</button>
+          </div>
+
+          <label class="block mb-1.5" style="font-size:14px;line-height:20px;font-weight:500;color:#333B4A">Study status</label>
+          <div class="space-y-2">
+            <button class="chip w-full text-left" data-field="status" data-value="Still studying" style="justify-content:flex-start">Still studying — I am looking for internships.</button>
+            <button class="chip w-full text-left" data-field="status" data-value="Final year" style="justify-content:flex-start">In my final year — looking for a full-time role.</button>
+            <button class="chip w-full text-left" data-field="status" data-value="Recently graduated" style="justify-content:flex-start">Recently graduated — actively applying.</button>
+            <button class="chip w-full text-left" data-field="status" data-value="Switching" style="justify-content:flex-start">Switching into a new field.</button>
+          </div>
+        </div>
+
+        <!-- STEP 3: Roles -->
+        <div class="step" data-step="3">
+          <h1 style="font-size:24px;line-height:32px;font-weight:600;color:#0F1420;margin-bottom:4px">Which roles are you curious about?</h1>
+          <p style="font-size:15px;line-height:24px;color:#6B7689;margin-bottom:24px">Pick up to five. We will build your feed, resources and shots around these.</p>
+
+          <div class="space-y-3">
+            <div>
+              <p style="font-size:11px;line-height:16px;font-weight:500;color:#9AA5BB;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px">Software</p>
+              <div class="flex flex-wrap gap-2">
+                <button class="chip" data-field="role" data-value="Software Engineer">Software Engineer</button>
+                <button class="chip" data-field="role" data-value="Frontend Developer">Frontend Developer</button>
+                <button class="chip" data-field="role" data-value="Backend Developer">Backend Developer</button>
+                <button class="chip" data-field="role" data-value="QA / Test Engineer">QA / Test Engineer</button>
+                <button class="chip" data-field="role" data-value="DevOps">DevOps</button>
+                <button class="chip" data-field="role" data-value="Mobile Developer">Mobile Developer</button>
+              </div>
+            </div>
+            <div>
+              <p style="font-size:11px;line-height:16px;font-weight:500;color:#9AA5BB;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px">Data</p>
+              <div class="flex flex-wrap gap-2">
+                <button class="chip" data-field="role" data-value="Data Analyst">Data Analyst</button>
+                <button class="chip" data-field="role" data-value="Data Engineer">Data Engineer</button>
+                <button class="chip" data-field="role" data-value="Business Analyst">Business Analyst</button>
+                <button class="chip" data-field="role" data-value="MIS Executive">MIS Executive</button>
+              </div>
+            </div>
+            <div>
+              <p style="font-size:11px;line-height:16px;font-weight:500;color:#9AA5BB;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px">Design and product</p>
+              <div class="flex flex-wrap gap-2">
+                <button class="chip" data-field="role" data-value="UX Designer">UX Designer</button>
+                <button class="chip" data-field="role" data-value="UI Designer">UI Designer</button>
+                <button class="chip" data-field="role" data-value="Product Analyst">Product Analyst</button>
+                <button class="chip" data-field="role" data-value="Technical Writer">Technical Writer</button>
+              </div>
+            </div>
+            <div>
+              <p style="font-size:11px;line-height:16px;font-weight:500;color:#9AA5BB;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px">Business and support</p>
+              <div class="flex flex-wrap gap-2">
+                <button class="chip" data-field="role" data-value="Product Support">Product Support</button>
+                <button class="chip" data-field="role" data-value="Customer Success">Customer Success</button>
+                <button class="chip" data-field="role" data-value="Operations Executive">Operations Executive</button>
+                <button class="chip" data-field="role" data-value="HR Associate">HR Associate</button>
+                <button class="chip" data-field="role" data-value="Sales Development">Sales Development</button>
+                <button class="chip" data-field="role" data-value="Finance Analyst">Finance Analyst</button>
+              </div>
+            </div>
+          </div>
+          <p id="roleCount" class="mt-3" style="font-size:13px;line-height:20px;color:#6B7689">0 of 5 selected</p>
+        </div>
+
+        <!-- STEP 4: Location -->
+        <div class="step" data-step="4">
+          <h1 style="font-size:24px;line-height:32px;font-weight:600;color:#0F1420;margin-bottom:4px">Where would you like to work?</h1>
+          <p style="font-size:15px;line-height:24px;color:#6B7689;margin-bottom:24px">We show openings in these places first, and never hide the ones that are remote.</p>
+
+          <label class="block mb-1.5" style="font-size:14px;line-height:20px;font-weight:500;color:#333B4A">Preferred cities</label>
+          <div class="flex flex-wrap gap-2 mb-5">
+            <button class="chip" data-field="city" data-value="Bengaluru">Bengaluru</button>
+            <button class="chip" data-field="city" data-value="Hyderabad">Hyderabad</button>
+            <button class="chip" data-field="city" data-value="Pune">Pune</button>
+            <button class="chip" data-field="city" data-value="Chennai">Chennai</button>
+            <button class="chip" data-field="city" data-value="Mumbai">Mumbai</button>
+            <button class="chip" data-field="city" data-value="Delhi NCR">Delhi NCR</button>
+            <button class="chip" data-field="city" data-value="Kolkata">Kolkata</button>
+            <button class="chip" data-field="city" data-value="Ahmedabad">Ahmedabad</button>
+            <button class="chip" data-field="city" data-value="Coimbatore">Coimbatore</button>
+            <button class="chip" data-field="city" data-value="Anywhere in India">Anywhere in India</button>
+          </div>
+
+          <label class="block mb-1.5" style="font-size:14px;line-height:20px;font-weight:500;color:#333B4A">Work style</label>
+          <div class="flex flex-wrap gap-2">
+            <button class="chip" data-field="workstyle" data-value="On-site">On-site</button>
+            <button class="chip" data-field="workstyle" data-value="Remote">Remote</button>
+            <button class="chip" data-field="workstyle" data-value="Hybrid">Hybrid</button>
+          </div>
+        </div>
+
+        <!-- STEP 5: Resume -->
+        <div class="step" data-step="5">
+          <h1 style="font-size:24px;line-height:32px;font-weight:600;color:#0F1420;margin-bottom:4px">Add your resume, or skip this</h1>
+          <p style="font-size:15px;line-height:24px;color:#6B7689;margin-bottom:24px">Optional. Having one on file lets us point out which of your listed skills a role is asking for.</p>
+
+          <div id="uploadArea" style="border:2px dashed #E2E7F0;border-radius:12px;padding:40px;text-align:center;cursor:pointer;transition:border-color 0.2s" onclick="document.getElementById('fileInput').click()">
+            <svg class="w-10 h-10 mx-auto mb-3" style="color:#CBD3E1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
+            <p style="font-size:14px;line-height:20px;color:#6B7689;margin-bottom:4px">Drop your resume here</p>
+            <p style="font-size:12px;line-height:18px;color:#9AA5BB">PDF or DOCX, up to 5 MB. We store it so you can download it later — we never send it to an employer for you.</p>
+            <p style="font-size:12px;line-height:18px;color:#9AA5BB;margin-top:8px">Browse files</p>
+          </div>
+          <input type="file" id="fileInput" accept=".pdf,.docx" class="hidden" onchange="handleFile(this)" />
+
+          <div id="fileInfo" class="hidden mt-4 p-4" style="background:#F5F7FB;border-radius:8px">
+            <div class="flex items-center gap-3">
+              <svg class="w-5 h-5 shrink-0" style="color:#3B62F6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+              <div class="flex-1 min-w-0">
+                <p id="fileName" style="font-size:14px;line-height:20px;font-weight:500;color:#0F1420;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></p>
+                <p style="font-size:12px;line-height:18px;color:#12A150">Uploaded just now</p>
+              </div>
+              <button onclick="removeFile()" style="font-size:12px;line-height:18px;color:#E5484D;border:none;background:none;cursor:pointer">Remove</button>
+            </div>
+          </div>
+
+          <label class="flex items-center gap-3 mt-5 cursor-pointer">
+            <input type="checkbox" id="weeklyDigest" style="width:18px;height:18px;border-radius:4px;border:1px solid #E2E7F0;accent-color:#3B62F6" />
+            <span style="font-size:13px;line-height:20px;color:#6B7689">Email me a weekly digest — five openings that match, every Monday morning. No other email from us.</span>
+          </label>
+        </div>
+
+        <!-- Success Screen -->
+        <div class="step" data-step="success">
+          <div class="text-center">
+            <div style="width:64px;height:64px;border-radius:9999px;background:#E8F8EE;display:flex;align-items:center;justify-content:center;margin:0 auto 20px">
+              <svg class="w-8 h-8" style="color:#12A150" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <h1 style="font-size:24px;line-height:32px;font-weight:600;color:#0F1420;margin-bottom:4px">You are set up!</h1>
+            <p id="successMsg" style="font-size:15px;line-height:24px;color:#6B7689;margin-bottom:24px"></p>
+            <div class="flex justify-center gap-6 mb-6">
+              <div class="text-center"><p style="font-size:24px;line-height:32px;font-weight:600;color:#0F1420">148</p><p style="font-size:11px;line-height:16px;color:#9AA5BB;text-transform:uppercase;letter-spacing:0.05em">openings</p></div>
+              <div class="text-center"><p style="font-size:24px;line-height:32px;font-weight:600;color:#0F1420">36</p><p style="font-size:11px;line-height:16px;color:#9AA5BB;text-transform:uppercase;letter-spacing:0.05em">resources</p></div>
+              <div class="text-center"><p style="font-size:24px;line-height:32px;font-weight:600;color:#0F1420">12</p><p style="font-size:11px;line-height:16px;color:#9AA5BB;text-transform:uppercase;letter-spacing:0.05em">shots</p></div>
+            </div>
+            <a href="home.html" class="block w-full" style="padding:10px 16px;font-size:14px;line-height:20px;font-weight:500;color:#FFFFFF;background:#3B62F6;border:none;border-radius:8px;cursor:pointer;text-align:center;text-decoration:none">Go to my feed</a>
+            <a href="roadmap.html" class="block w-full mt-3" style="padding:10px 16px;font-size:14px;line-height:20px;font-weight:500;color:#333B4A;background:#FFFFFF;border:1px solid #E2E7F0;border-radius:8px;cursor:pointer;text-align:center;text-decoration:none">Pick a roadmap first</a>
+          </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div id="navButtons" class="flex items-center gap-3 mt-8">
+          <button id="backBtn" onclick="prevStep()" style="display:none;padding:10px 20px;font-size:14px;line-height:20px;font-weight:500;color:#333B4A;background:#FFFFFF;border:1px solid #E2E7F0;border-radius:8px;cursor:pointer">Back</button>
+          <button id="nextBtn" onclick="nextStep()" style="flex:1;padding:10px 16px;font-size:14px;line-height:20px;font-weight:500;color:#FFFFFF;background:#3B62F6;border:none;border-radius:8px;cursor:pointer">Continue</button>
+          <button id="skipBtn" onclick="nextStep()" style="display:none;padding:10px 20px;font-size:14px;line-height:20px;font-weight:500;color:#6B7689;background:#FFFFFF;border:1px solid #E2E7F0;border-radius:8px;cursor:pointer">Skip for now</button>
+        </div>
+
+        <p id="selectedRoles" class="hidden mt-3" style="font-size:13px;line-height:20px;color:#6B7689"></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentStep = 1;
+    const totalSteps = 5;
+    const userData = {};
+
+    // Chip selection
+    document.querySelectorAll('.chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const field = chip.dataset.field;
+        const value = chip.dataset.value;
+
+        if (field === 'role') {
+          // Multi-select for roles (max 5)
+          chip.classList.toggle('selected');
+          const selected = document.querySelectorAll('.chip[data-field="role"].selected');
+          if (selected.length > 5) { chip.classList.remove('selected'); return; }
+          document.getElementById('roleCount').textContent = selected.length + ' of 5 selected';
+          userData.roles = Array.from(selected).map(c => c.dataset.value);
+        } else {
+          // Single-select for others
+          document.querySelectorAll(`.chip[data-field="${field}"]`).forEach(c => c.classList.remove('selected'));
+          chip.classList.add('selected');
+          userData[field] = value;
+        }
+      });
+    });
+
+    function updateUI() {
+      document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+      const step = document.querySelector(`.step[data-step="${currentStep}"]`);
+      if (step) { step.classList.add('active'); step.classList.remove('fade-in'); void step.offsetWidth; step.classList.add('fade-in'); }
+
+      document.getElementById('stepLabel').textContent = `Step ${currentStep} of ${totalSteps}`;
+      document.getElementById('progressBar').style.width = (currentStep / totalSteps * 100) + '%';
+      document.getElementById('backBtn').style.display = currentStep > 1 ? '' : 'none';
+
+      // Show skip on step 5
+      document.getElementById('skipBtn').style.display = currentStep === 5 ? '' : 'none';
+      document.getElementById('nextBtn').style.display = currentStep === 5 ? 'none' : '';
+      document.getElementById('navButtons').style.display = currentStep <= totalSteps ? 'flex' : 'none';
+    }
+
+    function nextStep() {
+      // Save name from step 1
+      if (currentStep === 1) {
+        const nameInput = document.getElementById('nameInput');
+        if (nameInput && nameInput.value.trim()) userData.name = nameInput.value.trim();
+      }
+      if (currentStep < totalSteps) {
+        currentStep++;
+        updateUI();
+      } else {
+        finishOnboarding();
+      }
+    }
+
+    function prevStep() {
+      if (currentStep > 1) { currentStep--; updateUI(); }
+    }
+
+    function finishOnboarding() {
+      // Save to localStorage
+      localStorage.setItem('careerCafeUser', JSON.stringify(userData));
+
+      // Show success
+      document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+      const successStep = document.querySelector('.step[data-step="success"]');
+      successStep.classList.add('active');
+      document.getElementById('navButtons').style.display = 'none';
+      document.getElementById('stepLabel').textContent = 'Done';
+      document.getElementById('progressBar').style.width = '100%';
+
+      const name = userData.name || 'You';
+      const firstName = name.split(' ')[0];
+      const roles = userData.roles ? userData.roles.join(', ') : 'Software Engineer';
+      document.getElementById('successMsg').textContent = `We found openings that match a ${userData.year || '2026'} ${userData.degree || 'B.Tech'} graduate looking at ${roles} roles${userData.city ? ' in ' + userData.city : ''}.`;
+    }
+
+    function handleFile(input) {
+      const file = input.files[0];
+      if (file) {
+        document.getElementById('fileName').textContent = file.name;
+        document.getElementById('fileInfo').classList.remove('hidden');
+        document.getElementById('uploadArea').style.borderColor = '#12A150';
+      }
+    }
+
+    function removeFile() {
+      document.getElementById('fileInput').value = '';
+      document.getElementById('fileInfo').classList.add('hidden');
+      document.getElementById('uploadArea').style.borderColor = '#E2E7F0';
+    }
+
+    // Save and exit
+    document.getElementById('saveExitBtn').addEventListener('click', () => {
+      localStorage.setItem('careerCafeUser', JSON.stringify(userData));
+      window.location.href = 'home.html';
+    });
+  </script>
+  <script src="personalize.js"></script>
+</body>
+</html>

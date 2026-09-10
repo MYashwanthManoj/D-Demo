@@ -5,6 +5,12 @@ const prisma = new PrismaClient()
 async function main() {
   console.log('Start seeding...')
 
+  const existingCount = await prisma.roadmap.count()
+  if (existingCount > 0) {
+    console.log('Database already has content. Skipping seed.')
+    return
+  }
+
   // Seed a Super Admin
   const superAdmin = await prisma.user.upsert({
     where: { email: 'admin@careercafe.com' },

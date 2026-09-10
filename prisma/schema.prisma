@@ -1,6 +1,6 @@
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 generator client {
@@ -24,7 +24,6 @@ model User {
   auditLogs       AuditLog[] // Actions performed by this user (if admin)
 }
 
-// Enums are not supported in SQLite, represented as String
 // Role: USER, SUPER_ADMIN, CONTENT_ADMIN, MODERATOR, ANALYST, SUPPORT_ADMIN
 // UserStatus: ACTIVE, SUSPENDED, DELETED
 
@@ -38,7 +37,7 @@ model Job {
   experienceReq      String
   salary             String?
   employmentType     String
-  skills             String // Stored as comma-separated string for SQLite
+  skills             String // Stored as comma-separated string
   description        String
   requirements       String
   responsibilities   String

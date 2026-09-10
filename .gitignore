@@ -30,10 +30,8 @@ yarn-error.log*
 .env*.local
 .env.local
 
-# database
-*.db
+# database (journal files only — dev.db is committed intentionally)
 *.db-journal
-prisma/*.db
 prisma/*.db-journal
 
 # local settings

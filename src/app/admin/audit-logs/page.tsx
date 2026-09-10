@@ -1,6 +1,8 @@
 import prisma from "@/lib/prisma"
 import { History, Search } from "lucide-react"
 
+export const dynamic = 'force-dynamic'
+
 export const metadata = {
   title: "Audit Logs — Admin | Career Cafe"
 }
@@ -14,7 +16,7 @@ export default async function AdminAuditLogsPage() {
       }
     },
     take: 100 // Limit to recent 100 logs for performance
-  })
+  }).catch(() => [])
 
   return (
     <div className="space-y-6">

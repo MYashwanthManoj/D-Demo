@@ -2,6 +2,8 @@ import prisma from "@/lib/prisma"
 import Link from "next/link"
 import { Plus, MoreVertical } from "lucide-react"
 
+export const dynamic = 'force-dynamic'
+
 export const metadata = {
   title: "Videos Management — Admin | Career Cafe"
 }
@@ -9,7 +11,7 @@ export const metadata = {
 export default async function AdminVideosPage() {
   const videos = await prisma.video.findMany({
     orderBy: { createdAt: 'desc' }
-  })
+  }).catch(() => [])
 
   return (
     <div className="space-y-6">

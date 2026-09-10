@@ -2,6 +2,8 @@ import prisma from "@/lib/prisma"
 import Link from "next/link"
 import ModerationActions from "./ModerationActions"
 
+export const dynamic = 'force-dynamic'
+
 export const metadata = {
   title: "Moderation Queue — Admin | Career Cafe"
 }
@@ -11,7 +13,7 @@ export default async function ModerationQueuePage() {
     where: { verificationStatus: "PENDING_REVIEW" },
     include: { company: true },
     orderBy: { postedDate: 'asc' }
-  })
+  }).catch(() => [])
 
   return (
     <div className="space-y-6">

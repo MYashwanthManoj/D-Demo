@@ -1,6 +1,8 @@
 import prisma from "@/lib/prisma"
 import { Map, Plus, MoreVertical } from "lucide-react"
 
+export const dynamic = 'force-dynamic'
+
 export const metadata = {
   title: "Roadmaps Management — Admin | Career Cafe"
 }
@@ -11,7 +13,7 @@ export default async function AdminRoadmapsPage() {
     include: {
       stages: true
     }
-  })
+  }).catch(() => [])
 
   return (
     <div className="space-y-6">

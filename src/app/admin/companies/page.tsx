@@ -1,6 +1,8 @@
 import prisma from "@/lib/prisma"
 import { Building2, Plus, MoreVertical } from "lucide-react"
 
+export const dynamic = 'force-dynamic'
+
 export const metadata = {
   title: "Companies Management — Admin | Career Cafe"
 }
@@ -13,7 +15,7 @@ export default async function AdminCompaniesPage() {
         select: { jobs: true }
       }
     }
-  })
+  }).catch(() => [])
 
   return (
     <div className="space-y-6">

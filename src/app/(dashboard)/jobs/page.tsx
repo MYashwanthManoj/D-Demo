@@ -2,6 +2,8 @@ import prisma from "@/lib/prisma"
 import Link from "next/link"
 import JobFilters from "@/components/jobs/JobFilters"
 
+export const dynamic = 'force-dynamic'
+
 export const metadata = {
   title: "Job openings — Career Cafe",
 }

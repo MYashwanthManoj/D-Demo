@@ -97,13 +97,10 @@
       <h1 class="mb-6 max-w-3xl mx-auto" style="font-size:clamp(34px,8.5vw,56px);line-height:1.08;font-weight:600;letter-spacing:-0.02em;color:#0F1420">Find the job you <span class="text-gradient">deserve</span></h1>
       <p class="max-w-[560px] mx-auto mb-10" style="font-size:clamp(15px,4.2vw,17px);line-height:1.6;font-weight:400;color:#6B7689">Curated openings from companies that hire graduates. Honest resources and sixty-second explainers — all free.</p>
 
-      <!-- Search Bar -->
-      <div class="max-w-[640px] mx-auto mb-6">
-        <div class="search-bar">
-          <svg class="w-5 h-5 ml-4 shrink-0" style="color:#9AA5BB" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-          <input type="text" placeholder="Search roles, companies, skills" />
-          <button class="btn-primary m-1.5" style="padding:8px 16px">Search</button>
-        </div>
+      <!-- Action Buttons -->
+      <div class="max-w-[640px] mx-auto mb-6 flex flex-wrap justify-center gap-4">
+        <a href="jobs.html" class="btn-primary" style="padding:12px 28px; font-size:16px;">View Jobs</a>
+        <a href="resources.html" class="btn-secondary" style="padding:12px 28px; font-size:16px;">Resources</a>
       </div>
 
       <!-- Quick Tags -->
@@ -141,41 +138,61 @@
     </div>
   </section>
 
-  <!-- ==================== WHAT WE WILL NEVER DO ==================== -->
-  <section class="py-20 px-6" style="background:#0F1420">
-    <div class="max-w-[1200px] mx-auto">
-      <p class="type-overline mb-3" style="color:#93AEFF">Our promise</p>
-      <h2 class="mb-3" style="font-size:36px;line-height:44px;font-weight:600;color:#FFFFFF">What we will never do</h2>
-      <p class="max-w-[480px] mb-14" style="font-size:17px;line-height:28px;color:#93AEFF">We filter out everything you cannot realistically get</p>
+  <!-- ==================== WHAT WE GIVE ==================== -->
+  <section class="relative py-24 px-6 overflow-hidden bg-[#0F1420]">
+    <!-- Ambient background glow -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-br from-[#3B62F6] to-[#12A150] opacity-[0.04] blur-[100px] rounded-full pointer-events-none"></div>
+    
+    <div class="relative max-w-[1200px] mx-auto z-10">
+      <h2 class="mb-14 text-center" style="font-size:42px;line-height:1.2;font-weight:700;color:#FFFFFF;letter-spacing:-0.02em;">What you can expect from us</h2>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-        <div class="card-dark p-6">
-          <div class="w-10 h-10 flex items-center justify-center mb-4" style="background:rgba(59,98,246,0.10);border-radius:8px">
-            <svg class="w-5 h-5" style="color:#6087FB" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Card 1 -->
+        <div class="relative group p-7 rounded-2xl bg-white/[0.02] backdrop-blur-xl border border-white/[0.08] hover:bg-white/[0.05] hover:border-white/[0.15] transition-all duration-500 transform hover:-translate-y-2 hover:shadow-[0_12px_40px_rgba(59,98,246,0.1)]">
+          <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+          <div class="relative z-10">
+            <div class="w-14 h-14 flex items-center justify-center mb-6 rounded-xl bg-gradient-to-br from-[#3B62F6]/20 to-[#3B62F6]/5 border border-[#3B62F6]/30 group-hover:scale-110 transition-transform duration-500 shadow-[0_0_20px_rgba(59,98,246,0.1)]">
+              <svg class="w-6 h-6 text-[#6087FB]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+            </div>
+            <h3 class="mb-3 text-[20px] font-semibold text-white tracking-tight">100% Merit-Based</h3>
+            <p class="text-[15px] leading-relaxed text-[#93AEFF]/80 group-hover:text-[#93AEFF] transition-colors duration-300">Companies cannot buy a higher position. You only see what matches your profile.</p>
           </div>
-          <h3 class="mb-2" style="font-size:17px;line-height:24px;font-weight:500;color:#FFFFFF">No paid placements</h3>
-          <p style="font-size:13px;line-height:20px;color:#93AEFF">A company cannot buy a higher position in your results. Ever.</p>
         </div>
-        <div class="card-dark p-6">
-          <div class="w-10 h-10 flex items-center justify-center mb-4" style="background:rgba(18,161,80,0.10);border-radius:8px">
-            <svg class="w-5 h-5" style="color:#12A150" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+
+        <!-- Card 2 -->
+        <div class="relative group p-7 rounded-2xl bg-white/[0.02] backdrop-blur-xl border border-white/[0.08] hover:bg-white/[0.05] hover:border-white/[0.15] transition-all duration-500 transform hover:-translate-y-2 hover:shadow-[0_12px_40px_rgba(18,161,80,0.1)]">
+          <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+          <div class="relative z-10">
+            <div class="w-14 h-14 flex items-center justify-center mb-6 rounded-xl bg-gradient-to-br from-[#12A150]/20 to-[#12A150]/5 border border-[#12A150]/30 group-hover:scale-110 transition-transform duration-500 shadow-[0_0_20px_rgba(18,161,80,0.1)]">
+              <svg class="w-6 h-6 text-[#12A150]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            </div>
+            <h3 class="mb-3 text-[20px] font-semibold text-white tracking-tight">Complete Privacy</h3>
+            <p class="text-[15px] leading-relaxed text-[#93AEFF]/80 group-hover:text-[#93AEFF] transition-colors duration-300">Your profile stays entirely with us. Recruiters do not get access to your contact list.</p>
           </div>
-          <h3 class="mb-2" style="font-size:17px;line-height:24px;font-weight:500;color:#FFFFFF">No selling your data</h3>
-          <p style="font-size:13px;line-height:20px;color:#93AEFF">Your profile stays with us. Recruiters do not get a contact list.</p>
         </div>
-        <div class="card-dark p-6">
-          <div class="w-10 h-10 flex items-center justify-center mb-4" style="background:rgba(217,136,0,0.10);border-radius:8px">
-            <svg class="w-5 h-5" style="color:#D98800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+
+        <!-- Card 3 -->
+        <div class="relative group p-7 rounded-2xl bg-white/[0.02] backdrop-blur-xl border border-white/[0.08] hover:bg-white/[0.05] hover:border-white/[0.15] transition-all duration-500 transform hover:-translate-y-2 hover:shadow-[0_12px_40px_rgba(217,136,0,0.1)]">
+          <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+          <div class="relative z-10">
+            <div class="w-14 h-14 flex items-center justify-center mb-6 rounded-xl bg-gradient-to-br from-[#D98800]/20 to-[#D98800]/5 border border-[#D98800]/30 group-hover:scale-110 transition-transform duration-500 shadow-[0_0_20px_rgba(217,136,0,0.1)]">
+              <svg class="w-6 h-6 text-[#D98800]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <h3 class="mb-3 text-[20px] font-semibold text-white tracking-tight">Honest Insights</h3>
+            <p class="text-[15px] leading-relaxed text-[#93AEFF]/80 group-hover:text-[#93AEFF] transition-colors duration-300">No countdown timers, no fake viewer counts, and absolutely no invented scarcity.</p>
           </div>
-          <h3 class="mb-2" style="font-size:17px;line-height:24px;font-weight:500;color:#FFFFFF">No fake urgency</h3>
-          <p style="font-size:13px;line-height:20px;color:#93AEFF">No countdown timers, no "37 people viewing", no invented scarcity.</p>
         </div>
-        <div class="card-dark p-6">
-          <div class="w-10 h-10 flex items-center justify-center mb-4" style="background:rgba(229,72,77,0.10);border-radius:8px">
-            <svg class="w-5 h-5" style="color:#E5484D" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/></svg>
+
+        <!-- Card 4 -->
+        <div class="relative group p-7 rounded-2xl bg-white/[0.02] backdrop-blur-xl border border-white/[0.08] hover:bg-white/[0.05] hover:border-white/[0.15] transition-all duration-500 transform hover:-translate-y-2 hover:shadow-[0_12px_40px_rgba(229,72,77,0.1)]">
+          <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+          <div class="relative z-10">
+            <div class="w-14 h-14 flex items-center justify-center mb-6 rounded-xl bg-gradient-to-br from-[#E5484D]/20 to-[#E5484D]/5 border border-[#E5484D]/30 group-hover:scale-110 transition-transform duration-500 shadow-[0_0_20px_rgba(229,72,77,0.1)]">
+              <svg class="w-6 h-6 text-[#E5484D]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/></svg>
+            </div>
+            <h3 class="mb-3 text-[20px] font-semibold text-white tracking-tight">Always Free</h3>
+            <p class="text-[15px] leading-relaxed text-[#93AEFF]/80 group-hover:text-[#93AEFF] transition-colors duration-300">Every part of Career Cafe is completely free for students and graduates forever.</p>
           </div>
-          <h3 class="mb-2" style="font-size:17px;line-height:24px;font-weight:500;color:#FFFFFF">No paywall</h3>
-          <p style="font-size:13px;line-height:20px;color:#93AEFF">Every part of Career Cafe is free for students and graduates.</p>
         </div>
       </div>
     </div>
@@ -188,212 +205,27 @@
       <h2 class="mb-3" style="font-size:36px;line-height:44px;font-weight:600;color:#0F1420">How it works</h2>
       <p class="max-w-[480px] mb-14" style="font-size:17px;line-height:28px;color:#6B7689">Four steps, about ten minutes</p>
 
-      <div class="grid md:grid-cols-4 gap-10">
-        <div>
-          <div class="font-semibold mb-4 text-gradient" style="font-size:40px;line-height:44px">01</div>
-          <h3 class="mb-3" style="font-size:20px;line-height:28px;font-weight:600;color:#0F1420">Tell us your year and the roles you are curious about</h3>
-          <p style="font-size:15px;line-height:24px;color:#6B7689">We ask five short questions — course, graduation year, roles, location and work preference. No resume upload required to start.</p>
+      <div class="grid md:grid-cols-4 gap-6">
+        <div class="p-8 rounded-2xl bg-[#EFF4FF] border border-[#DCE6FF] shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_12px_30px_rgba(59,98,246,0.08)] hover:border-[#3B62F6]/30 transition-all duration-300 transform hover:-translate-y-1 group">
+          <div class="font-bold mb-5 text-gradient inline-block group-hover:scale-110 transition-transform duration-300" style="font-size:48px;line-height:48px">01</div>
+          <h3 class="mb-3 text-[19px] font-semibold leading-tight text-[#0F1420]">Tell us your year and the roles you are curious about</h3>
+          <p class="text-[15px] leading-relaxed text-[#6B7689]">We ask five short questions — course, graduation year, roles, location and work preference. No resume upload required to start.</p>
         </div>
-        <div>
-          <div class="font-semibold mb-4 text-gradient" style="font-size:40px;line-height:44px">02</div>
-          <h3 class="mb-3" style="font-size:20px;line-height:28px;font-weight:600;color:#0F1420">Browse openings you can actually get</h3>
-          <p style="font-size:15px;line-height:24px;color:#6B7689">We pull verified openings from established companies and mark the ones that genuinely accept freshers.</p>
+        <div class="p-8 rounded-2xl bg-[#EFF4FF] border border-[#DCE6FF] shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_12px_30px_rgba(59,98,246,0.08)] hover:border-[#3B62F6]/30 transition-all duration-300 transform hover:-translate-y-1 group">
+          <div class="font-bold mb-5 text-gradient inline-block group-hover:scale-110 transition-transform duration-300" style="font-size:48px;line-height:48px">02</div>
+          <h3 class="mb-3 text-[19px] font-semibold leading-tight text-[#0F1420]">Browse openings you can actually get</h3>
+          <p class="text-[15px] leading-relaxed text-[#6B7689]">We pull verified openings from established companies and mark the ones that genuinely accept freshers.</p>
         </div>
-        <div>
-          <div class="font-semibold mb-4 text-gradient" style="font-size:40px;line-height:44px">03</div>
-          <h3 class="mb-3" style="font-size:20px;line-height:28px;font-weight:600;color:#0F1420">Understand the role before you spend an evening on it</h3>
-          <p style="font-size:15px;line-height:24px;color:#6B7689">Open a one-minute shot to hear what the work involves, then read the resources attached to that exact role.</p>
+        <div class="p-8 rounded-2xl bg-[#EFF4FF] border border-[#DCE6FF] shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_12px_30px_rgba(59,98,246,0.08)] hover:border-[#3B62F6]/30 transition-all duration-300 transform hover:-translate-y-1 group">
+          <div class="font-bold mb-5 text-gradient inline-block group-hover:scale-110 transition-transform duration-300" style="font-size:48px;line-height:48px">03</div>
+          <h3 class="mb-3 text-[19px] font-semibold leading-tight text-[#0F1420]">Understand the role before you spend an evening on it</h3>
+          <p class="text-[15px] leading-relaxed text-[#6B7689]">Open a one-minute shot to hear what the work involves, then read the resources attached to that exact role.</p>
         </div>
-        <div>
-          <div class="font-semibold mb-4 text-gradient" style="font-size:40px;line-height:44px">04</div>
-          <h3 class="mb-3" style="font-size:20px;line-height:28px;font-weight:600;color:#0F1420">Apply on the company's own site</h3>
-          <p style="font-size:15px;line-height:24px;color:#6B7689">We hand you off to the employer's application page. Save the listing here to keep track.</p>
+        <div class="p-8 rounded-2xl bg-[#EFF4FF] border border-[#DCE6FF] shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_12px_30px_rgba(59,98,246,0.08)] hover:border-[#3B62F6]/30 transition-all duration-300 transform hover:-translate-y-1 group">
+          <div class="font-bold mb-5 text-gradient inline-block group-hover:scale-110 transition-transform duration-300" style="font-size:48px;line-height:48px">04</div>
+          <h3 class="mb-3 text-[19px] font-semibold leading-tight text-[#0F1420]">Apply on the company's own site</h3>
+          <p class="text-[15px] leading-relaxed text-[#6B7689]">We hand you off to the employer's application page. Save the listing here to keep track.</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== JOB LISTINGS ==================== -->
-  <section id="jobs" class="py-20 px-6" style="background:#FBFCFE">
-    <div class="max-w-[1200px] mx-auto">
-      <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-8">
-        <div>
-          <p class="type-overline mb-3" style="color:#3B62F6">What you get</p>
-          <h2 class="mb-2" style="font-size:30px;line-height:38px;font-weight:600;color:#0F1420">Every graduate opening, in one place</h2>
-          <p style="font-size:15px;line-height:24px;color:#6B7689">Only openings asking for 0–2 years of experience. Refreshed at 8 am today.</p>
-        </div>
-        <a href="#" class="mt-4 md:mt-0 text-label flex items-center gap-1" style="color:#3B62F6">
-          Browse all openings
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-        </a>
-      </div>
-
-      <!-- Filter Pills -->
-      <div class="flex flex-wrap gap-2 mb-8">
-        <button class="filter-pill active" data-filter="all">All roles</button>
-        <button class="filter-pill" data-filter="software">Software</button>
-        <button class="filter-pill" data-filter="data">Data</button>
-        <button class="filter-pill" data-filter="design">Design</button>
-        <button class="filter-pill" data-filter="support">Support</button>
-        <button class="filter-pill" data-filter="marketing">Marketing</button>
-        <button class="filter-pill" data-filter="finance">Finance</button>
-      </div>
-
-      <!-- Job Cards -->
-      <div id="jobListings" class="space-y-3">
-        <div class="job-card" data-category="software">
-          <div class="flex items-start gap-4">
-            <div class="company-avatar" style="background:#EFF4FF;color:#2549E0">IN</div>
-            <div class="flex-1 min-w-0">
-              <div class="flex items-start justify-between gap-4">
-                <div>
-                  <h3 style="font-size:17px;line-height:24px;font-weight:500;color:#0F1420">Associate Software Engineer</h3>
-                  <p style="font-size:15px;line-height:24px;color:#6B7689;margin-top:2px">Infosys · Bengaluru, India</p>
-                </div>
-                <button class="bookmark-btn shrink-0" aria-label="Save job">
-                  <svg class="w-5 h-5" style="color:#9AA5BB" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
-                </button>
-              </div>
-              <div class="flex flex-wrap gap-1.5 mt-3">
-                <span class="tag tag-default">Full-time</span>
-                <span class="tag tag-default">0–2 yrs</span>
-                <span class="tag tag-default">Hybrid</span>
-                <span class="tag tag-success">₹6–9 LPA</span>
-              </div>
-              <p style="font-size:12px;line-height:18px;color:#9AA5BB;margin-top:12px">Posted 4 hours ago</p>
-            </div>
-            <a href="job.html" class="hidden md:inline-flex btn-ghost shrink-0" style="padding:8px 14px">View role</a>
-          </div>
-        </div>
-
-        <div class="job-card" data-category="data">
-          <div class="flex items-start gap-4">
-            <div class="company-avatar" style="background:#EEF1F7;color:#4E586B">DE</div>
-            <div class="flex-1 min-w-0">
-              <div class="flex items-start justify-between gap-4">
-                <div>
-                  <h3 style="font-size:17px;line-height:24px;font-weight:500;color:#0F1420">Graduate Data Analyst</h3>
-                  <p style="font-size:15px;line-height:24px;color:#6B7689;margin-top:2px">Deloitte · Hyderabad, India</p>
-                </div>
-                <button class="bookmark-btn shrink-0" aria-label="Save job">
-                  <svg class="w-5 h-5" style="color:#9AA5BB" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
-                </button>
-              </div>
-              <div class="flex flex-wrap gap-1.5 mt-3">
-                <span class="tag tag-default">Full-time</span>
-                <span class="tag tag-default">0–1 yrs</span>
-                <span class="tag tag-default">Hybrid</span>
-                <span class="tag tag-success">₹7–10 LPA</span>
-              </div>
-              <p style="font-size:12px;line-height:18px;color:#9AA5BB;margin-top:12px">Posted yesterday</p>
-            </div>
-            <a href="job.html" class="hidden md:inline-flex btn-ghost shrink-0" style="padding:8px 14px">View role</a>
-          </div>
-        </div>
-
-        <div class="job-card" data-category="support">
-          <div class="flex items-start gap-4">
-            <div class="company-avatar" style="background:#EEF1F7;color:#4E586B">ZO</div>
-            <div class="flex-1 min-w-0">
-              <div class="flex items-start justify-between gap-4">
-                <div>
-                  <h3 style="font-size:17px;line-height:24px;font-weight:500;color:#0F1420">Product Support Associate</h3>
-                  <p style="font-size:15px;line-height:24px;color:#6B7689;margin-top:2px">Zoho · Chennai, India</p>
-                </div>
-                <button class="bookmark-btn shrink-0" aria-label="Save job">
-                  <svg class="w-5 h-5" style="color:#9AA5BB" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
-                </button>
-              </div>
-              <div class="flex flex-wrap gap-1.5 mt-3">
-                <span class="tag tag-default">Full-time</span>
-                <span class="tag tag-default">Freshers</span>
-                <span class="tag tag-default">On-site</span>
-                <span class="tag tag-success">₹4.5–6 LPA</span>
-              </div>
-              <p style="font-size:12px;line-height:18px;color:#9AA5BB;margin-top:12px">Posted 2 days ago</p>
-            </div>
-            <a href="job.html" class="hidden md:inline-flex btn-ghost shrink-0" style="padding:8px 14px">View role</a>
-          </div>
-        </div>
-
-        <div class="job-card" data-category="software">
-          <div class="flex items-start gap-4">
-            <div class="company-avatar" style="background:#EEF1F7;color:#4E586B">FW</div>
-            <div class="flex-1 min-w-0">
-              <div class="flex items-start justify-between gap-4">
-                <div>
-                  <h3 style="font-size:17px;line-height:24px;font-weight:500;color:#0F1420">Frontend Developer (Fresher)</h3>
-                  <p style="font-size:15px;line-height:24px;color:#6B7689;margin-top:2px">Freshworks · Chennai, India</p>
-                </div>
-                <button class="bookmark-btn shrink-0" aria-label="Save job">
-                  <svg class="w-5 h-5" style="color:#9AA5BB" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
-                </button>
-              </div>
-              <div class="flex flex-wrap gap-1.5 mt-3">
-                <span class="tag tag-default">Full-time</span>
-                <span class="tag tag-default">Freshers</span>
-                <span class="tag tag-default">On-site</span>
-                <span class="tag tag-success">₹8–11 LPA</span>
-              </div>
-              <p style="font-size:12px;line-height:18px;color:#9AA5BB;margin-top:12px">Posted 9 hours ago</p>
-            </div>
-            <a href="job.html" class="hidden md:inline-flex btn-ghost shrink-0" style="padding:8px 14px">View role</a>
-          </div>
-        </div>
-
-        <div class="job-card" data-category="software">
-          <div class="flex items-start gap-4">
-            <div class="company-avatar" style="background:#EEF1F7;color:#4E586B">TC</div>
-            <div class="flex-1 min-w-0">
-              <div class="flex items-start justify-between gap-4">
-                <div>
-                  <h3 style="font-size:17px;line-height:24px;font-weight:500;color:#0F1420">Graduate Analyst</h3>
-                  <p style="font-size:15px;line-height:24px;color:#6B7689;margin-top:2px">TCS · Pune, India</p>
-                </div>
-                <button class="bookmark-btn shrink-0" aria-label="Save job">
-                  <svg class="w-5 h-5" style="color:#9AA5BB" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
-                </button>
-              </div>
-              <div class="flex flex-wrap gap-1.5 mt-3">
-                <span class="tag tag-default">Full-time</span>
-                <span class="tag tag-default">0–2 yrs</span>
-                <span class="tag tag-default">On-site</span>
-                <span class="tag tag-success">₹6–8 LPA</span>
-              </div>
-              <p style="font-size:12px;line-height:18px;color:#9AA5BB;margin-top:12px">Posted 3 days ago</p>
-            </div>
-            <a href="job.html" class="hidden md:inline-flex btn-ghost shrink-0" style="padding:8px 14px">View role</a>
-          </div>
-        </div>
-
-        <div class="job-card" data-category="software">
-          <div class="flex items-start gap-4">
-            <div class="company-avatar" style="background:#EEF1F7;color:#4E586B">WI</div>
-            <div class="flex-1 min-w-0">
-              <div class="flex items-start justify-between gap-4">
-                <div>
-                  <h3 style="font-size:17px;line-height:24px;font-weight:500;color:#0F1420">Junior QA Engineer</h3>
-                  <p style="font-size:15px;line-height:24px;color:#6B7689;margin-top:2px">Wipro · Pune, India</p>
-                </div>
-                <button class="bookmark-btn shrink-0" aria-label="Save job">
-                  <svg class="w-5 h-5" style="color:#9AA5BB" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
-                </button>
-              </div>
-              <div class="flex flex-wrap gap-1.5 mt-3">
-                <span class="tag tag-default">Full-time</span>
-                <span class="tag tag-default">0–2 yrs</span>
-                <span class="tag tag-default">Hybrid</span>
-                <span class="tag tag-success">₹5–7 LPA</span>
-              </div>
-              <p style="font-size:12px;line-height:18px;color:#9AA5BB;margin-top:12px">Posted 2 days ago</p>
-            </div>
-            <a href="job.html" class="hidden md:inline-flex btn-ghost shrink-0" style="padding:8px 14px">View role</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="text-center mt-8">
-        <button class="btn-secondary">Load more openings</button>
       </div>
     </div>
   </section>
@@ -661,49 +493,6 @@
           <div class="p-4">
             <h3 style="font-size:14px;line-height:20px;font-weight:500;color:#0F1420">Reading a job description properly</h3>
             <p style="font-size:12px;line-height:18px;color:#9AA5BB;margin-top:4px">Career Cafe · 48K views</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== TESTIMONIALS ==================== -->
-  <section class="py-20 px-6" style="background:#EFF4FF">
-    <div class="max-w-[1200px] mx-auto">
-      <p class="type-overline mb-3" style="color:#3B62F6">From students</p>
-      <h2 class="mb-12" style="font-size:36px;line-height:44px;font-weight:600;color:#0F1420">People who were exactly where you are</h2>
-
-      <div class="grid md:grid-cols-3 gap-5">
-        <div class="testimonial">
-          <p style="font-size:15px;line-height:24px;color:#4E586B;margin-bottom:24px">"I found my first internship here in three weeks. The one-minute shots told me what the job was actually like before I applied."</p>
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 flex items-center justify-center rounded-full" style="background:#DCE6FF;font-size:14px;font-weight:500;color:#2549E0">PS</div>
-            <div>
-              <p style="font-size:14px;line-height:20px;font-weight:500;color:#0F1420">Priya Sharma</p>
-              <p style="font-size:12px;line-height:18px;color:#9AA5BB">B.Tech 2026 · Now at Zoho</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonial">
-          <p style="font-size:15px;line-height:24px;color:#4E586B;margin-bottom:24px">"The roadmap gave my last semester a shape. I stopped collecting random courses and finished one track properly."</p>
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 flex items-center justify-center rounded-full" style="background:#EEF1F7;font-size:14px;font-weight:500;color:#4E586B">AK</div>
-            <div>
-              <p style="font-size:14px;line-height:20px;font-weight:500;color:#0F1420">Aditya Kulkarni</p>
-              <p style="font-size:12px;line-height:18px;color:#9AA5BB">BCA 2025 · Frontend Developer</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonial">
-          <p style="font-size:15px;line-height:24px;color:#4E586B;margin-bottom:24px">"No premium wall, no recruiters messaging me. It just showed me openings I was actually eligible for."</p>
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 flex items-center justify-center rounded-full" style="background:#EEF1F7;font-size:14px;font-weight:500;color:#4E586B">RM</div>
-            <div>
-              <p style="font-size:14px;line-height:20px;font-weight:500;color:#0F1420">Riya Menon</p>
-              <p style="font-size:12px;line-height:18px;color:#9AA5BB">M.Sc 2026 · Data Analyst</p>
-            </div>
           </div>
         </div>
       </div>

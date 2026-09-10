@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard - Career Cafe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { inter: ['Inter', 'sans-serif'] },
+          colors: {
+            brand: {
+              50: '#EFF4FF', 100: '#DCE6FF', 200: '#BFD0FF', 300: '#93AEFF',
+              400: '#6087FB', 500: '#3B62F6', 600: '#2549E0', 700: '#1B37B5',
+              800: '#152C88', 900: '#10265E',
+            },
+            navy: {
+              900: '#0F1420', 800: '#1E2533', 700: '#333B4A',
+              600: '#4E586B', 500: '#6B7689', 400: '#9AA5BB',
+              300: '#CBD3E1', 200: '#E2E7F0', 100: '#EEF1F7',
+              50: '#F5F7FB', 25: '#FBFCFE',
+            },
+            success: { 50: '#E8F8EE', 500: '#12A150', 700: '#0B7038' },
+            warning: { 50: '#FFF6E5', 500: '#D98800', 700: '#9A6100' },
+            danger:  { 50: '#FEECEB', 500: '#E5484D', 700: '#B4272B' },
+          },
+          borderRadius: {
+            'xs': '3px', 'sm': '4px', 'md': '8px',
+            'lg': '12px', 'xl': '16px', '2xl': '24px', '3xl': '32px',
+          },
+          boxShadow: {
+            'elevation-1': '0 1px 2px rgba(15, 20, 32, 0.05)',
+            'elevation-2': '0 2px 8px rgba(15, 20, 32, 0.08)',
+            'elevation-3': '0 4px 16px rgba(15, 20, 32, 0.10)',
+            'elevation-4': '0 8px 32px rgba(15, 20, 32, 0.12)',
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    /* Custom scrollbar for data tables */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F5F7FB; 
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #CBD3E1; 
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #9AA5BB; 
+    }
+    .modal-enter { opacity: 0; transform: scale(0.95); }
+    .modal-enter-active { opacity: 1; transform: scale(1); transition: opacity 200ms ease-out, transform 200ms ease-out; }
+    .modal-exit { opacity: 1; transform: scale(1); }
+    .modal-exit-active { opacity: 0; transform: scale(0.95); transition: opacity 150ms ease-in, transform 150ms ease-in; }
+    .slide-enter { transform: translateX(100%); }
+    .slide-enter-active { transform: translateX(0); transition: transform 300ms ease-out; }
+    .slide-exit { transform: translateX(0); }
+    .slide-exit-active { transform: translateX(100%); transition: transform 300ms ease-in; }
+    .toast-enter { transform: translateY(100%); opacity: 0; }
+    .toast-enter-active { transform: translateY(0); opacity: 1; transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1); }
+    .toast-exit { opacity: 0; transition: opacity 300ms ease; }
+    
+    .nav-active {
+        background-color: #EFF4FF;
+        color: #3B62F6 !important;
+    }
+  </style>
+</head>
+<body class="font-inter antialiased bg-[#F8FAFC] text-navy-800 flex h-screen overflow-hidden">
+
+  <!-- Mobile Overlay -->
+  <div id="mobile-overlay" class="fixed inset-0 bg-navy-900/20 backdrop-blur-sm z-40 hidden transition-opacity opacity-0"></div>
+
+  <!-- Sidebar -->
+  <aside id="sidebar" class="w-64 bg-white border-r border-navy-100 flex flex-col justify-between fixed md:relative z-50 h-full shadow-[0_4px_20px_rgba(0,0,0,0.05)] md:shadow-none transform -translate-x-full md:translate-x-0 transition-transform duration-300">
+    <div>
+      <div class="h-16 flex items-center justify-between px-6 border-b border-navy-100">
+        <a href="index.html" class="font-semibold text-navy-900 text-[17px] tracking-tight flex items-center gap-2">
+          <svg class="w-6 h-6 text-brand-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+          Career Cafe
+        </a>
+        <button id="close-sidebar-btn" class="md:hidden text-navy-500 hover:text-navy-900">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+      <nav class="p-4 flex flex-col gap-1" id="nav-links">
+        <button data-tab="dashboard" class="nav-item w-full nav-active flex items-center gap-3 px-3 py-2.5 rounded-lg text-navy-600 hover:bg-navy-50 font-medium text-[15px] transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+          Dashboard
+        </button>
+        <button data-tab="users" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-navy-600 hover:bg-navy-50 hover:text-navy-900 font-medium text-[15px] transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+          Users
+        </button>
+        <button data-tab="jobs" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-navy-600 hover:bg-navy-50 hover:text-navy-900 font-medium text-[15px] transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+          Jobs
+        </button>
+      </nav>
+    </div>
+    <div class="p-4 border-t border-navy-100">
+      <button onclick="window.location.href='index.html'" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-danger-500 hover:bg-danger-50 font-medium text-[15px] transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+        Log out
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-1 flex flex-col min-w-0 overflow-hidden relative z-0">
+    <!-- Topbar -->
+    <header class="h-16 bg-white border-b border-navy-100 flex items-center justify-between px-4 md:px-6 shrink-0 shadow-[0_1px_2px_rgba(0,0,0,0.02)] relative z-20">
+      <div class="flex items-center gap-4 flex-1">
+        <!-- Mobile Menu Button -->
+        <button id="open-sidebar-btn" class="md:hidden text-navy-600 hover:text-navy-900 focus:outline-none p-2 rounded-lg hover:bg-navy-50">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+        <!-- Search -->
+        <div class="relative w-full max-w-md hidden sm:block">
+          <svg class="w-5 h-5 text-navy-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+          <input type="text" id="global-search" placeholder="Search tables..." class="w-full pl-10 pr-4 py-2 bg-navy-50 border-none rounded-lg text-[15px] focus:ring-2 focus:ring-brand-500 focus:bg-white outline-none transition-all placeholder:text-navy-400 text-navy-900" />
+        </div>
+      </div>
+      
+      <div class="flex items-center gap-4 md:gap-5 relative">
+        <!-- Notifications -->
+        <button id="notif-btn" class="relative text-navy-500 hover:text-navy-900 transition-colors p-2 rounded-full hover:bg-navy-50">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+          <span class="absolute top-1.5 right-1.5 w-2.5 h-2.5 bg-danger-500 rounded-full border-2 border-white"></span>
+        </button>
+
+        <!-- Notification Dropdown -->
+        <div id="notif-dropdown" class="absolute top-14 right-16 w-80 bg-white rounded-xl shadow-elevation-4 border border-navy-100 hidden flex-col overflow-hidden">
+          <div class="px-4 py-3 border-b border-navy-100 flex justify-between items-center bg-navy-25">
+            <h3 class="font-semibold text-navy-900 text-[14px]">Notifications</h3>
+            <button class="text-[12px] text-brand-600 font-medium hover:underline">Mark all as read</button>
+          </div>
+          <div class="max-h-[300px] overflow-y-auto">
+            <a href="#" class="block px-4 py-3 hover:bg-navy-50 border-b border-navy-100 transition-colors">
+              <p class="text-[14px] text-navy-900"><span class="font-semibold">Rajesh Kumar</span> applied for <span class="font-medium">Software Engineer</span></p>
+              <p class="text-[12px] text-navy-500 mt-1">2 minutes ago</p>
+            </a>
+            <a href="#" class="block px-4 py-3 hover:bg-navy-50 border-b border-navy-100 transition-colors">
+              <p class="text-[14px] text-navy-900"><span class="font-semibold">Sneha Patel</span> completed the Data Analyst Roadmap</p>
+              <p class="text-[12px] text-navy-500 mt-1">1 hour ago</p>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Profile Dropdown -->
+        <div class="relative">
+          <div id="profile-btn" class="flex items-center gap-3 cursor-pointer group p-1 pr-2 rounded-full hover:bg-navy-50 transition-colors">
+            <img src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="Admin Avatar" class="w-9 h-9 rounded-full object-cover border border-navy-200 group-hover:border-brand-500 transition-colors" />
+            <div class="hidden sm:block">
+              <p class="text-[14px] font-semibold text-navy-900 leading-tight">Sarah J.</p>
+              <p class="text-[13px] text-navy-500 leading-tight">Super Admin</p>
+            </div>
+            <svg class="w-4 h-4 text-navy-400 group-hover:text-navy-900 transition-colors hidden sm:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </div>
+
+          <div id="profile-dropdown" class="absolute top-14 right-0 w-56 bg-white rounded-xl shadow-elevation-4 border border-navy-100 hidden flex-col overflow-hidden">
+            <div class="px-4 py-3 border-b border-navy-100 bg-navy-25">
+              <p class="text-[14px] font-medium text-navy-900">Sarah Jenkins</p>
+              <p class="text-[13px] text-navy-500">sarah@careercafe.com</p>
+            </div>
+            <div class="py-1">
+              <button class="w-full text-left px-4 py-2 text-[14px] text-navy-700 hover:bg-navy-50 hover:text-navy-900 flex items-center gap-2 transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                Account Settings
+              </button>
+              <button onclick="window.location.href='index.html'" class="w-full text-left px-4 py-2 text-[14px] text-danger-500 hover:bg-danger-50 flex items-center gap-2 transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                Log out
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Page Content Area -->
+    <div class="flex-1 overflow-y-auto p-4 md:p-8 relative" id="main-scroll-area">
+      
+      <!-- Toast Container -->
+      <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-3"></div>
+
+      <!-- ==================== DASHBOARD TAB ==================== -->
+      <div id="tab-dashboard" class="tab-content block">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 gap-4">
+          <div>
+            <h1 class="text-[28px] font-semibold text-navy-900 tracking-tight leading-tight mb-1">Welcome back, Sarah</h1>
+            <p class="text-navy-500 text-[15px]">Here's what's happening on Career Cafe today.</p>
+          </div>
+          <button id="post-job-btn" class="bg-brand-500 hover:bg-brand-600 text-white px-5 py-2.5 rounded-lg text-[14px] font-semibold transition-colors shadow-sm w-full sm:w-auto flex justify-center items-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+            Post new job
+          </button>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <div class="bg-white p-6 rounded-2xl border border-navy-100 shadow-[0_2px_10px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(59,98,246,0.06)] hover:border-brand-100 transition-all duration-300">
+            <div class="flex justify-between items-start mb-4">
+              <div class="w-12 h-12 bg-brand-50 text-brand-600 rounded-xl flex items-center justify-center">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+              </div>
+              <span class="inline-flex items-center gap-1 text-success-500 bg-success-50 px-2 py-1 rounded-md text-[13px] font-medium">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
+                12%
+              </span>
+            </div>
+            <p class="text-navy-500 text-[14px] font-medium mb-1">Total Users</p>
+            <h3 class="text-[28px] font-bold text-navy-900 leading-none">8,432</h3>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl border border-navy-100 shadow-[0_2px_10px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(59,98,246,0.06)] hover:border-brand-100 transition-all duration-300">
+            <div class="flex justify-between items-start mb-4">
+              <div class="w-12 h-12 bg-warning-50 text-warning-500 rounded-xl flex items-center justify-center">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+              </div>
+              <span class="inline-flex items-center gap-1 text-success-500 bg-success-50 px-2 py-1 rounded-md text-[13px] font-medium">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
+                4%
+              </span>
+            </div>
+            <p class="text-navy-500 text-[14px] font-medium mb-1">Active Job Listings</p>
+            <h3 class="text-[28px] font-bold text-navy-900 leading-none">142</h3>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl border border-navy-100 shadow-[0_2px_10px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(59,98,246,0.06)] hover:border-brand-100 transition-all duration-300">
+            <div class="flex justify-between items-start mb-4">
+              <div class="w-12 h-12 bg-success-50 text-success-500 rounded-xl flex items-center justify-center">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              </div>
+              <span class="inline-flex items-center gap-1 text-danger-500 bg-danger-50 px-2 py-1 rounded-md text-[13px] font-medium">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                1.2%
+              </span>
+            </div>
+            <p class="text-navy-500 text-[14px] font-medium mb-1">Roadmaps Completed</p>
+            <h3 class="text-[28px] font-bold text-navy-900 leading-none">3,812</h3>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl border border-navy-100 shadow-[0_2px_10px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(59,98,246,0.06)] hover:border-brand-100 transition-all duration-300">
+            <div class="flex justify-between items-start mb-4">
+              <div class="w-12 h-12 bg-danger-50 text-danger-500 rounded-xl flex items-center justify-center">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              </div>
+              <span class="inline-flex items-center gap-1 text-navy-500 bg-navy-50 px-2 py-1 rounded-md text-[13px] font-medium">
+                —
+              </span>
+            </div>
+            <p class="text-navy-500 text-[14px] font-medium mb-1">Pending Reviews</p>
+            <h3 class="text-[28px] font-bold text-navy-900 leading-none">18</h3>
+          </div>
+        </div>
+
+        <!-- Recent Activity Table -->
+        <div class="bg-white rounded-2xl border border-navy-100 shadow-[0_2px_10px_rgba(0,0,0,0.02)] overflow-hidden">
+          <div class="px-6 py-5 border-b border-navy-100 flex justify-between items-center">
+            <h2 class="text-[17px] font-semibold text-navy-900">Recent Applications</h2>
+            <button class="switch-to-jobs text-[14px] font-medium text-brand-600 hover:text-brand-700 focus:outline-none">View all</button>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse data-table">
+              <thead>
+                <tr class="bg-navy-25 text-navy-500 text-[13px] uppercase tracking-wider font-semibold">
+                  <th class="px-6 py-4 border-b border-navy-100">Applicant</th>
+                  <th class="px-6 py-4 border-b border-navy-100">Role</th>
+                  <th class="px-6 py-4 border-b border-navy-100">Date Applied</th>
+                  <th class="px-6 py-4 border-b border-navy-100">Status</th>
+                  <th class="px-6 py-4 border-b border-navy-100 text-right">Action</th>
+                </tr>
+              </thead>
+              <tbody class="text-[14px] text-navy-800 divide-y divide-navy-100">
+                <tr class="hover:bg-navy-25 transition-colors group">
+                  <td class="px-6 py-4">
+                    <div class="flex items-center gap-3">
+                      <img src="https://i.pravatar.cc/150?u=a042581f4e29026704a" class="w-9 h-9 rounded-full bg-navy-100" />
+                      <div>
+                        <p class="font-medium text-navy-900 search-target">Rajesh Kumar</p>
+                        <p class="text-navy-500 text-[13px]">rajesh.k@example.com</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 font-medium"><span class="search-target">Associate Software Engineer</span><br><span class="text-navy-500 font-normal text-[13px]">Infosys</span></td>
+                  <td class="px-6 py-4 text-navy-600">Today, 10:24 AM</td>
+                  <td class="px-6 py-4">
+                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[12px] font-medium bg-warning-50 text-warning-700">Reviewing</span>
+                  </td>
+                  <td class="px-6 py-4 text-right">
+                    <button class="details-btn text-brand-600 font-medium hover:underline" data-name="Rajesh Kumar" data-role="Associate Software Engineer" data-email="rajesh.k@example.com">Details</button>
+                  </td>
+                </tr>
+                <tr class="hover:bg-navy-25 transition-colors group">
+                  <td class="px-6 py-4">
+                    <div class="flex items-center gap-3">
+                      <img src="https://i.pravatar.cc/150?u=a042581f4e29026704b" class="w-9 h-9 rounded-full bg-navy-100" />
+                      <div>
+                        <p class="font-medium text-navy-900 search-target">Sneha Patel</p>
+                        <p class="text-navy-500 text-[13px]">sneha.p@example.com</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 font-medium"><span class="search-target">Graduate Data Analyst</span><br><span class="text-navy-500 font-normal text-[13px]">Deloitte</span></td>
+                  <td class="px-6 py-4 text-navy-600">Yesterday, 3:45 PM</td>
+                  <td class="px-6 py-4">
+                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[12px] font-medium bg-success-50 text-success-700">Accepted</span>
+                  </td>
+                  <td class="px-6 py-4 text-right">
+                    <button class="details-btn text-brand-600 font-medium hover:underline" data-name="Sneha Patel" data-role="Graduate Data Analyst" data-email="sneha.p@example.com">Details</button>
+                  </td>
+                </tr>
+                <tr class="hover:bg-navy-25 transition-colors group">
+                  <td class="px-6 py-4">
+                    <div class="flex items-center gap-3">
+                      <div class="w-9 h-9 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center font-bold text-[14px]">AV</div>
+                      <div>
+                        <p class="font-medium text-navy-900 search-target">Arjun Verma</p>
+                        <p class="text-navy-500 text-[13px]">arjun.v@example.com</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 font-medium"><span class="search-target">Product Support Associate</span><br><span class="text-navy-500 font-normal text-[13px]">Zoho</span></td>
+                  <td class="px-6 py-4 text-navy-600">Aug 30, 2026</td>
+                  <td class="px-6 py-4">
+                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[12px] font-medium bg-navy-100 text-navy-700">Pending</span>
+                  </td>
+                  <td class="px-6 py-4 text-right">
+                    <button class="details-btn text-brand-600 font-medium hover:underline" data-name="Arjun Verma" data-role="Product Support Associate" data-email="arjun.v@example.com">Details</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== USERS TAB ==================== -->
+      <div id="tab-users" class="tab-content hidden">
+        <div class="flex justify-between items-end mb-8">
+          <div>
+            <h1 class="text-[28px] font-semibold text-navy-900 tracking-tight leading-tight mb-1">User Management</h1>
+            <p class="text-navy-500 text-[15px]">Manage your active users and roles.</p>
+          </div>
+          <button onclick="showToast('Invites sent successfully!', 'success')" class="bg-white border border-navy-200 hover:bg-navy-50 text-navy-900 px-5 py-2.5 rounded-lg text-[14px] font-semibold transition-colors shadow-sm">
+            Invite Users
+          </button>
+        </div>
+        <div class="bg-white rounded-2xl border border-navy-100 shadow-sm overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse data-table">
+                <thead>
+                    <tr class="bg-navy-25 text-navy-500 text-[13px] uppercase tracking-wider font-semibold">
+                    <th class="px-6 py-4 border-b border-navy-100">User</th>
+                    <th class="px-6 py-4 border-b border-navy-100">Joined</th>
+                    <th class="px-6 py-4 border-b border-navy-100">Status</th>
+                    <th class="px-6 py-4 border-b border-navy-100 text-right">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="text-[14px] text-navy-800 divide-y divide-navy-100">
+                    <tr class="hover:bg-navy-25">
+                        <td class="px-6 py-4"><p class="font-medium text-navy-900 search-target">Sarah Jenkins</p><p class="text-navy-500 text-[13px]">Admin</p></td>
+                        <td class="px-6 py-4 text-navy-600">Jan 12, 2026</td>
+                        <td class="px-6 py-4"><span class="inline-flex items-center px-2.5 py-1 rounded-full text-[12px] font-medium bg-success-50 text-success-700">Active</span></td>
+                        <td class="px-6 py-4 text-right"><button class="text-navy-400 hover:text-brand-600 font-medium">Edit</button></td>
+                    </tr>
+                    <tr class="hover:bg-navy-25">
+                        <td class="px-6 py-4"><p class="font-medium text-navy-900 search-target">Rajesh Kumar</p><p class="text-navy-500 text-[13px]">Student</p></td>
+                        <td class="px-6 py-4 text-navy-600">Sep 2, 2026</td>
+                        <td class="px-6 py-4"><span class="inline-flex items-center px-2.5 py-1 rounded-full text-[12px] font-medium bg-success-50 text-success-700">Active</span></td>
+                        <td class="px-6 py-4 text-right"><button class="text-navy-400 hover:text-brand-600 font-medium">Edit</button></td>
+                    </tr>
+                </tbody>
+                </table>
+            </div>
+        </div>
+      </div>
+
+      <!-- ==================== JOBS TAB ==================== -->
+      <div id="tab-jobs" class="tab-content hidden">
+        <div class="flex justify-between items-end mb-8">
+            <div>
+              <h1 class="text-[28px] font-semibold text-navy-900 tracking-tight leading-tight mb-1">Job Postings</h1>
+              <p class="text-navy-500 text-[15px]">Manage all active and inactive roles.</p>
+            </div>
+            <button id="post-job-btn-2" class="bg-brand-500 hover:bg-brand-600 text-white px-5 py-2.5 rounded-lg text-[14px] font-semibold transition-colors shadow-sm flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                Post Job
+            </button>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="jobs-list">
+            <div class="bg-white border border-navy-100 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="font-bold text-[17px] text-navy-900 search-target">Associate Software Engineer</h3>
+                    <span class="bg-success-50 text-success-700 px-2 py-1 rounded text-[12px] font-medium">Active</span>
+                </div>
+                <p class="text-navy-600 text-[14px] mb-4">Infosys • Bengaluru • 6-9 LPA</p>
+                <div class="flex justify-between items-center border-t border-navy-50 pt-4">
+                    <span class="text-[13px] text-navy-500">Posted 4 hours ago</span>
+                    <button class="text-brand-600 font-medium text-[14px] hover:underline" onclick="showToast('Job archived.', 'warning')">Archive</button>
+                </div>
+            </div>
+            <div class="bg-white border border-navy-100 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="font-bold text-[17px] text-navy-900 search-target">Graduate Data Analyst</h3>
+                    <span class="bg-success-50 text-success-700 px-2 py-1 rounded text-[12px] font-medium">Active</span>
+                </div>
+                <p class="text-navy-600 text-[14px] mb-4">Deloitte • Hyderabad • 7-10 LPA</p>
+                <div class="flex justify-between items-center border-t border-navy-50 pt-4">
+                    <span class="text-[13px] text-navy-500">Posted yesterday</span>
+                    <button class="text-brand-600 font-medium text-[14px] hover:underline" onclick="showToast('Job archived.', 'warning')">Archive</button>
+                </div>
+            </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ==================== MODALS & OVERLAYS ==================== -->
+
+  <!-- Modal Backdrop -->
+  <div id="modal-backdrop" class="fixed inset-0 bg-navy-900/40 backdrop-blur-sm z-[60] hidden transition-opacity opacity-0 flex items-center justify-center p-4">
+    
+    <!-- Post Job Modal -->
+    <div id="modal-post-job" class="bg-white rounded-2xl shadow-elevation-4 w-full max-w-lg hidden transform scale-95 opacity-0 transition-all">
+        <div class="px-6 py-4 border-b border-navy-100 flex justify-between items-center bg-navy-25 rounded-t-2xl">
+            <h3 class="font-semibold text-navy-900 text-[17px]">Post New Job</h3>
+            <button class="close-modal-btn text-navy-400 hover:text-navy-900 bg-white rounded-full p-1 border border-navy-100 shadow-sm"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+        </div>
+        <div class="p-6">
+            <form id="post-job-form" class="flex flex-col gap-4">
+                <div>
+                    <label class="block text-[14px] font-medium text-navy-900 mb-1">Job Title</label>
+                    <input type="text" required class="w-full border border-navy-200 rounded-lg px-4 py-2.5 text-[15px] focus:ring-2 focus:ring-brand-500 outline-none" placeholder="e.g. Software Engineer">
+                </div>
+                <div>
+                    <label class="block text-[14px] font-medium text-navy-900 mb-1">Company</label>
+                    <input type="text" required class="w-full border border-navy-200 rounded-lg px-4 py-2.5 text-[15px] focus:ring-2 focus:ring-brand-500 outline-none" placeholder="Company Name">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-[14px] font-medium text-navy-900 mb-1">Location</label>
+                        <input type="text" class="w-full border border-navy-200 rounded-lg px-4 py-2.5 text-[15px] focus:ring-2 focus:ring-brand-500 outline-none" placeholder="e.g. Bengaluru">
+                    </div>
+                    <div>
+                        <label class="block text-[14px] font-medium text-navy-900 mb-1">Salary (LPA)</label>
+                        <input type="text" class="w-full border border-navy-200 rounded-lg px-4 py-2.5 text-[15px] focus:ring-2 focus:ring-brand-500 outline-none" placeholder="e.g. 6-9 LPA">
+                    </div>
+                </div>
+                <div class="mt-4 flex justify-end gap-3">
+                    <button type="button" class="close-modal-btn px-5 py-2.5 rounded-lg text-navy-600 font-medium hover:bg-navy-50">Cancel</button>
+                    <button type="submit" class="bg-brand-500 hover:bg-brand-600 text-white px-5 py-2.5 rounded-lg font-semibold shadow-sm flex items-center justify-center min-w-[120px]">
+                        <span id="btn-text">Post Job</span>
+                        <svg id="btn-spinner" class="hidden animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Application Details Slide Panel -->
+    <div id="panel-details" class="fixed top-0 right-0 h-full w-full max-w-md bg-white shadow-elevation-4 transform translate-x-full transition-transform duration-300 z-[70] flex flex-col">
+        <div class="px-6 py-5 border-b border-navy-100 flex justify-between items-center bg-navy-25">
+            <h3 class="font-semibold text-navy-900 text-[17px]">Application Details</h3>
+            <button class="close-panel-btn text-navy-400 hover:text-navy-900 bg-white rounded-full p-1 border border-navy-100 shadow-sm"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+        </div>
+        <div class="p-6 flex-1 overflow-y-auto">
+            <div class="flex items-center gap-4 mb-6">
+                <div class="w-16 h-16 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center font-bold text-[24px]" id="det-initials">RK</div>
+                <div>
+                    <h2 class="text-[20px] font-bold text-navy-900" id="det-name">Rajesh Kumar</h2>
+                    <p class="text-[15px] text-navy-500" id="det-email">rajesh.k@example.com</p>
+                </div>
+            </div>
+            
+            <div class="bg-navy-50 rounded-xl p-4 mb-6 border border-navy-100">
+                <p class="text-[13px] text-navy-500 font-semibold uppercase tracking-wider mb-1">Applied For</p>
+                <p class="text-[16px] font-medium text-navy-900" id="det-role">Associate Software Engineer</p>
+                <span class="inline-flex mt-2 items-center px-2.5 py-1 rounded-full text-[12px] font-medium bg-warning-50 text-warning-700">Reviewing</span>
+            </div>
+
+            <h4 class="font-semibold text-navy-900 mb-3 border-b border-navy-100 pb-2">Actions</h4>
+            <div class="flex flex-col gap-3">
+                <button onclick="showToast('Application Accepted!', 'success')" class="bg-success-500 hover:bg-success-600 text-white px-4 py-2.5 rounded-lg font-medium shadow-sm transition-colors text-left text-[14px]">Accept Applicant</button>
+                <button onclick="showToast('Application Rejected.', 'danger')" class="bg-white border border-danger-200 text-danger-600 hover:bg-danger-50 px-4 py-2.5 rounded-lg font-medium transition-colors text-left text-[14px]">Reject Applicant</button>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+  <!-- ==================== JAVASCRIPT LOGIC ==================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- 1. Tab Switching Logic ---
+        const navItems = document.querySelectorAll('.nav-item');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // Remove active classes
+                navItems.forEach(nav => {
+                    nav.classList.remove('nav-active');
+                    nav.classList.add('text-navy-600', 'hover:bg-navy-50');
+                });
+                tabContents.forEach(content => content.classList.add('hidden'));
+                
+                // Add active classes
+                item.classList.add('nav-active');
+                item.classList.remove('text-navy-600', 'hover:bg-navy-50');
+                
+                const targetId = `tab-${item.dataset.tab}`;
+                const targetContent = document.getElementById(targetId);
+                if (targetContent) {
+                    targetContent.classList.remove('hidden');
+                    // Add a tiny fade-in animation
+                    targetContent.style.opacity = '0';
+                    setTimeout(() => targetContent.style.opacity = '1', 50);
+                } else {
+                    // Fallback for empty tabs
+                    showToast(`The ${item.dataset.tab} module is under construction.`, 'warning');
+                }
+                
+                // Close sidebar on mobile after clicking
+                if (window.innerWidth < 768) {
+                    toggleMobileSidebar(false);
+                }
+            });
+        });
+
+        // Switch to Jobs from Dashboard
+        document.querySelectorAll('.switch-to-jobs').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const jobsTab = document.querySelector('[data-tab="jobs"]');
+                if(jobsTab) jobsTab.click();
+            });
+        });
+
+
+        // --- 2. Dropdowns (Profile & Notif) ---
+        const profileBtn = document.getElementById('profile-btn');
+        const profileDropdown = document.getElementById('profile-dropdown');
+        const notifBtn = document.getElementById('notif-btn');
+        const notifDropdown = document.getElementById('notif-dropdown');
+
+        function closeAllDropdowns() {
+            profileDropdown.classList.add('hidden');
+            notifDropdown.classList.add('hidden');
+        }
+
+        profileBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isHidden = profileDropdown.classList.contains('hidden');
+            closeAllDropdowns();
+            if(isHidden) profileDropdown.classList.remove('hidden');
+        });
+
+        notifBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isHidden = notifDropdown.classList.contains('hidden');
+            closeAllDropdowns();
+            if(isHidden) notifDropdown.classList.remove('hidden');
+        });
+
+        document.addEventListener('click', closeAllDropdowns);
+
+
+        // --- 3. Mobile Sidebar Toggle ---
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('mobile-overlay');
+        const openBtn = document.getElementById('open-sidebar-btn');
+        const closeBtn = document.getElementById('close-sidebar-btn');
+
+        function toggleMobileSidebar(show) {
+            if (show) {
+                overlay.classList.remove('hidden');
+                setTimeout(() => overlay.classList.remove('opacity-0'), 10);
+                sidebar.classList.remove('-translate-x-full');
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                overlay.classList.add('opacity-0');
+                setTimeout(() => overlay.classList.add('hidden'), 300);
+            }
+        }
+
+        openBtn.addEventListener('click', () => toggleMobileSidebar(true));
+        closeBtn.addEventListener('click', () => toggleMobileSidebar(false));
+        overlay.addEventListener('click', () => toggleMobileSidebar(false));
+
+
+        // --- 4. Modals & Panels ---
+        const modalBackdrop = document.getElementById('modal-backdrop');
+        const modalPostJob = document.getElementById('modal-post-job');
+        const panelDetails = document.getElementById('panel-details');
+        
+        const postJobBtns = [document.getElementById('post-job-btn'), document.getElementById('post-job-btn-2')];
+        const closeBtns = document.querySelectorAll('.close-modal-btn');
+        const closePanelBtns = document.querySelectorAll('.close-panel-btn');
+        const detailsBtns = document.querySelectorAll('.details-btn');
+
+        function openModal(modalEl) {
+            modalBackdrop.classList.remove('hidden');
+            modalEl.classList.remove('hidden');
+            
+            // reflow to trigger transition
+            void modalEl.offsetWidth; 
+            
+            modalBackdrop.classList.remove('opacity-0');
+            modalEl.classList.remove('scale-95', 'opacity-0');
+        }
+
+        function closeModal() {
+            modalBackdrop.classList.add('opacity-0');
+            modalPostJob.classList.add('scale-95', 'opacity-0');
+            panelDetails.classList.add('translate-x-full');
+            
+            setTimeout(() => {
+                modalBackdrop.classList.add('hidden');
+                modalPostJob.classList.add('hidden');
+            }, 300);
+        }
+
+        function openPanel(name, role, email) {
+            // Update panel data dynamically
+            document.getElementById('det-name').innerText = name;
+            document.getElementById('det-role').innerText = role;
+            document.getElementById('det-email').innerText = email;
+            document.getElementById('det-initials').innerText = name.split(' ').map(n => n[0]).join('').toUpperCase();
+            
+            modalBackdrop.classList.remove('hidden');
+            void modalBackdrop.offsetWidth;
+            modalBackdrop.classList.remove('opacity-0');
+            
+            panelDetails.classList.remove('translate-x-full');
+        }
+
+        postJobBtns.forEach(btn => {
+            if(btn) btn.addEventListener('click', () => openModal(modalPostJob));
+        });
+
+        closeBtns.forEach(btn => btn.addEventListener('click', closeModal));
+        closePanelBtns.forEach(btn => btn.addEventListener('click', closeModal));
+        
+        modalBackdrop.addEventListener('click', (e) => {
+            if (e.target === modalBackdrop) closeModal();
+        });
+
+        detailsBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const data = e.target.dataset;
+                openPanel(data.name, data.role, data.email);
+            });
+        });
+
+        // Form Submit Simulation
+        const form = document.getElementById('post-job-form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btnText = document.getElementById('btn-text');
+            const spinner = document.getElementById('btn-spinner');
+            
+            btnText.classList.add('hidden');
+            spinner.classList.remove('hidden');
+            
+            setTimeout(() => {
+                btnText.classList.remove('hidden');
+                spinner.classList.add('hidden');
+                closeModal();
+                form.reset();
+                showToast('Job posted successfully!', 'success');
+            }, 1000);
+        });
+
+
+        // --- 5. Global Search Filtering ---
+        const searchInput = document.getElementById('global-search');
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            const activeTab = document.querySelector('.tab-content:not(.hidden)');
+            
+            if (activeTab) {
+                // Find items to filter (table rows or job cards)
+                let items = [];
+                if (activeTab.id === 'tab-dashboard' || activeTab.id === 'tab-users') {
+                    items = activeTab.querySelectorAll('tbody tr');
+                } else if (activeTab.id === 'tab-jobs') {
+                    items = activeTab.querySelectorAll('#jobs-list > div');
+                }
+                
+                items.forEach(item => {
+                    const textContent = Array.from(item.querySelectorAll('.search-target')).map(el => el.textContent.toLowerCase()).join(' ');
+                    if (textContent.includes(term) || term === '') {
+                        item.style.display = '';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            }
+        });
+
+        // --- 6. Toast Notification System ---
+        window.showToast = function(message, type = 'success') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            
+            let bg = type === 'success' ? 'bg-success-50 text-success-700 border-success-200' : 
+                     type === 'danger' ? 'bg-danger-50 text-danger-700 border-danger-200' : 
+                     'bg-warning-50 text-warning-700 border-warning-200';
+                     
+            let icon = type === 'success' ? '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>' :
+                       '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>';
+            
+            toast.className = `flex items-center gap-3 px-4 py-3 rounded-xl border shadow-elevation-2 transform transition-all duration-300 translate-y-10 opacity-0 ${bg}`;
+            toast.innerHTML = `${icon} <span class="font-medium text-[14px]">${message}</span>`;
+            
+            container.appendChild(toast);
+            
+            // Trigger animation
+            requestAnimationFrame(() => {
+                toast.classList.remove('translate-y-10', 'opacity-0');
+            });
+            
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-x-10');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        };
+    });
+  </script>
+</body>
+</html>

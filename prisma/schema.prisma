@@ -1,0 +1,197 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id              String    @id @default(cuid())
+  name            String?
+  email           String    @unique
+  password        String?   // Hashed password for email login
+  role            String    @default("USER")
+  status          String    @default("ACTIVE")
+  graduationYear  Int?
+  course          String?
+  location        String?
+  workPreference  String?
+  joinedDate      DateTime  @default(now())
+  lastActive      DateTime  @default(now())
+  savedJobs       SavedJob[]
+  auditLogs       AuditLog[] // Actions performed by this user (if admin)
+}
+
+// Enums are not supported in SQLite, represented as String
+// Role: USER, SUPER_ADMIN, CONTENT_ADMIN, MODERATOR, ANALYST, SUPPORT_ADMIN
+// UserStatus: ACTIVE, SUSPENDED, DELETED
+
+model Job {
+  id                 String       @id @default(cuid())
+  title              String
+  company            Company      @relation(fields: [companyId], references: [id])
+  companyId          String
+  location           String
+  workMode           String
+  experienceReq      String
+  salary             String?
+  employmentType     String
+  skills             String // Stored as comma-separated string for SQLite
+  description        String
+  requirements       String
+  responsibilities   String
+  benefits           String?
+  applicationUrl     String
+  source             String?
+  deadline           DateTime?
+  postedDate         DateTime     @default(now())
+  verificationStatus String    @default("PENDING_REVIEW")
+  views              Int          @default(0)
+  clicks             Int          @default(0) // Outbound application clicks
+  saves              Int          @default(0)
+  savedBy            SavedJob[]
+}
+
+// WorkMode: REMOTE, HYBRID, ONSITE
+// JobStatus: DRAFT, PENDING_REVIEW, VERIFIED, PUBLISHED, EXPIRED, REJECTED, ARCHIVED
+
+model Company {
+  id                 String       @id @default(cuid())
+  name               String
+  logoUrl            String?
+  website            String?
+  description        String?
+  industry           String?
+  headquarters       String?
+  companySize        String?
+  verificationStatus String @default("PENDING")
+  views              Int          @default(0)
+  jobs               Job[]
+}
+
+// CompanyStatus: PENDING, VERIFIED, REJECTED
+
+model SavedJob {
+  id        String   @id @default(cuid())
+  userId    String
+  jobId     String
+  savedAt   DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  job       Job      @relation(fields: [jobId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, jobId])
+}
+
+model Resource {
+  id             String         @id @default(cuid())
+  title          String
+  description    String
+  category       String
+  role           String?
+  type           String
+  readingTime    Int?
+  author         String?
+  content        String
+  thumbnailUrl   String?
+  tags           String? // Comma-separated
+  seoTitle       String?
+  seoDescription String?
+  status         String  @default("DRAFT")
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  views          Int            @default(0)
+  roadmapStages  RoadmapStageResource[]
+}
+
+// ResourceType: GUIDE, TEMPLATE, INTERVIEW, RESUME, PORTFOLIO, CHECKLIST, QUESTION_BANK
+// ContentStatus: DRAFT, PUBLISHED, ARCHIVED
+
+model Video {
+  id             String         @id @default(cuid())
+  title          String
+  description    String
+  videoUrl       String
+  thumbnailUrl   String?
+  duration       Int?           // in seconds
+  category       String?
+  role           String?
+  tags           String? // Comma-separated
+  transcript     String?
+  status         String  @default("DRAFT")
+  isFeatured     Boolean        @default(false)
+  createdAt      DateTime       @default(now())
+  views          Int            @default(0)
+  saves          Int            @default(0)
+  roadmapStages  RoadmapStageVideo[]
+}
+
+model Shot {
+  id             String         @id @default(cuid())
+  title          String
+  role           String?
+  description    String?
+  videoUrl       String
+  duration       Int?
+  thumbnailUrl   String?
+  transcript     String?
+  tags           String?
+  status         String  @default("DRAFT")
+  isFeatured     Boolean        @default(false)
+  createdAt      DateTime       @default(now())
+  views          Int            @default(0)
+}
+
+model Roadmap {
+  id          String         @id @default(cuid())
+  title       String
+  description String
+  status      String  @default("DRAFT")
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+  stages      RoadmapStage[]
+}
+
+model RoadmapStage {
+  id           String         @id @default(cuid())
+  roadmapId    String
+  roadmap      Roadmap        @relation(fields: [roadmapId], references: [id], onDelete: Cascade)
+  order        Int
+  title        String
+  description  String
+  skills       String? // Comma-separated
+  estimatedTime String?
+  resources    RoadmapStageResource[]
+  videos       RoadmapStageVideo[]
+}
+
+model RoadmapStageResource {
+  stageId    String
+  resourceId String
+  stage      RoadmapStage @relation(fields: [stageId], references: [id], onDelete: Cascade)
+  resource   Resource     @relation(fields: [resourceId], references: [id], onDelete: Cascade)
+
+  @@id([stageId, resourceId])
+}
+
+model RoadmapStageVideo {
+  stageId  String
+  videoId  String
+  stage    RoadmapStage @relation(fields: [stageId], references: [id], onDelete: Cascade)
+  video    Video        @relation(fields: [videoId], references: [id], onDelete: Cascade)
+
+  @@id([stageId, videoId])
+}
+
+model AuditLog {
+  id         String   @id @default(cuid())
+  adminId    String?
+  admin      User?     @relation(fields: [adminId], references: [id], onDelete: SetNull)
+  action     String
+  entityType String
+  entityId   String
+  timestamp  DateTime @default(now())
+  beforeState String? // JSON string
+  afterState  String? // JSON string
+}

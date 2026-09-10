@@ -339,10 +339,7 @@ img { max-width: 100%; display: block; }
 /* =====================================================================
    Roadmap / resource / testimonial
    ===================================================================== */
-.roadmap-stage { padding:20px; background:var(--surface); border:1px solid var(--border); border-radius:var(--r-lg); cursor:pointer; transition:all .15s var(--ease); }
-.roadmap-stage:hover { border-color:var(--border-strong); box-shadow:var(--shadow-1); }
-.roadmap-stage.current { background:var(--brand-50); border:2px solid var(--brand-200); }
-
+.roadmap-stage { position: relative; }
 .res-card { display:block; padding:20px; background:var(--surface); border:1px solid var(--border); border-radius:var(--r-lg); cursor:pointer; text-decoration:none; transition: border-color .2s var(--ease), box-shadow .25s var(--ease), transform .2s var(--ease); }
 .res-card:hover { border-color:var(--brand-200); box-shadow:var(--shadow-2); transform:translateY(-2px); }
 
@@ -482,4 +479,104 @@ img { max-width: 100%; display: block; }
     transition-duration:.001ms !important; scroll-behavior:auto !important;
   }
   .fade-in { opacity:1; transform:none; }
+}
+/* Roadmap Snake Grid */
+.roadmap-snake-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  position: relative;
+  margin-top: 24px;
+}
+
+.roadmap-stage-snake {
+  background: #FFFFFF;
+  border: 1px solid #EEF1F7;
+  border-radius: 12px;
+  padding: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.roadmap-stage-snake.current {
+  border: 2px solid #3B62F6;
+  box-shadow: 0 4px 12px rgba(59, 98, 246, 0.15);
+}
+
+.roadmap-stage-snake .stage-header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.roadmap-stage-snake .stage-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* Connector Lines */
+.roadmap-stage-snake::after {
+  content: '';
+  position: absolute;
+  background: #CBD3E1;
+  z-index: -1;
+}
+
+@media (min-width: 1024px) {
+  /* Snake layout positioning */
+  .roadmap-snake-grid { grid-template-columns: repeat(4, 1fr); }
+  .stage-1 { grid-column: 1; grid-row: 1; }
+  .stage-2 { grid-column: 2; grid-row: 1; }
+  .stage-3 { grid-column: 3; grid-row: 1; }
+  .stage-4 { grid-column: 4; grid-row: 1; }
+  .stage-5 { grid-column: 4; grid-row: 2; }
+  .stage-6 { grid-column: 3; grid-row: 2; }
+  .stage-7 { grid-column: 2; grid-row: 2; }
+  .stage-8 { grid-column: 1; grid-row: 2; }
+
+  /* Right pointing arrows */
+  .stage-1::after, .stage-2::after, .stage-3::after {
+    top: 40px; right: -24px; width: 24px; height: 2px;
+  }
+  /* Down pointing arrow */
+  .stage-4::after {
+    top: 40px; right: 40px; width: 2px; height: calc(100% + 24px);
+  }
+  /* Left pointing arrows */
+  .stage-5::after, .stage-6::after, .stage-7::after {
+    top: 40px; left: -24px; width: 24px; height: 2px;
+  }
+}
+
+@media (max-width: 1023px) and (min-width: 768px) {
+  .roadmap-snake-grid { grid-template-columns: repeat(2, 1fr); }
+  .stage-1 { grid-column: 1; grid-row: 1; }
+  .stage-2 { grid-column: 2; grid-row: 1; }
+  .stage-3 { grid-column: 2; grid-row: 2; }
+  .stage-4 { grid-column: 1; grid-row: 2; }
+  .stage-5 { grid-column: 1; grid-row: 3; }
+  .stage-6 { grid-column: 2; grid-row: 3; }
+  .stage-7 { grid-column: 2; grid-row: 4; }
+  .stage-8 { grid-column: 1; grid-row: 4; }
+
+  .stage-1::after, .stage-5::after { top: 40px; right: -24px; width: 24px; height: 2px; }
+  .stage-3::after, .stage-7::after { top: 40px; left: -24px; width: 24px; height: 2px; }
+  .stage-2::after, .stage-6::after { top: 40px; right: 40px; width: 2px; height: calc(100% + 24px); }
+  .stage-4::after { top: 40px; left: 40px; width: 2px; height: calc(100% + 24px); }
+}
+
+@media (max-width: 767px) {
+  .roadmap-snake-grid { grid-template-columns: 1fr; gap: 16px; }
+  .roadmap-stage-snake::after {
+    top: 100%; left: 40px; width: 2px; height: 16px;
+  }
+  .stage-8::after { display: none; }
 }

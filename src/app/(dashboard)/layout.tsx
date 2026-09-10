@@ -5,6 +5,8 @@ import { authOptions } from "@/lib/auth"
 import { redirect } from "next/navigation"
 import prisma from "@/lib/prisma"
 
+export const dynamic = "force-dynamic"
+
 function getInitials(name: string) {
   if (!name) return "U"
   const parts = name.trim().split(" ")
